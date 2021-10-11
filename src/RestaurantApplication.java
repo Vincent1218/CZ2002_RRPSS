@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class RestaurantApplication {
 	public static void main(String[] args) {
 		int choice;
+		Menu mainmenu = new Menu();
 		Scanner sc = new Scanner(System.in);		
 		do {
 		System.out.println("(1) Create/Update/Remove menu item");
@@ -21,7 +22,6 @@ public class RestaurantApplication {
 		System.out.println("");
 		System.out.print("Enter your Choice: ");
 		choice = sc.nextInt();
-		Menu mainmenu = new Menu();
 		switch (choice) {
 		 case 1: 
 		 {

@@ -23,7 +23,6 @@ public class Menu {
 		System.out.println("Menu Item--------------Description--------------Price");
 		System.out.println("");
 		System.out.println("Main Dishes---------------------------------------");
-		System.out.print(this.numofmain);
 		 for(int i=0;i<this.numofmain;i++)
 		 {
 			 System.out.println(maindish[i].getName());
@@ -63,7 +62,6 @@ public class Menu {
 			 MenuItems newitem =new MenuItems(name,description,price);
 			 maindish[this.numofmain]=newitem;
 			 this.numofmain+=1;
-			 
 		 }
 		 break;
 		 case 2:
