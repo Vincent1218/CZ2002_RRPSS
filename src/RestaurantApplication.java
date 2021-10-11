@@ -19,6 +19,8 @@ public class RestaurantApplication {
 		System.out.println("");
 		System.out.print("Enter your Choice: ");
 		choice = sc.nextInt();
+		int numoffooditems = 0;
+		FoodItems[] order = new FoodItems[numoffooditems];
 		switch (choice) {
 		 case 1: 
 		 {
