@@ -5,38 +5,35 @@ public class Menu {
 	private MenuItems[] maindish;
 	private MenuItems[] beverages;
 	private MenuItems[] desserts;
-	private int numofmain;
-	private int numofbev;
-	private int numofdes;
+	private static int numofmain=0;
+	private static int numofbev=0;
+	private static int numofdes=0;
 	
 	public Menu()
 	{
 		this.maindish = new MenuItems[12];
 		this.beverages = new MenuItems[12];
 		this.desserts = new MenuItems[12];
-		this.numofmain=0;
-		this.numofdes=0;
-		this.numofbev=0;
 	}
 	public void displayMenu()
 	{
 		System.out.println("Menu Item--------------Description--------------Price");
 		System.out.println("");
 		System.out.println("Main Dishes---------------------------------------");
-		System.out.print(this.numofmain);
-		 for(int i=0;i<this.numofmain;i++)
+		System.out.print(numofmain);
+		 for(int i=0;i<numofmain;i++)
 		 {
 			 System.out.println(maindish[i].getName());
 		 }
 		 System.out.println("");
 		 System.out.println("Desserts-----------------------------------------");
-		 for(int i=0;i<this.numofdes;i++)
+		 for(int i=0;i<numofdes;i++)
 		 {
 			 System.out.println(desserts[i].getName() + "\t\t" + desserts[i].getDescription() + "\t\t" + desserts[i].getPrice());
 		 }
 		 System.out.println("");
 		 System.out.println("Beverages----------------------------------------");
-		 for(int i=0;i<this.numofbev;i++)
+		 for(int i=0;i<numofbev;i++)
 		 {
 			 System.out.println(beverages[i].getName() + "\t\t" + beverages[i].getDescription() + "\t\t" + beverages[i].getPrice());
 		 }
@@ -61,8 +58,7 @@ public class Menu {
 			 System.out.println("What is the description of the item?");
 			 description =sc.next();
 			 MenuItems newitem =new MenuItems(name,description,price);
-			 maindish[this.numofmain]=newitem;
-			 this.numofmain+=1;
+			 maindish[numofmain++]=newitem;
 			 
 		 }
 		 break;
@@ -75,7 +71,7 @@ public class Menu {
 			 System.out.println("What is the description of the item?");
 			 description =sc.next();
 			 MenuItems newitem =new MenuItems(name,description,price);
-			 beverages[this.numofbev++]=newitem;
+			 beverages[numofbev++]=newitem;
 		 }
 		 break;
 		 case 3:
@@ -87,7 +83,7 @@ public class Menu {
 			 System.out.println("What is the description of the item?");
 			 description =sc.next();
 			 MenuItems newitem =new MenuItems(name,description,price);
-			 desserts[this.numofdes++]=newitem;
+			 desserts[numofdes++]=newitem;
 		 }
 		 break;
 		 }
@@ -108,7 +104,7 @@ public class Menu {
 				 System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
 				 choice = sc.nextInt();
 				 int check =0;
-				 for(int i=0;i<this.numofmain;i++)
+				 for(int i=0;i<numofmain;i++)
 				 {
 					 if (name.equals(maindish[i].getName()))
 					 {
@@ -151,7 +147,7 @@ public class Menu {
 				 System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
 				 choice = sc.nextInt();
 				 int check =0;
-				 for(int i=0;i<this.numofbev;i++)
+				 for(int i=0;i<numofbev;i++)
 				 {
 					 if (name.equals(beverages[i].getName()))
 					 {
@@ -193,7 +189,7 @@ public class Menu {
 				 System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
 				 choice = sc.nextInt();
 				 int check =0;
-				 for(int i=0;i<this.numofdes;i++)
+				 for(int i=0;i<numofdes;i++)
 				 {
 					 if (name.equals(desserts[i].getName()))
 					 {
@@ -244,7 +240,7 @@ public class Menu {
 				 System.out.println("What is the name of the Main Dish to be deleted?");
 				 name = sc.next();
 				 int check =0;
-				 for(int i=0;i<this.numofbev;i++)
+				 for(int i=0;i<numofbev;i++)
 				 {
 					 if (name.equals(maindish[i].getName()))
 					 {
@@ -259,7 +255,7 @@ public class Menu {
 				{
 					System.out.println("Deleting Failed...");
 				}
-				this.numofmain--;
+				numofmain--;
 				maindish = newmains;
 				 
 			 }
@@ -271,7 +267,7 @@ public class Menu {
 				 System.out.println("What is the name of the Beverage to be deleted?");
 				 name = sc.next();
 				 int check =0;
-				 for(int i=0;i<this.numofbev;i++)
+				 for(int i=0;i<numofbev;i++)
 				 {
 					 if (name.equals(beverages[i].getName()))
 					 {
@@ -286,7 +282,7 @@ public class Menu {
 				{
 					System.out.println("Deleting Failed...");
 				}
-				this.numofbev--;
+				numofbev--;
 				beverages = newbevs;
 			 }
 			 break;
@@ -297,7 +293,7 @@ public class Menu {
 				 System.out.println("What is the name of the Beverage to be deleted?");
 				 name = sc.next();
 				 int check =0;
-				 for(int i=0;i<this.numofbev;i++)
+				 for(int i=0;i<numofbev;i++)
 				 {
 					 if (name.equals(beverages[i].getName()))
 					 {
@@ -312,7 +308,7 @@ public class Menu {
 				{
 					System.out.println("Deleting Failed...");
 				}
-				this.numofdes--;
+				numofdes--;
 				desserts = newdesserts;
 			 }	
 	
