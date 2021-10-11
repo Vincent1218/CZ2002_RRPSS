@@ -1,3 +1,5 @@
+package Project;
+
 import java.util.Scanner;
 
 public class RestaurantApplication {
@@ -19,37 +21,48 @@ public class RestaurantApplication {
 		System.out.println("");
 		System.out.print("Enter your Choice: ");
 		choice = sc.nextInt();
-		int numoffooditems = 0;
-		FoodItems[] order = new FoodItems[numoffooditems];
+		Menu mainmenu = new Menu();
 		switch (choice) {
 		 case 1: 
 		 {
 			 //Create/Update/Remove menu item function
+			 System.out.println("Would you like to Create(1)/Update(2)/Remove(3) menu item");
+			 choice = sc.nextInt();
+			 switch (choice) 
+			 {
+				 case 1:
+				 {
+					 mainmenu.addMenuItem();
+				 }
+				 break;
+				 case 2:
+				 {
+					 mainmenu.updateMenuItem();
+				 }
+				 break;
+				 case 3:
+				 {
+					 mainmenu.deleteMenuItem();
+				 }
+				 break;
+			 }
+			 break;
 		 }
-		 break;
-		 case 2: {
+		 case 2: 
+		 {
 			//Create/Update/Remove promotion function
 		 }
 		 break;
-		 case 3: {
-			//Create order function
+		 case 3:
+		 {
+			 //Create order function
 			 //display menu lets person choose based on switch function number
 			 //append to the array
-		 }
+			 mainmenu.displayMenu();
 		 }
 		 break;
 		 case 4: 
 		 {
-			//View order function
-			  double totalprice=0;
-			 System.out.print("Menu Item--------------Quantity--------------Price");
-			 for(int i=0;i<numoffooditems;i++)
-			 {
-				 System.out.println(order[i].displayName() + "\t\t" + order[i].displayQuantity() + "\t\t" + order[i].getTotPrice());
-				 totalprice += order[i].getTotPrice();
-			 }
-			 System.out.println("\t\t\t\t\t" + totalprice);
-
 			 
 		 } 
 		 break;
@@ -57,13 +70,11 @@ public class RestaurantApplication {
 		 {
 			//Add/Remove order item/s to/from order function
 			 //justdelete the array slot and move pack the array up eg, if array slot[2] is deleted move slot[3] to slot[2]etc etc
-
 		 }
 		 break;
 		 case 6:
 		 {
 			//Create reservation booking function
-			 //Create reservation booking function
 			 System.out.println("Whose name will the reservation be under?");
 			 String name = sc.next();
 			 System.out.println("Number of Pax?");
@@ -85,17 +96,7 @@ public class RestaurantApplication {
 		 }
 		 break;
 		 case 9: {
-			//Print order invoice function
-			 double totalprice=0;
-			 System.out.print("Menu Item--------------Quantity--------------Price");
-			//View order function
-			 for(int i=0;i<numoffooditems;i++)
-			 {
-				 System.out.println(order[i].displayName() + "\t\t" + order[i].displayQuantity() + "\t\t" + order[i].getTotPrice());
-				 totalprice += order[i].getTotPrice();
-			 }
-			 System.out.println("\t\t\t\t\t" + totalprice);
-			 //add cahiername and time of pruchase and reservation booking details
+			
 		 }
 		 break;
 		 case 10: 
@@ -103,7 +104,7 @@ public class RestaurantApplication {
 			//Print sale revenue report by period (eg day or month) function
 		 }
 		 break;
-		 case 11: System.out.println("Program terminating �.");
+		 case 11: System.out.println("Program terminating ….");
 		}
 		} while (choice < 11);
 	}
