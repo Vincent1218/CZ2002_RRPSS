@@ -33,6 +33,9 @@ public class RestaurantApplication {
 		 break;
 		 case 3: {
 			//Create order function
+			 //display menu lets person choose based on switch function number
+			 //append to the array
+		 }
 		 }
 		 break;
 		 case 4: 
@@ -53,11 +56,23 @@ public class RestaurantApplication {
 		 case 5:
 		 {
 			//Add/Remove order item/s to/from order function
+			 //justdelete the array slot and move pack the array up eg, if array slot[2] is deleted move slot[3] to slot[2]etc etc
+
 		 }
 		 break;
 		 case 6:
 		 {
 			//Create reservation booking function
+			 //Create reservation booking function
+			 System.out.println("Whose name will the reservation be under?");
+			 String name = sc.next();
+			 System.out.println("Number of Pax?");
+			 int numofpax = sc.nextInt();
+			 System.out.println("Time of Reservation?");
+			 double time = sc.nextDouble();
+			 System.out.println("May I get your Contact Number?");
+			 int contactnum = sc.nextInt();
+			 //Attach this uinfo to array somehow probably to an overarching array. sop one array anmd in that 1 array slot has the array of food and contact details.
 		 }
 		 break;	 
 		 case 7: 
