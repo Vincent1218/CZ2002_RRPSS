@@ -36,6 +36,16 @@ public class RestaurantApplication {
 		 case 4: 
 		 {
 			//View order function
+			  double totalprice=0;
+			 System.out.print("Menu Item--------------Quantity--------------Price");
+			 for(int i=0;i<numoffooditems;i++)
+			 {
+				 System.out.println(order[i].displayName() + "\t\t" + order[i].displayQuantity() + "\t\t" + order[i].getTotPrice());
+				 totalprice += order[i].getTotPrice();
+			 }
+			 System.out.println("\t\t\t\t\t" + totalprice);
+
+			 
 		 } 
 		 break;
 		 case 5:
@@ -59,6 +69,16 @@ public class RestaurantApplication {
 		 break;
 		 case 9: {
 			//Print order invoice function
+			 double totalprice=0;
+			 System.out.print("Menu Item--------------Quantity--------------Price");
+			//View order function
+			 for(int i=0;i<numoffooditems;i++)
+			 {
+				 System.out.println(order[i].displayName() + "\t\t" + order[i].displayQuantity() + "\t\t" + order[i].getTotPrice());
+				 totalprice += order[i].getTotPrice();
+			 }
+			 System.out.println("\t\t\t\t\t" + totalprice);
+			 //add cahiername and time of pruchase and reservation booking details
 		 }
 		 break;
 		 case 10: 
