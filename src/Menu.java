@@ -25,7 +25,7 @@ public class Menu {
 		System.out.println("Main Dishes---------------------------------------");
 		 for(int i=0;i<this.numofmain;i++)
 		 {
-			 System.out.println(maindish[i].getName());
+			 System.out.println(maindish[i].getitemID() + "\t\t" +maindish[i].getName() + "\t\t" + maindish[i].getDescription() + "\t\t" + maindish[i].getPrice());
 		 }
 		 System.out.println("");
 		 System.out.println("Desserts-----------------------------------------");
@@ -59,9 +59,8 @@ public class Menu {
 			 price = sc.nextDouble();
 			 System.out.println("What is the description of the item?");
 			 description =sc.next();
-			 MenuItems newitem =new MenuItems(name,description,price);
-			 maindish[this.numofmain]=newitem;
-			 this.numofmain+=1;
+			 MenuItems newitem =new MenuItems("M"+(this.numofmain+1),name,description,price);
+			 maindish[this.numofmain++]=newitem;
 		 }
 		 break;
 		 case 2:
@@ -72,7 +71,7 @@ public class Menu {
 			 price = sc.nextDouble();
 			 System.out.println("What is the description of the item?");
 			 description =sc.next();
-			 MenuItems newitem =new MenuItems(name,description,price);
+			 MenuItems newitem =new MenuItems("B"+(this.numofbev+1),name,description,price);
 			 beverages[this.numofbev++]=newitem;
 		 }
 		 break;
@@ -84,7 +83,7 @@ public class Menu {
 			 price = sc.nextDouble();
 			 System.out.println("What is the description of the item?");
 			 description =sc.next();
-			 MenuItems newitem =new MenuItems(name,description,price);
+			 MenuItems newitem =new MenuItems("D"+(this.numofdes+1),name,description,price);
 			 desserts[this.numofdes++]=newitem;
 		 }
 		 break;
@@ -92,7 +91,7 @@ public class Menu {
 	}
 	public void updateMenuItem()
 	{
-		String name;
+		String id;
 		System.out.println("What type of item is the menu item to be updated(Main 1)/(Beverage 2)/(Dessert 3)?");
 		Scanner sc = new Scanner(System.in);
 		 int choice = sc.nextInt();
@@ -101,14 +100,14 @@ public class Menu {
 		 {
 			 case 1:
 			 {
-				 System.out.println("What is the name of the Main Dish to be updated?");
-				 name = sc.next();
+				 System.out.println("What is the Item ID of the Main Dish to be updated?");
+				 id = sc.next();
 				 System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
 				 choice = sc.nextInt();
 				 int check =0;
 				 for(int i=0;i<this.numofmain;i++)
 				 {
-					 if (name.equals(maindish[i].getName()))
+					 if (id.equals(maindish[i].getitemID()))
 					 {
 						 switch (choice) 
 						 {
@@ -144,14 +143,14 @@ public class Menu {
 			 break;
 			 case 2:
 			 {
-				 System.out.println("What is the name of the Beverage to be updated?");
-				 name = sc.next();
+				 System.out.println("What is the Item ID of the Beverage to be updated?");
+				 id = sc.next();
 				 System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
 				 choice = sc.nextInt();
 				 int check =0;
 				 for(int i=0;i<this.numofbev;i++)
 				 {
-					 if (name.equals(beverages[i].getName()))
+					 if (id.equals(beverages[i].getitemID()))
 					 {
 						 switch (choice) 
 						 {
@@ -186,14 +185,14 @@ public class Menu {
 			 break;
 			 case 3:
 			 {
-				 System.out.println("What is the name of the Dessert to be updated?");
-				 name = sc.next();
+				 System.out.println("What is the Item ID of the Dessert to be updated?");
+				 id = sc.next();
 				 System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
 				 choice = sc.nextInt();
 				 int check =0;
 				 for(int i=0;i<this.numofdes;i++)
 				 {
-					 if (name.equals(desserts[i].getName()))
+					 if (id.equals(desserts[i].getitemID()))
 					 {
 						 switch (choice) 
 						 {
@@ -229,7 +228,7 @@ public class Menu {
 	}
 	public void deleteMenuItem()
 	{
-		String name;
+		String id;
 		System.out.println("What type of item is the menu item to be deleted (Main 1)/(Beverage 2)/(Dessert 3)?");
 		Scanner sc = new Scanner(System.in);
 		int choice = sc.nextInt();
@@ -239,18 +238,19 @@ public class Menu {
 			 {
 				 MenuItems[] newmains = new MenuItems[12];
 				 int j=0;
-				 System.out.println("What is the name of the Main Dish to be deleted?");
-				 name = sc.next();
+				 System.out.println("What is the itemID of the Main Dish to be deleted?");
+				 id = sc.next();
 				 int check =0;
-				 for(int i=0;i<this.numofbev;i++)
+				 for(int i=0;i<this.numofmain;i++)
 				 {
-					 if (name.equals(maindish[i].getName()))
+					 if (id.equals(maindish[i].getitemID()))
 					 {
 						 check =1;
 					 }
 					 else
 					 {
 						 newmains[j++]=maindish[i];
+						 newmains[j-1].updateitemID("M" +(j));
 					 }
 				 }
 				if(check ==0)
@@ -267,17 +267,18 @@ public class Menu {
 				 MenuItems[] newbevs = new MenuItems[12];
 				 int j=0;
 				 System.out.println("What is the name of the Beverage to be deleted?");
-				 name = sc.next();
+				 id = sc.next();
 				 int check =0;
 				 for(int i=0;i<this.numofbev;i++)
 				 {
-					 if (name.equals(beverages[i].getName()))
+					 if (id.equals(beverages[i].getitemID()))
 					 {
 						 check =1;
 					 }
 					 else
 					 {
-						 newbevs[j++]=desserts[i];
+						 newbevs[j++]=beverages[i];
+						 newbevs[j-1].updateitemID("M" +(j));
 					 }
 				 }
 				if(check ==0)
@@ -293,17 +294,18 @@ public class Menu {
 				 MenuItems[] newdesserts = new MenuItems[12];
 				 int j=0;
 				 System.out.println("What is the name of the Beverage to be deleted?");
-				 name = sc.next();
+				 id = sc.next();
 				 int check =0;
-				 for(int i=0;i<this.numofbev;i++)
+				 for(int i=0;i<this.numofdes;i++)
 				 {
-					 if (name.equals(beverages[i].getName()))
+					 if (id.equals(desserts[i].getitemID()))
 					 {
 						 check =1;
 					 }
 					 else
 					 {
 						 newdesserts[j++]=desserts[i];
+						 newdesserts[j-1].updateitemID("M" +(j));
 					 }
 				 }
 				if(check ==0)
