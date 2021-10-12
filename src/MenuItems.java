@@ -7,7 +7,7 @@ public class MenuItems {
 			private String description;
 			private double price;
 			private String itemid;
-			public int quantity;
+			private int quantity;
 			
 			public MenuItems(String itemid,String name, String description, double price)
 			{
@@ -29,6 +29,9 @@ public class MenuItems {
 			public String getDescription() {
 				return this.description;
 			}
+			public int getQuantity() {
+		return this.quantity;
+	}
 			public void updateName(String newname)
 			{
 				this.name=newname;
@@ -48,5 +51,8 @@ public class MenuItems {
 			public void updateQuantity(int newquan)
 			{
 				this.quantity=newquan;
+			}
+			public MenuItems clone() {
+				return new MenuItems(this.itemid, this.name, this.description, this.price);
 			}
 }
