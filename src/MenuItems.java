@@ -6,15 +6,20 @@ public class MenuItems {
 			private String name;
 			private String description;
 			private double price;
+			private String itemid;
 			
-			public MenuItems(String name, String description, double price)
+			public MenuItems(String itemid,String name, String description, double price)
 			{
+				this.itemid=itemid;
 				this.name = name;
 				this.description = description;
 				this.price = price;
 			}
 			public double getPrice() {
 				return this.price;
+			}
+			public String getitemID() {
+				return this.itemid;
 			}
 			public String getName() {
 				return this.name;
@@ -33,5 +38,9 @@ public class MenuItems {
 			public void updatePrice(double newPrice)
 			{
 				this.price=newPrice;
+			}
+			public void updateitemID(String id)
+			{
+				this.itemid=id;
 			}
 }
