@@ -7,6 +7,7 @@ public class MenuItems {
 			private String description;
 			private double price;
 			private String itemid;
+			public int quantity;
 			
 			public MenuItems(String itemid,String name, String description, double price)
 			{
@@ -14,6 +15,7 @@ public class MenuItems {
 				this.name = name;
 				this.description = description;
 				this.price = price;
+				this.quantity =0;
 			}
 			public double getPrice() {
 				return this.price;

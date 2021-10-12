@@ -6,6 +6,7 @@ public class RestaurantApplication {
 	public static void main(String[] args) {
 		int choice;
 		Menu mainmenu = new Menu();
+		OrderList orderlistarr = new OrderList();
 		Scanner sc = new Scanner(System.in);		
 		do {
 		System.out.println("(1) Create/Update/Remove menu item");
@@ -46,8 +47,8 @@ public class RestaurantApplication {
 				 }
 				 break;
 			 }
-			 break;
 		 }
+		 break;
 		 case 2: 
 		 {
 			//Create/Update/Remove promotion function
@@ -55,21 +56,54 @@ public class RestaurantApplication {
 		 break;
 		 case 3:
 		 {
-			 //Create order function
-			 //display menu lets person choose based on switch function number
-			 //append to the array
 			 mainmenu.displayMenu();
+			 orderlistarr.createOrder(mainmenu);
 		 }
 		 break;
 		 case 4: 
 		 {
-			 
+			 System.out.println("Would you like to (View all orders 1)/(Specific Order 2)");
+			 choice = sc.nextInt();
+			 if (choice ==1)
+			 {
+				 orderlistarr.viewAllOrder();
+			 }
+			 else if (choice==2)
+			 {
+				 System.out.println("What is the orderId?");
+				 int orderid = sc.nextInt();
+				 orderlistarr.viewOrder(orderid);
+			 }
 		 } 
 		 break;
 		 case 5:
 		 {
-			//Add/Remove order item/s to/from order function
-			 //justdelete the array slot and move pack the array up eg, if array slot[2] is deleted move slot[3] to slot[2]etc etc
+			 System.out.println("What is the orderId of the order to be updated");
+			 int orderid = sc.nextInt();
+			 do
+			 {
+				 System.out.println("Would you like to (Add 1)/(Remove 2)/(Done 3)");
+				 choice = sc.nextInt();
+				 switch (choice) 
+				 {
+					 case 1:
+					 {
+						 orderlistarr.getOrder(orderid).addOrderItem(mainmenu);
+					 }
+					 break;
+					 case 2:
+					 {
+						 orderlistarr.getOrder(orderid).deleteOrderItem();
+					 }
+					 break;
+					 case 3:
+					 {
+						 System.out.println("Order" + orderid + "is updated");
+					 }
+					 break;
+				 }
+			 }
+			 while (choice <3);
 		 }
 		 break;
 		 case 6:
@@ -104,7 +138,7 @@ public class RestaurantApplication {
 			//Print sale revenue report by period (eg day or month) function
 		 }
 		 break;
-		 case 11: System.out.println("Program terminating â€¦.");
+		 case 11: System.out.println("Program terminating ….");
 		}
 		} while (choice < 11);
 	}

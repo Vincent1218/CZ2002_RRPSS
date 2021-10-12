@@ -18,9 +18,33 @@ public class Menu {
 		this.numofdes=0;
 		this.numofbev=0;
 	}
+	public int getnumofMain()
+	{
+		return this.numofmain;
+	}
+	public int getnumofDes()
+	{
+		return this.numofdes;
+	}
+	public int getnumofBev()
+	{
+		return this.numofbev;
+	}
+	public MenuItems[] getMain()
+	{
+		return this.maindish;
+	}
+	public MenuItems[] getDes()
+	{
+		return this.desserts;
+	}
+	public MenuItems[] getBev()
+	{
+		return this.beverages;
+	}
 	public void displayMenu()
 	{
-		System.out.println("Menu Item--------------Description--------------Price");
+		System.out.println("Item ID----------------Menu Item--------------Description--------------Price");
 		System.out.println("");
 		System.out.println("Main Dishes---------------------------------------");
 		 for(int i=0;i<this.numofmain;i++)
