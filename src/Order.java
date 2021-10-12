@@ -123,21 +123,24 @@ public class Order {
 				neworder[j++]=this.orderarr[i];
 			}
 		}
-		this.orderarr = neworder;
 		if (check ==0)
 		 {
 			 System.out.println("Deleting order Failed..");
+			 return;
 		 }
+		this.orderarr = neworder;
+		this.numofitems--;
+		
 	}
 	public void printOrder()
 	{
 		//sort order based on itemid first
 		for(int i =0; i<this.numofitems;i++)
 		{
-			 System.out.println(i + "\t\t" + this.orderarr[i].getitemID() + "\t\t" + this.orderarr[i].getName() + "\t\t" + this.orderarr[i].quantity + "\t\t" + this.orderarr[i].quantity*this.orderarr[i].getPrice());
+			 System.out.println(i+1 + "\t\t" + this.orderarr[i].getitemID() + "\t\t" + this.orderarr[i].getName() + "\t\t" + this.orderarr[i].quantity + "\t\t" + this.orderarr[i].quantity*this.orderarr[i].getPrice());
 			 this.totalprice += this.orderarr[i].quantity*this.orderarr[i].getPrice();
 		}
-		 System.out.println(this.totalprice);
+		 System.out.println("Total Price is: " + this.totalprice);
 
 	}
 	public void calcfinalPrice()

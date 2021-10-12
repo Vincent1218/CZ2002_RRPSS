@@ -12,7 +12,7 @@ public class OrderList {
 	}
 	public Order getOrder(int orderid)
 	{
-		return this.orderlistarray[orderid];
+		return this.orderlistarray[orderid-1];
 	}
 	public void viewAllOrder()
 	{
@@ -30,7 +30,7 @@ public class OrderList {
 			System.out.println("Order Number  " + orderid);
 			System.out.println("----------------------------------");
 			System.out.println("");
-			orderlistarray[orderid].printOrder();
+			orderlistarray[orderid-1].printOrder();
 	}
 	public void payOrder(int orderid)
 	{

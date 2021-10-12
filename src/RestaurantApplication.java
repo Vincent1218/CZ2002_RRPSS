@@ -82,7 +82,7 @@ public class RestaurantApplication {
 			 int orderid = sc.nextInt();
 			 do
 			 {
-				 System.out.println("Would you like to (Add 1)/(Remove 2)/(Done 3)");
+				 System.out.println("Would you like to (Add 1)/(Remove 2)/(Update Quantity)/(Done 3)");
 				 choice = sc.nextInt();
 				 switch (choice) 
 				 {
@@ -98,12 +98,17 @@ public class RestaurantApplication {
 					 break;
 					 case 3:
 					 {
+						 orderlistarr.getOrder(orderid).updateOrderItemQuantity();
+					 }
+					 break;
+					 case 4:
+					 {
 						 System.out.println("Order" + orderid + "is updated");
 					 }
 					 break;
 				 }
 			 }
-			 while (choice <3);
+			 while (choice <4);
 		 }
 		 break;
 		 case 6:
