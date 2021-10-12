@@ -45,4 +45,8 @@ public class MenuItems {
 			{
 				this.itemid=id;
 			}
+			public void updateQuantity(int newquan)
+			{
+				this.quantity=newquan;
+			}
 }

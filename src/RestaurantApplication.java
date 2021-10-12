@@ -82,7 +82,7 @@ public class RestaurantApplication {
 			 int orderid = sc.nextInt();
 			 do
 			 {
-				 System.out.println("Would you like to (Add 1)/(Remove 2)/(Update Quantity)/(Done 3)");
+				 System.out.println("Would you like to (Add 1)/(Remove 2)/(Update Quantity 3)/(Done 4)");
 				 choice = sc.nextInt();
 				 switch (choice) 
 				 {

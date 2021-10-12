@@ -94,7 +94,7 @@ public class Order {
  			{
 				System.out.println("What is the new quantity that you would like?");
 				int quan = sc.nextInt();
-				this.orderarr[i].quantity = quan;
+				this.orderarr[i].updateQuantity(quan);
 				check=1;
  			}
 		}
@@ -135,6 +135,7 @@ public class Order {
 	public void printOrder()
 	{
 		//sort order based on itemid first
+		this.totalprice = 0;
 		for(int i =0; i<this.numofitems;i++)
 		{
 			 System.out.println(i+1 + "\t\t" + this.orderarr[i].getitemID() + "\t\t" + this.orderarr[i].getName() + "\t\t" + this.orderarr[i].quantity + "\t\t" + this.orderarr[i].quantity*this.orderarr[i].getPrice());

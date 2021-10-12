@@ -18,7 +18,7 @@ public class OrderList {
 	{
 		for(int i=0;i<numoforders;i++)
 		{
-			System.out.println("Order Number  " + i);
+			System.out.println("Order Number  " + (i+1));
 			System.out.println("----------------------------------");
 			System.out.println("");
 			orderlistarray[i].printOrder();
@@ -49,7 +49,8 @@ public class OrderList {
 		 }
 		 orderlistarray[this.numoforders++]=orders;
 		 orderlistarray[this.numoforders-1].updateOrderId(this.numoforders);
-		 System.out.println("Your order Id is" + this.numoforders);
+		 System.out.println("Your order Id is " + this.numoforders);
+		 System.out.println("");
 	}
 	public void printOrderInvoice(int orderid)
 	{
