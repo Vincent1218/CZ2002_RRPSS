@@ -6,7 +6,7 @@ public class Menu {
 	private ArrayList<MenuItems> beverages;
 	private ArrayList<MenuItems> desserts;
 	//private int numofmain;
-	//private int numofbev;
+	///private int numofbev;
 	//private int numofdes;
 
 	public Menu()

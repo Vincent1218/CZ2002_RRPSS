@@ -1,5 +1,6 @@
 package Project;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Order {
@@ -12,11 +13,11 @@ public class Order {
 	private String date;
 	private int memberID;
 	private boolean ispaid;
-	private MenuItems[] orderarr;
+	private ArrayList<MenuItems> orderarr;
 	private int numofitems;
 	public Order()
 	{
-		this.orderarr = new MenuItems[20];
+		this.orderarr = new ArrayList<MenuItems>();
 		this.numofitems=0;
 		this.totalprice=0;
 		this.orderid =0;
@@ -29,47 +30,34 @@ public class Order {
 	public void addOrderItem(Menu menu)
 	{
 		int check =0;
-		 System.out.println("What dishes would you like (Please key in its Item ID)");
+		 System.out.println("What dishes would you like (Please key in its Item ID?");
 		 Scanner sc = new Scanner(System.in);
 		 String choice = sc.next();
 		 switch(choice.charAt(0))
 		 {
 		 	case 'M':
 		 	{
-//		 		Check for same Id first, even we can do that with updateQuantity()
-				for(int i=0;i<this.numofitems;i++)
-				{
-					if(choice.equals(this.orderarr[i].getitemID()))
-					{
-						System.out.println("Item exists, what is the quantity that you would like to add?");
-						int quan = sc.nextInt();
-						this.orderarr[i].updateQuantity(quan + this.orderarr[i].getQuantity());
-						check=1;
-					}
-				}
-				if(check != 1){
-					for(int i=0;i<menu.getnumofMain();i++)
-					{
-						if(choice.equals((menu.getMain())[i].getitemID()))
-						{
-							orderarr[this.numofitems++] = ((menu.getMain())[i]).clone();
-							System.out.println("How many servings would you like?");
-							orderarr[this.numofitems-1].updateQuantity(sc.nextInt());
-							check =1;
-						}
-					}
-				}
+		 		for(int i=0;i<menu.getnumofMain();i++)
+		 		{
+		 			if(choice.equals((menu.getMain().get(i).getitemID())))
+		 			{
+		 				orderarr.add(menu.getMain().get(i));
+		 				System.out.println("How many servings would you like?");
+		 				orderarr.get(this.numofitems++).quantity = sc.nextInt();
+		 				check =1;
+		 			}
+		 		}
 		 	}
 		 	break;
 		 	case 'B':
 		 	{
 		 		for(int i=0;i<menu.getnumofBev();i++)
 		 		{
-		 			if(choice.equals((menu.getBev())[i].getitemID()))
+		 			if(choice.equals((menu.getBev().get(i).getitemID())))
 		 			{
-		 				orderarr[this.numofitems++] = (menu.getBev())[i];
+		 				orderarr.add(menu.getBev().get(i));
 		 				System.out.println("How many servings would you like?");
-		 				orderarr[this.numofitems-1].updateQuantity(sc.nextInt());
+		 				orderarr.get(this.numofitems++).quantity = sc.nextInt();
 		 				check =1;
 		 			}
 		 		}
@@ -79,11 +67,11 @@ public class Order {
 		 	{
 		 		for(int i=0;i<menu.getnumofDes();i++)
 		 		{
-		 			if(choice.equals((menu.getDes())[i].getitemID()))
+		 			if(choice.equals((menu.getDes().get(i).getitemID())))
 		 			{
-		 				orderarr[this.numofitems++] = (menu.getDes())[i];
+		 				orderarr.add(menu.getDes().get(i));
 		 				System.out.println("How many servings would you like?");
-		 				orderarr[this.numofitems-1].updateQuantity(sc.nextInt());
+		 				orderarr.get(this.numofitems++).quantity = sc.nextInt();
 		 				check =1;
 		 			}
 		 		}
@@ -103,11 +91,11 @@ public class Order {
 		 String id = sc.next();
 		for(int i=0;i<this.numofitems;i++)
 		{
-			if(id.equals(this.orderarr[i].getitemID()))
+			if(id.equals(this.orderarr.get(i).getitemID()))
  			{
 				System.out.println("What is the new quantity that you would like?");
 				int quan = sc.nextInt();
-				this.orderarr[i].updateQuantity(quan);
+				this.orderarr.get(i).updateQuantity(quan);
 				check=1;
  			}
 		}
@@ -119,21 +107,21 @@ public class Order {
 	public void deleteOrderItem()
 	{
 		int check =0;
-		MenuItems[] neworder = new MenuItems[20];
+		ArrayList<MenuItems> neworder = new ArrayList<>();
 		int j=0;
 		System.out.println("What is the Item ID of the Dish to be deleted?");
 		Scanner sc =new Scanner(System.in);
 		String id = sc.next();
 		for(int i=0;i<this.numofitems;i++)
 		{
-			if(id.equals(this.orderarr[i].getitemID()))
+			if(id.equals(this.orderarr.get(i).getitemID()))
  			{
 				
 				check=1;
  			}
 			else
 			{
-				neworder[j++]=this.orderarr[i];
+				neworder.add(this.orderarr.get(i));
 			}
 		}
 		if (check ==0)
@@ -151,8 +139,8 @@ public class Order {
 		this.totalprice = 0;
 		for(int i =0; i<this.numofitems;i++)
 		{
-			 System.out.println(i+1 + "\t\t" + this.orderarr[i].getitemID() + "\t\t" + this.orderarr[i].getName() + "\t\t" + this.orderarr[i].getQuantity() + "\t\t" + this.orderarr[i].getQuantity()*this.orderarr[i].getPrice());
-			 this.totalprice += this.orderarr[i].getQuantity()*this.orderarr[i].getPrice();
+			 System.out.println(i+1 + "\t\t" + this.orderarr.get(i).getitemID() + "\t\t" + this.orderarr.get(i).getName() + "\t\t" + this.orderarr.get(i).quantity + "\t\t" + this.orderarr.get(i).quantity*this.orderarr.get(i).getPrice());
+			 this.totalprice += this.orderarr.get(i).quantity*this.orderarr.get(i).getPrice();
 		}
 		 System.out.println("Total Price is: " + this.totalprice);
 
