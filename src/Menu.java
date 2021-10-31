@@ -12,21 +12,12 @@ public class Menu {
 		this.beverages = new ArrayList<>();
 		this.desserts = new ArrayList<>();
 	}
-	public int getnumofMain() { return maindish.size(); }
-	public int getnumofDes() { return desserts.size(); }
-	public int getnumofBev() { return beverages.size(); }
-	public ArrayList<MenuItems> getMain()
-	{
-		return this.maindish;
-	}
-	public ArrayList<MenuItems> getDes()
-	{
-		return this.desserts;
-	}
-	public ArrayList<MenuItems> getBev()
-	{
-		return this.beverages;
-	}
+	public int getNumOfMain() { return maindish.size(); }
+	public int getNumOfDes() { return desserts.size(); }
+	public int getNumOfBev() { return beverages.size(); }
+	public ArrayList<MenuItems> getMain() { return this.maindish; }
+	public ArrayList<MenuItems> getDes() { return this.desserts; }
+	public ArrayList<MenuItems> getBev() { return this.beverages; }
 
 	public void displayMenu()
 	{
@@ -35,19 +26,19 @@ public class Menu {
 		System.out.println("Main Dishes---------------------------------------");
 		for(int i=0;i<maindish.size();i++)
 		{
-			System.out.printf("%s %20s %20s %20.2f\n", maindish.get(i).getitemID(), maindish.get(i).getName(), maindish.get(i).getDescription(), maindish.get(i).getPrice());
+			System.out.printf("%s %20s %20s %20.2f\n", maindish.get(i).getItemID(), maindish.get(i).getName(), maindish.get(i).getDescription(), maindish.get(i).getPrice());
 		}
 		System.out.println("");
 		System.out.println("Desserts-----------------------------------------");
 		for(int i=0;i<desserts.size();i++)
 		{
-			System.out.printf("%s %20s %20s %20.2f\n", desserts.get(i).getitemID(), desserts.get(i).getName(), desserts.get(i).getDescription(), desserts.get(i).getPrice());
+			System.out.printf("%s %20s %20s %20.2f\n", desserts.get(i).getItemID(), desserts.get(i).getName(), desserts.get(i).getDescription(), desserts.get(i).getPrice());
 		}
 		System.out.println("");
 		System.out.println("Beverages----------------------------------------");
 		for(int i=0;i<beverages.size();i++)
 		{
-			System.out.printf("%s %20s %20s %20.2f\n", beverages.get(i).getitemID(), beverages.get(i).getName(), beverages.get(i).getDescription(), beverages.get(i).getPrice());
+			System.out.printf("%s %20s %20s %20.2f\n", beverages.get(i).getItemID(), beverages.get(i).getName(), beverages.get(i).getDescription(), beverages.get(i).getPrice());
 		}
 		System.out.println("");
 	}
@@ -125,7 +116,7 @@ public class Menu {
 				int check =0;
 				for(int i=0;i<maindish.size();i++)
 				{
-					if (id.equals(maindish.get(i).getitemID()))
+					if (id.equals(maindish.get(i).getItemID()))
 					{
 						switch (choice)
 						{
@@ -169,7 +160,7 @@ public class Menu {
 				int check =0;
 				for(int i=0;i<beverages.size();i++)
 				{
-					if (id.equals(beverages.get(i).getitemID()))
+					if (id.equals(beverages.get(i).getItemID()))
 					{
 						switch (choice)
 						{
@@ -212,7 +203,7 @@ public class Menu {
 				int check =0;
 				for(int i=0;i<desserts.size();i++)
 				{
-					if (id.equals(desserts.get(i).getitemID()))
+					if (id.equals(desserts.get(i).getItemID()))
 					{
 						switch (choice)
 						{
@@ -262,13 +253,13 @@ public class Menu {
 				int check = 0;
 				for(int i=0;i<maindish.size();i++)
 				{
-					if (id.equals(maindish.get(i).getitemID()))
+					if (id.equals(maindish.get(i).getItemID()))
 					{
 						check = 1;
 						maindish.remove(i);
 						for (int j = i; j < maindish.size(); j++)
 						{
-							maindish.get(j).updateitemID("M" + (j + 1));
+							maindish.get(j).updateItemID("M" + (j + 1));
 						}
 					}
 				}
@@ -285,13 +276,13 @@ public class Menu {
 				int check = 0;
 				for(int i=0;i<beverages.size();i++)
 				{
-					if (id.equals(beverages.get(i).getitemID()))
+					if (id.equals(beverages.get(i).getItemID()))
 					{
 						check = 1;
 						beverages.remove(i);
 						for (int j = i; j < beverages.size(); j++)
 						{
-							beverages.get(j).updateitemID("M" + (j + 1));
+							beverages.get(j).updateItemID("M" + (j + 1));
 						}
 					}
 				}
@@ -308,13 +299,13 @@ public class Menu {
 				int check = 0;
 				for(int i=0;i<desserts.size();i++)
 				{
-					if (id.equals(desserts.get(i).getitemID()))
+					if (id.equals(desserts.get(i).getItemID()))
 					{
 						check = 1;
 						desserts.remove(i);
 						for (int j = i; j < desserts.size(); j++)
 						{
-							desserts.get(j).updateitemID("M" + (j + 1));
+							desserts.get(j).updateItemID("M" + (j + 1));
 						}
 					}
 				}
