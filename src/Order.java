@@ -78,7 +78,7 @@ public class Order {
 		 		{
 		 			if(choice.equals((menu.getBev().get(i).getitemID())))
 		 			{
-		 				orderarr.add(menu.getBev().get(i));
+		 				orderarr.add((menu.getBev().get(i)).clone());
 		 				System.out.println("How many servings would you like?");
 		 				orderarr.get(this.numofitems++).updateQuantity(sc.nextInt());
 		 				check =1;
@@ -92,7 +92,7 @@ public class Order {
 		 		{
 		 			if(choice.equals((menu.getDes().get(i).getitemID())))
 		 			{
-		 				orderarr.add(menu.getDes().get(i));
+		 				orderarr.add((menu.getDes().get(i)).clone());
 		 				System.out.println("How many servings would you like?");
 		 				orderarr.get(this.numofitems++).updateQuantity(sc.nextInt());
 		 				check =1;
