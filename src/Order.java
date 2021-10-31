@@ -55,52 +55,43 @@ public class Order {
 				check=1;
 			}
 		}
-
-		 switch(choice.charAt(0))
-		 {
-		 	case 'M':
-		 	{
-		 		for(int i=0;i<menu.getNumOfMain();i++)
-		 		{
-		 			if(choice.equals((menu.getMain().get(i).getItemID())))
-		 			{
-		 				orderarr.add((menu.getMain().get(i)).clone());
-		 				System.out.println("How many servings would you like?");
-		 				orderarr.get(this.numofitems++).updateQuantity(sc.nextInt());
-		 				check =1;
-		 			}
-		 		}
-		 	}
-		 	break;
-		 	case 'B':
-		 	{
-		 		for(int i=0;i<menu.getNumOfBev();i++)
-		 		{
-		 			if(choice.equals((menu.getBev().get(i).getItemID())))
-		 			{
-		 				orderarr.add((menu.getBev().get(i)).clone());
-		 				System.out.println("How many servings would you like?");
-		 				orderarr.get(this.numofitems++).updateQuantity(sc.nextInt());
-		 				check =1;
-		 			}
-		 		}
-		 	}
-		 	break;
-		 	case 'D':
-		 	{
-		 		for(int i=0;i<menu.getNumOfDes();i++)
-		 		{
-		 			if(choice.equals((menu.getDes().get(i).getItemID())))
-		 			{
-		 				orderarr.add((menu.getDes().get(i)).clone());
-		 				System.out.println("How many servings would you like?");
-		 				orderarr.get(this.numofitems++).updateQuantity(sc.nextInt());
-		 				check =1;
-		 			}
-		 		}
-		 	}
-		 	break;
-		 }
+		if(check != 1) {
+			switch (choice.charAt(0)) {
+				case 'M': {
+					for (int i = 0; i < menu.getNumOfMain(); i++) {
+						if (choice.equals((menu.getMain().get(i).getItemID()))) {
+							orderarr.add((menu.getMain().get(i)).clone());
+							System.out.println("How many servings would you like?");
+							orderarr.get(this.numofitems++).updateQuantity(sc.nextInt());
+							check = 1;
+						}
+					}
+				}
+				break;
+				case 'B': {
+					for (int i = 0; i < menu.getNumOfBev(); i++) {
+						if (choice.equals((menu.getBev().get(i).getItemID()))) {
+							orderarr.add((menu.getBev().get(i)).clone());
+							System.out.println("How many servings would you like?");
+							orderarr.get(this.numofitems++).updateQuantity(sc.nextInt());
+							check = 1;
+						}
+					}
+				}
+				break;
+				case 'D': {
+					for (int i = 0; i < menu.getNumOfDes(); i++) {
+						if (choice.equals((menu.getDes().get(i).getItemID()))) {
+							orderarr.add((menu.getDes().get(i)).clone());
+							System.out.println("How many servings would you like?");
+							orderarr.get(this.numofitems++).updateQuantity(sc.nextInt());
+							check = 1;
+						}
+					}
+				}
+				break;
+			}
+		}
 		 if (check ==0)
 		 {
 			 System.out.println("Adding order Failed..");
