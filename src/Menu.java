@@ -15,18 +15,9 @@ public class Menu {
 	public int getnumofMain() { return maindish.size(); }
 	public int getnumofDes() { return desserts.size(); }
 	public int getnumofBev() { return beverages.size(); }
-	public ArrayList<MenuItems> getMain()
-	{
-		return this.maindish;
-	}
-	public ArrayList<MenuItems> getDes()
-	{
-		return this.desserts;
-	}
-	public ArrayList<MenuItems> getBev()
-	{
-		return this.beverages;
-	}
+	public ArrayList<MenuItems> getMain() { return this.maindish; }
+	public ArrayList<MenuItems> getDes() { return this.desserts; }
+	public ArrayList<MenuItems> getBev() { return this.beverages; }
 
 	public void displayMenu()
 	{
