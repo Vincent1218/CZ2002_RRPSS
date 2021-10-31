@@ -1,4 +1,5 @@
-staffIDpackage Project;
+package Project;
+
 import java.util.*;
 
 public class OrderList {
