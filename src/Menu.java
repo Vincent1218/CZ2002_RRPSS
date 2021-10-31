@@ -5,34 +5,16 @@ public class Menu {
 	private ArrayList<MenuItems> maindish;
 	private ArrayList<MenuItems> beverages;
 	private ArrayList<MenuItems> desserts;
-	//private int numofmain;
-	///private int numofbev;
-	//private int numofdes;
 
 	public Menu()
 	{
 		this.maindish = new ArrayList<>();
 		this.beverages = new ArrayList<>();
 		this.desserts = new ArrayList<>();
-		//this.numofmain=0;
-		//this.numofdes=0;
-		//this.numofbev=0;
 	}
-	public int getnumofMain()
-	{
-		return maindish.size();
-		//return this.numofmain;
-	}
-	public int getnumofDes()
-	{
-		return desserts.size();
-		//return this.numofdes;
-	}
-	public int getnumofBev()
-	{
-		return beverages.size();
-		//return this.numofbev;
-	}
+	public int getnumofMain() { return maindish.size(); }
+	public int getnumofDes() { return desserts.size(); }
+	public int getnumofBev() { return beverages.size(); }
 	public ArrayList<MenuItems> getMain()
 	{
 		return this.maindish;
@@ -45,6 +27,7 @@ public class Menu {
 	{
 		return this.beverages;
 	}
+
 	public void displayMenu()
 	{
 		System.out.printf("%s %15s %15s %15s", "Item ID", "Menu Item","Description","Price");
@@ -53,21 +36,18 @@ public class Menu {
 		for(int i=0;i<maindish.size();i++)
 		{
 			System.out.printf("%s %20s %20s %20.2f\n", maindish.get(i).getitemID(), maindish.get(i).getName(), maindish.get(i).getDescription(), maindish.get(i).getPrice());
-			//maindish[i].getitemID(), maindish[i].getName(), maindish[i].getDescription(), maindish[i].getPrice()
 		}
 		System.out.println("");
 		System.out.println("Desserts-----------------------------------------");
 		for(int i=0;i<desserts.size();i++)
 		{
 			System.out.printf("%s %20s %20s %20.2f\n", desserts.get(i).getitemID(), desserts.get(i).getName(), desserts.get(i).getDescription(), desserts.get(i).getPrice());
-			//System.out.println(desserts[i].getName() + "\t\t" + desserts[i].getDescription() + "\t\t" + desserts[i].getPrice());
 		}
 		System.out.println("");
 		System.out.println("Beverages----------------------------------------");
 		for(int i=0;i<beverages.size();i++)
 		{
 			System.out.printf("%s %20s %20s %20.2f\n", beverages.get(i).getitemID(), beverages.get(i).getName(), beverages.get(i).getDescription(), beverages.get(i).getPrice());
-			//System.out.println(beverages[i].getName() + "\t\t" + beverages[i].getDescription() + "\t\t" + beverages[i].getPrice());
 		}
 		System.out.println("");
 	}
@@ -94,8 +74,6 @@ public class Menu {
 				description += sc.nextLine();
 				MenuItems newitem =new MenuItems("M"+(maindish.size() + 1),name,description,price);
 				maindish.add(newitem);
-				//numofmain++;
-				//maindish[this.numofmain++]=newitem;
 			}
 			break;
 			case 2:
@@ -109,8 +87,6 @@ public class Menu {
 				description += sc.nextLine();
 				MenuItems newitem =new MenuItems("B"+(beverages.size() + 1),name,description,price);
 				beverages.add(newitem);
-				//numofbev++;
-				//beverages[this.numofbev++]=newitem;
 			}
 			break;
 			case 3:
@@ -124,8 +100,6 @@ public class Menu {
 				description += sc.nextLine();
 				MenuItems newitem =new MenuItems("D"+(desserts.size() + 1),name,description,price);
 				desserts.add(newitem);
-				//numofdes++;
-				//desserts[this.numofdes++]=newitem;
 			}
 			break;
 		}
@@ -283,29 +257,6 @@ public class Menu {
 		{
 			case 1:
 			{
-				 /*MenuItems[] newmains = new MenuItems[12];
-				 int j=0;
-				 System.out.println("What is the itemID of the Main Dish to be deleted?");
-				 id = sc.nextLine();
-				 int check =0;
-				 for(int i=0;i<this.numofmain;i++)
-				 {
-					 if (id.equals(maindish[i].getitemID()))
-					 {
-						 check =1;
-					 }
-					 else
-					 {
-						 newmains[j++]=maindish[i];
-						 newmains[j-1].updateitemID("M" +(j));
-					 }
-				 }
-				if(check ==0)
-				{
-					System.out.println("Deleting Failed...");
-				}
-				this.numofmain--;
-				maindish = newmains;*/
 				System.out.println("What is the itemID of the Main Dish to be deleted?");
 				id = sc.nextLine();
 				int check = 0;
@@ -329,29 +280,6 @@ public class Menu {
 			break;
 			case 2:
 			{
-				 /*MenuItems[] newbevs = new MenuItems[12];
-				 int j=0;
-				 System.out.println("What is the name of the Beverage to be deleted?");
-				 id = sc.nextLine();
-				 int check =0;
-				 for(int i=0;i<this.numofbev;i++)
-				 {
-					 if (id.equals(beverages[i].getitemID()))
-					 {
-						 check =1;
-					 }
-					 else
-					 {
-						 newbevs[j++]=beverages[i];
-						 newbevs[j-1].updateitemID("M" +(j));
-					 }
-				 }
-				if(check ==0)
-				{
-					System.out.println("Deleting Failed...");
-				}
-				this.numofbev--;
-				beverages = newbevs;*/
 				System.out.println("What is the itemID of the Beverage to be deleted?");
 				id = sc.nextLine();
 				int check = 0;
@@ -375,29 +303,6 @@ public class Menu {
 			break;
 			case 3:
 			{
-				 /*MenuItems[] newdesserts = new MenuItems[12];
-				 int j=0;
-				 System.out.println("What is the name of the Beverage to be deleted?");
-				 id = sc.nextLine();
-				 int check =0;
-				 for(int i=0;i<this.numofdes;i++)
-				 {
-					 if (id.equals(desserts[i].getitemID()))
-					 {
-						 check =1;
-					 }
-					 else
-					 {
-						 newdesserts[j++]=desserts[i];
-						 newdesserts[j-1].updateitemID("M" +(j));
-					 }
-				 }
-				if(check ==0)
-				{
-					System.out.println("Deleting Failed...");
-				}
-				this.numofdes--;
-				desserts = newdesserts;*/
 				System.out.println("What is the itemID of the Beverage to be deleted?");
 				id = sc.nextLine();
 				int check = 0;
