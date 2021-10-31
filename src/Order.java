@@ -33,6 +33,19 @@ public class Order {
 		 System.out.println("What dishes would you like (Please key in its Item ID?");
 		 Scanner sc = new Scanner(System.in);
 		 String choice = sc.next();
+		 
+		// Check for same Id first, even we can do that with updateQuantity()
+		for(int i=0;i<this.numofitems;i++)
+		{
+			if(choice.equals(this.orderarr.get(i).getitemID()))
+			{
+				System.out.println("Item exists, what is the quantity that you would like to add?");
+				int quan = sc.nextInt();
+				this.orderarr.get(i).updateQuantity(quan + this.orderarr.get(i).getQuantity());
+				check=1;
+			}
+		}
+
 		 switch(choice.charAt(0))
 		 {
 		 	case 'M':
@@ -41,7 +54,7 @@ public class Order {
 		 		{
 		 			if(choice.equals((menu.getMain().get(i).getitemID())))
 		 			{
-		 				orderarr.add(menu.getMain().get(i));
+		 				orderarr.add((menu.getMain().get(i)).clone());
 		 				System.out.println("How many servings would you like?");
 		 				orderarr.get(this.numofitems++).quantity = sc.nextInt();
 		 				check =1;
