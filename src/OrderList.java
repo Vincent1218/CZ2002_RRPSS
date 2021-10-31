@@ -1,27 +1,27 @@
 package Project;
-import java.util.Scanner;
+import java.util.*;
 
 public class OrderList {
-	private Order[] orderlistarray;
-	private int numoforders;
+	private ArrayList<Order> orderlistarray;
+	//private int numoforders;
 	
 	public OrderList()
 	{
-		this.orderlistarray =new Order[20];
-		this.numoforders =0;
+		this.orderlistarray =new ArrayList<>();
+		//this.numoforders =0;
 	}
 	public Order getOrder(int orderid)
 	{
-		return this.orderlistarray[orderid-1];
+		return orderlistarray.get(orderid-1);
 	}
 	public void viewAllOrder()
 	{
-		for(int i=0;i<numoforders;i++)
+		for(int i=0 ; i<orderlistarray.size(); i++)
 		{
 			System.out.println("Order Number  " + (i+1));
 			System.out.println("----------------------------------");
 			System.out.println("");
-			orderlistarray[i].printOrder();
+			orderlistarray.get(i).printOrder();
 			System.out.println("");
 		}
 	}
@@ -30,7 +30,7 @@ public class OrderList {
 			System.out.println("Order Number  " + orderid);
 			System.out.println("----------------------------------");
 			System.out.println("");
-			orderlistarray[orderid-1].printOrder();
+			orderlistarray.get(orderid-1).printOrder();
 	}
 	public void payOrder(int orderid)
 	{
@@ -47,18 +47,18 @@ public class OrderList {
 			 System.out.println("Do you still intend to add Items (Yes 1)(No 0)?");
 			 a = sc.nextInt();
 		 }
-		 orderlistarray[this.numoforders++]=orders;
-		 orderlistarray[this.numoforders-1].updateOrderId(this.numoforders);
-		 System.out.println("Your order Id is " + this.numoforders);
+		 orderlistarray.add(orders);
+		 orderlistarray.get(orderlistarray.size()-1).updateOrderId(orderlistarray.size());
+		 System.out.println("Your order Id is " + orderlistarray.size());
 		 System.out.println("");
 	}
 	public void printOrderInvoice(int orderid)
 	{
 		// this would be print order but with sales person details and time etcetc
-		orderlistarray[orderid-1].printOrder();
+		orderlistarray.get(orderid-1).printOrder();
 		System.out.println(" ");
-		System.out.println("This order was done by " + orderlistarray[orderid-1].displayStaffname() );
-		System.out.println("Staff number: " + orderlistarray[orderid-1].displayStaffid() );
+		System.out.println("This order was done by " + orderlistarray.get(orderid - 1).displayStaffname() );
+		System.out.println("Staff number: " + orderlistarray.get(orderid - 1).displayStaffid() );
 		System.out.println(" ");
 	}
 }
