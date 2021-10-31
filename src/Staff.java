@@ -16,26 +16,11 @@ public class Staff {
 	{
 		switch(staffID)
 		 {
-		 	case 1:
-		 	{
-		 		return staffList[0];
-		 	}
-		case 2:
-		 	{
-		 		return staffList[1];
-		 	}
-		case 3:
-		 	{
-		 		return staffList[2];
-		 	}
-		case 4:
-		 	{
-		 		return staffList[3];
-		 	}
-		default:
-		 	{
-		 		return staffList[4];
-		 	}
+		 	case 1: return staffList[0];
+			case 2: return staffList[1];
+			case 3: return staffList[2];
+			case 4: return staffList[3];
+			default: return staffList[4];
 		 }
 	}
 	
@@ -44,10 +29,7 @@ public class Staff {
 		System.out.println("What is your staffID Number? (1-5)");
 		Scanner sc =new Scanner(System.in);
 		int id = sc.nextInt();
-		if (id<1 || id>5)
-		{
-			return 0;
-		}
+		if (id<1 || id>5) return 0;
 		this.staffID = id;
 		return this.staffID;
 	}
@@ -56,10 +38,7 @@ public class Staff {
 		System.out.println("What is your staffID Number New User? (1-5)");
 		Scanner sc =new Scanner(System.in);
 		int id = sc.nextInt();
-		if (id<1 || id>5)
-		{
-			return 0;
-		}
+		if (id<1 || id>5) return 0;
 		this.staffID = id;
 		return this.staffID;
 	}
