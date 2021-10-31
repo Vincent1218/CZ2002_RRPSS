@@ -19,14 +19,14 @@ public class MenuItems {
 			}
 
 			public double getPrice() { return this.price; }
-			public String getitemID() { return this.itemId; }
+			public String getItemID() { return this.itemId; }
 			public String getName() { return this.name; }
 			public String getDescription() { return this.description; }
 			public int getQuantity() { return this.quantity; }
 			public void updateName(String newname) { this.name=newname; }
 			public void updateDescription(String newdes) { this.description=newdes; }
 			public void updatePrice(double newPrice) { this.price=newPrice; }
-			public void updateitemID(String id) { this.itemId=id; }
+			public void updateItemID(String id) { this.itemId=id; }
 			public void updateQuantity(int newquan) { this.quantity=newquan; }
 			public MenuItems clone() { return new MenuItems(this.itemId, this.name, this.description, this.price); }
 }

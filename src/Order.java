@@ -47,7 +47,7 @@ public class Order {
 		// Check for same Id first, even we can do that with updateQuantity()
 		for(int i=0;i<this.numofitems;i++)
 		{
-			if(choice.equals(this.orderarr.get(i).getitemID()))
+			if(choice.equals(this.orderarr.get(i).getItemID()))
 			{
 				System.out.println("Item exists, what is the quantity that you would like to add?");
 				int quan = sc.nextInt();
@@ -60,9 +60,9 @@ public class Order {
 		 {
 		 	case 'M':
 		 	{
-		 		for(int i=0;i<menu.getnumofMain();i++)
+		 		for(int i=0;i<menu.getNumOfMain();i++)
 		 		{
-		 			if(choice.equals((menu.getMain().get(i).getitemID())))
+		 			if(choice.equals((menu.getMain().get(i).getItemID())))
 		 			{
 		 				orderarr.add((menu.getMain().get(i)).clone());
 		 				System.out.println("How many servings would you like?");
@@ -74,9 +74,9 @@ public class Order {
 		 	break;
 		 	case 'B':
 		 	{
-		 		for(int i=0;i<menu.getnumofBev();i++)
+		 		for(int i=0;i<menu.getNumOfBev();i++)
 		 		{
-		 			if(choice.equals((menu.getBev().get(i).getitemID())))
+		 			if(choice.equals((menu.getBev().get(i).getItemID())))
 		 			{
 		 				orderarr.add((menu.getBev().get(i)).clone());
 		 				System.out.println("How many servings would you like?");
@@ -88,9 +88,9 @@ public class Order {
 		 	break;
 		 	case 'D':
 		 	{
-		 		for(int i=0;i<menu.getnumofDes();i++)
+		 		for(int i=0;i<menu.getNumOfDes();i++)
 		 		{
-		 			if(choice.equals((menu.getDes().get(i).getitemID())))
+		 			if(choice.equals((menu.getDes().get(i).getItemID())))
 		 			{
 		 				orderarr.add((menu.getDes().get(i)).clone());
 		 				System.out.println("How many servings would you like?");
@@ -114,7 +114,7 @@ public class Order {
 		 String id = sc.next();
 		for(int i=0;i<this.numofitems;i++)
 		{
-			if(id.equals(this.orderarr.get(i).getitemID()))
+			if(id.equals(this.orderarr.get(i).getItemID()))
  			{
 				System.out.println("What is the new quantity that you would like?");
 				int quan = sc.nextInt();
@@ -137,7 +137,7 @@ public class Order {
 		String id = sc.next();
 		for(int i=0;i<this.numofitems;i++)
 		{
-			if(id.equals(this.orderarr.get(i).getitemID()))
+			if(id.equals(this.orderarr.get(i).getItemID()))
  			{
 				
 				check=1;
@@ -162,7 +162,7 @@ public class Order {
 		this.totalprice = 0;
 		for(int i =0; i<this.numofitems;i++)
 		{
-			 System.out.println(i+1 + "\t\t" + this.orderarr.get(i).getitemID() + "\t\t" + this.orderarr.get(i).getName() + "\t\t" + this.orderarr.get(i).getQuantity() + "\t\t" + this.orderarr.get(i).getQuantity()*this.orderarr.get(i).getPrice());
+			 System.out.println(i+1 + "\t\t" + this.orderarr.get(i).getItemID() + "\t\t" + this.orderarr.get(i).getName() + "\t\t" + this.orderarr.get(i).getQuantity() + "\t\t" + this.orderarr.get(i).getQuantity()*this.orderarr.get(i).getPrice());
 			 this.totalprice += this.orderarr.get(i).getQuantity()*this.orderarr.get(i).getPrice();
 		}
 		 System.out.println("Total Price is: " + this.totalprice);
