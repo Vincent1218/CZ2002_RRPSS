@@ -25,9 +25,9 @@ public class Order {
 		this.orderId =0;	
 		this.staffID= staffID;	
 		this.staffName= staff.getStaffName(staffID);	
-    this.datetime = "";
+   		this.datetime = "";
 	}	
-  public String getDate()
+  	public String getDate()
 	{
 		if (dateTime == null || dateTime.length() == 0)
 		{
