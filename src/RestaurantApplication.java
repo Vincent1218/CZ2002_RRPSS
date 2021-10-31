@@ -38,7 +38,7 @@ public class RestaurantApplication {
 		switch (choice) {
 		 case 1: 
 		 {
-			 //Create/Update/Remove menu item function
+			 ///Create/Update/Remove menu item function
 			 System.out.println("Would you like to Create(1)/Update(2)/Remove(3) menu item");
 			 choice = sc.nextInt();
 			 sc.nextLine();
@@ -69,7 +69,6 @@ public class RestaurantApplication {
 		 break;
 		 case 3:
 		 {
-			 mainmenu.displayMenu();
 			 orderlistarr.createOrder(mainmenu,staffid);
 		 }
 		 break;

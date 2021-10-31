@@ -50,6 +50,10 @@ public class OrderList {
 		 }
 		 orderlistarray.add(orders);
 		 orderlistarray.get(orderlistarray.size()-1).updateorderId(orderlistarray.size());
+		 System.out.println("May I enquire on your membership status?");
+		 System.out.println("(1)Yes, I am a Member, (2)No, I am not a member");
+		 int member = sc.nextInt();
+		 orderlistarray.get(orderlistarray.size()-1).updateMembership(member);
 		 System.out.println("Your order Id is " + orderlistarray.size());
 		 System.out.println("");
 	}
