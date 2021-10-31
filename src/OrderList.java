@@ -36,11 +36,11 @@ public class OrderList {
 	{
 		//sales revenue part havent do so i wont add yet
 	}
-	public void createOrder(Menu mainmenu)
+	public void createOrder(Menu mainmenu, int staffid)
 	{
 		 int a =1;
 		 Scanner sc = new Scanner(System.in);
-		 Order orders = new Order();
+		 Order orders = new Order(staffid);
 		 while(a==1)
 		 {
 			 orders.addOrderItem(mainmenu);
@@ -55,5 +55,10 @@ public class OrderList {
 	public void printOrderInvoice(int orderid)
 	{
 		// this would be print order but with sales person details and time etcetc
+		orderlistarray[orderid-1].printOrder();
+		System.out.println(" ");
+		System.out.println("This order was done by " + orderlistarray[orderid-1].displayStaffname() );
+		System.out.println("Staff number: " + orderlistarray[orderid-1].displayStaffid() );
+		System.out.println(" ");
 	}
 }

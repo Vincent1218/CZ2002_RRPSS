@@ -15,18 +15,28 @@ public class Order {
 	private boolean ispaid;
 	private ArrayList<MenuItems> orderarr;
 	private int numofitems;
-	public Order()
-	{
-		this.orderarr = new ArrayList<MenuItems>();
-		this.numofitems=0;
-		this.totalprice=0;
-		this.orderid =0;
+	Staff staff = new Staff();	
+	public Order(int staffid)	
+	{	
+		this.orderarr = new ArrayList<MenuItems>();	
+		this.numofitems=0;	
+		this.totalprice=0;	
+		this.orderid =0;	
+		this.staffid= staffid;	
+		this.staffname= staff.getStaffName(staffid);	
+	}	
+	public void updateOrderId(int newid)	
+	{	
+		this.orderid=newid;	
+	}	
+	public int displayStaffid()	
+	{	
+		return this.staffid;	
+	}	
+	public String displayStaffname()	
+	{	
+		return this.staffname;	
 	}
-	public void updateOrderId(int newid)
-	{
-		this.orderid=newid;
-	}
-	
 	public void addOrderItem(Menu menu)
 	{
 		int check =0;
@@ -168,4 +178,3 @@ public class Order {
 	}
 	
 }
-

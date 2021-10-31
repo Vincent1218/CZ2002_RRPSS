@@ -9,7 +9,7 @@ public class Staff {
 	
 	public Staff()
 	{
-		this.StaffID=2;
+		this.StaffID=0;
 		this.Staffname=null;
 	}
 	public String getStaffName(int StaffID)
@@ -42,6 +42,18 @@ public class Staff {
 	public int getStaffId()
 	{
 		System.out.println("What is your StaffID Number? (1-5)");
+		Scanner sc =new Scanner(System.in);
+		int id = sc.nextInt();
+		if (id<1 || id>5)
+		{
+			return 0;
+		}
+		this.StaffID = id;
+		return this.StaffID;
+	}
+	public int updateStaffId()
+	{
+		System.out.println("What is your StaffID Number New User? (1-5)");
 		Scanner sc =new Scanner(System.in);
 		int id = sc.nextInt();
 		if (id<1 || id>5)

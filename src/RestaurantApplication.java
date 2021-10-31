@@ -29,7 +29,8 @@ public class RestaurantApplication {
 		System.out.println("(8) Check table availability");
 		System.out.println("(9) Print order invoice");
 		System.out.println("(10) Print sale revenue report by period (eg day or month)");
-		System.out.println("(11) Exit");
+		System.out.println("(11) Change Staff User");
+		System.out.println("(12) Exit");
 		System.out.println("");
 		System.out.print("Enter your Choice: ");
 		choice = sc.nextInt();
@@ -67,7 +68,7 @@ public class RestaurantApplication {
 		 case 3:
 		 {
 			 mainmenu.displayMenu();
-			 orderlistarr.createOrder(mainmenu);
+			 orderlistarr.createOrder(mainmenu,staffid);
 		 }
 		 break;
 		 case 4: 
@@ -145,7 +146,15 @@ public class RestaurantApplication {
 		 }
 		 break;
 		 case 9: {
-			
+			 
+			 System.out.println(" ");
+			 System.out.println("What is the orderId of the order invoice");
+			 int num = sc.nextInt();
+			 System.out.println(" ");
+			 System.out.println("Order Number  " + num);
+			 System.out.println("----------------------------------");
+			 orderlistarr.printOrderInvoice(num);
+			 //
 		 }
 		 break;
 		 case 10: 
@@ -153,8 +162,13 @@ public class RestaurantApplication {
 			//Print sale revenue report by period (eg day or month) function
 		 }
 		 break;
-		 case 11: System.out.println("Program terminating ….");
+		 case 11: 
+		 {
+			 staffid = staff.updateStaffId();
+		 }
+		 break;
+		 case 12: System.out.println("Program terminating ….");
 		}
-		} while (choice < 11);
+		} while (choice < 12);
 	}
 }
