@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class Staff {
 	private int StaffID;
-	private String Staffname;
+	private String staffName;
 	private String[] StaffList = {"Ali", "Bob", "Charlie", "Dawn", "Emily"};
 	
 	public Staff()
 	{
 		this.StaffID=0;
-		this.Staffname=null;
+		this.staffName=null;
 	}
 	public String getStaffName(int StaffID)
 	{

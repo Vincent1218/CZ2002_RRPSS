@@ -167,7 +167,7 @@ public class RestaurantApplication {
 			 staffid = staff.updateStaffId();
 		 }
 		 break;
-		 case 12: System.out.println("Program terminating ….");
+		 case 12: System.out.println("Program terminating ï¿½.");
 		}
 		} while (choice < 12);
 	}
