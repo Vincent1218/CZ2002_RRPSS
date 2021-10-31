@@ -1,7 +1,7 @@
 package Project;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
+import java.text.DateFormat;
 
 public class Order {
 	private int orderid;
@@ -9,22 +9,46 @@ public class Order {
 	private int staffid;
 	private String staffname;
 	private double totalprice;
-	private double finalprice;
-	private String date;
+	private double finalprice = 0;
+	private String datetime;
 	private int memberID;
 	private boolean ispaid;
 	private ArrayList<MenuItems> orderarr;
 	private int numofitems;
-	Staff staff = new Staff();	
-	public Order(int staffid)	
+	Staff staff = new Staff();
+
+	public Order(int staffid)
 	{	
 		this.orderarr = new ArrayList<MenuItems>();	
 		this.numofitems=0;	
 		this.totalprice=0;	
 		this.orderid =0;	
 		this.staffid= staffid;	
-		this.staffname= staff.getStaffName(staffid);	
-	}	
+		this.staffname= staff.getStaffName(staffid);
+		this.datetime = "";
+	}
+
+	public String getDate()
+	{
+		if (datetime == null || datetime.length() == 0)
+		{
+			Date curdate = new Date();
+			datetime = DateFormat.getInstance().format(curdate);
+			return datetime;
+		}
+		else
+		{
+			return datetime;
+		}
+	}
+
+	public void updateDate()
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the date and time in DD/MM/YYYY, HH:MM AM/PM:");
+		datetime = sc.nextLine();
+	}
+
 	public void updateOrderId(int newid)	
 	{	
 		this.orderid=newid;	
@@ -170,7 +194,10 @@ public class Order {
 	}
 	public void calcfinalPrice()
 	{
-		//DK about the pricing and all so left it blank (should be easy to do though)
+		for (int i = 0; i < orderarr.size(); i++)
+		{
+			finalprice += orderarr.get(i).getPrice();
+		}
 	}
 	public void sortOrder()
 	{
