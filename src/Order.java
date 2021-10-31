@@ -56,7 +56,7 @@ public class Order {
 		 			{
 		 				orderarr.add((menu.getMain().get(i)).clone());
 		 				System.out.println("How many servings would you like?");
-		 				orderarr.get(this.numofitems++).quantity = sc.nextInt();
+		 				orderarr.get(this.numofitems++).updateQuantity(sc.nextInt());
 		 				check =1;
 		 			}
 		 		}
@@ -70,7 +70,7 @@ public class Order {
 		 			{
 		 				orderarr.add(menu.getBev().get(i));
 		 				System.out.println("How many servings would you like?");
-		 				orderarr.get(this.numofitems++).quantity = sc.nextInt();
+		 				orderarr.get(this.numofitems++).updateQuantity(sc.nextInt());
 		 				check =1;
 		 			}
 		 		}
@@ -84,7 +84,7 @@ public class Order {
 		 			{
 		 				orderarr.add(menu.getDes().get(i));
 		 				System.out.println("How many servings would you like?");
-		 				orderarr.get(this.numofitems++).quantity = sc.nextInt();
+		 				orderarr.get(this.numofitems++).updateQuantity(sc.nextInt());
 		 				check =1;
 		 			}
 		 		}
@@ -152,8 +152,8 @@ public class Order {
 		this.totalprice = 0;
 		for(int i =0; i<this.numofitems;i++)
 		{
-			 System.out.println(i+1 + "\t\t" + this.orderarr.get(i).getitemID() + "\t\t" + this.orderarr.get(i).getName() + "\t\t" + this.orderarr.get(i).quantity + "\t\t" + this.orderarr.get(i).quantity*this.orderarr.get(i).getPrice());
-			 this.totalprice += this.orderarr.get(i).quantity*this.orderarr.get(i).getPrice();
+			 System.out.println(i+1 + "\t\t" + this.orderarr.get(i).getitemID() + "\t\t" + this.orderarr.get(i).getName() + "\t\t" + this.orderarr.get(i).getQuantity() + "\t\t" + this.orderarr.get(i).getQuantity()*this.orderarr.get(i).getPrice());
+			 this.totalprice += this.orderarr.get(i).getQuantity()*this.orderarr.get(i).getPrice();
 		}
 		 System.out.println("Total Price is: " + this.totalprice);
 
