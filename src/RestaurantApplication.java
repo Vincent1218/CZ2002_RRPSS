@@ -1,4 +1,4 @@
-package Project;
+staffIDpackage Project;
 
 import java.util.Scanner;
 
