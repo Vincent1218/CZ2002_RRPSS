@@ -1,21 +1,22 @@
 package Project;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
+import java.text.DateFormat;
 
 public class Order {
 	private int orderId;
-	//IDK how to do the staff portion
+	//IDK how to do the staff portionvoid updateOrderId(int newid)	
 	private int staffID;
 	private String staffName;
 	private double totalPrice;
-	private double finalPrice;
-	private String date;
+	private double finalPrice = 0;
+	private String dateTime;
 	private int memberID;
 	private boolean isPaid;
 	private ArrayList<MenuItems> orderArr;
 	private int numOfItems;
-	Staff staff = new Staff();	
+	Staff staff = new Staff();
+  
 	public Order(int staffID)	
 	{	
 		this.orderArr = new ArrayList<MenuItems>();	
@@ -24,7 +25,28 @@ public class Order {
 		this.orderId =0;	
 		this.staffID= staffID;	
 		this.staffName= staff.getStaffName(staffID);	
+    this.datetime = "";
 	}	
+  public String getDate()
+	{
+		if (dateTime == null || dateTime.length() == 0)
+		{
+			Date curdate = new Date();
+			datetime = DateFormat.getInstance().format(curdate);
+			return dateTime;
+		}
+		else
+		{
+			return dateTime;
+		}
+	}
+
+	public void updateDate()
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the date and time in DD/MM/YYYY, HH:MM AM/PM:");
+		datetime = sc.nextLine();
+	}
 	public void updateorderId(int newid)	
 	{	
 		this.orderId=newid;	
@@ -161,7 +183,10 @@ public class Order {
 	}
 	public void calcfinalPrice()
 	{
-		//DK about the pricing and all so left it blank (should be easy to do though)
+		for (int i = 0; i < orderarr.size(); i++)
+		{
+			finalprice += orderarr.get(i).getPrice();
+		}
 	}
 	public void sortOrder()
 	{

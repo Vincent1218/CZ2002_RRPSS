@@ -1,6 +1,6 @@
 package Project;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class RestaurantApplication {
 	public static void main(String[] args) {
@@ -8,6 +8,7 @@ public class RestaurantApplication {
 		Menu mainmenu = new Menu();
 		OrderList orderlistarr = new OrderList();
 		Staff staff=new Staff();
+		SalesRecord totalsales = new SalesRecord(); //keep track of all sales
 		Scanner sc = new Scanner(System.in);
 		int staffid = staff.getStaffId();
 		if (staffid ==0)
@@ -40,6 +41,7 @@ public class RestaurantApplication {
 			 //Create/Update/Remove menu item function
 			 System.out.println("Would you like to Create(1)/Update(2)/Remove(3) menu item");
 			 choice = sc.nextInt();
+			 sc.nextLine();
 			 switch (choice) 
 			 {
 				 case 1:
@@ -147,14 +149,22 @@ public class RestaurantApplication {
 		 break;
 		 case 9: {
 			 
+
 			 System.out.println(" ");
 			 System.out.println("What is the orderId of the order invoice");
 			 int num = sc.nextInt();
+			 System.out.println("Do you wish to use the current date and time or to input your own date and time?");
+			 System.out.println("(1)Current date and time, (2)Input date and time");
+			 int opt = sc.nextInt();
+			 sc.nextLine();
+			 if (opt == 2)
+			 {
+				 orderlistarr.getOrder(num).updateDate();
+			 }
 			 System.out.println(" ");
 			 System.out.println("Order Number  " + num);
 			 System.out.println("----------------------------------");
 			 orderlistarr.printOrderInvoice(num);
-			 //
 		 }
 		 break;
 		 case 10: 
