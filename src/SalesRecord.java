@@ -11,5 +11,10 @@ public class SalesRecord {
         this.orderArray = new ArrayList<>();
     }
 
+    public void addSalesRecord(Order order)
+    {
+        this.orderArray.add(order);
+    }
+
 
 }

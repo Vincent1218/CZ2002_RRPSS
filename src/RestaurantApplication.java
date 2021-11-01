@@ -147,8 +147,6 @@ public class RestaurantApplication {
 		 }
 		 break;
 		 case 9: {
-			 
-
 			 System.out.println(" ");
 			 System.out.println("What is the orderId of the order invoice");
 			 int num = sc.nextInt();
@@ -164,6 +162,9 @@ public class RestaurantApplication {
 			 System.out.println("Order Number  " + num);
 			 System.out.println("----------------------------------");
 			 orderlistarr.printOrderInvoice(num);
+			 orderlistarr.payOrder(num);
+			 //after payment is made, add order to sales revenue
+			 totalsales.addSalesRecord(orderlistarr.getOrder(num));
 		 }
 		 break;
 		 case 10: 

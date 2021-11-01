@@ -27,7 +27,8 @@ public class Order {
 		this.staffName= staff.getStaffName(staffID);	
    		this.dateTime = "";
    		this.isMember = 0;
-	}	
+	}
+
   	public String getDate()
 	{
 		if (dateTime == null || dateTime.length() == 0)
@@ -194,6 +195,7 @@ public class Order {
 			System.out.println("");
 			System.out.println("Final Price is now: " + (0.9*this.totalPrice));
 			System.out.println("");
+			this.finalPrice = 0.9 * this.totalPrice;
 		}
 		else
 		{
@@ -201,9 +203,31 @@ public class Order {
 			System.out.println("");
 			System.out.println("Final Price is still: " + this.totalPrice);
 			System.out.println("");
+			this.finalPrice = totalPrice;
 		}
 
 	}
+
+	public double getTotalPrice()
+	{
+		this.totalPrice = 0;
+		for (int i = 0; i < orderArr.size(); i++)
+		{
+			this.totalPrice += this.orderArr.get(i).getQuantity()*this.orderArr.get(i).getPrice();
+		}
+		return this.totalPrice;
+	}
+
+	public double getFinalPrice()
+	{
+		if (this.finalPrice == 0)
+		{
+			System.out.println("Final Price of this order has not been calculated. Print the order invoice to get the final price.");
+			return 0;
+		}
+		return this.finalPrice;
+	}
+
 	public void sortOrder()
 	{
 		//sort based on type of dish this one can use previous lab sorting mechanism

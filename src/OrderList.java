@@ -35,7 +35,12 @@ public class OrderList {
 	}
 	public void payOrder(int orderId)
 	{
-		//sales revenue part havent do so i wont add yet
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Total amount to be paid: " + orderlistarray.get(orderId - 1).getFinalPrice());
+		System.out.println("Enter any key once payment has been made.");
+		String fill = sc.next();
+		System.out.println("Processing...");
+		System.out.println("Payment made!");
 	}
 	public void createOrder(Menu mainmenu, int staffID)
 	{
