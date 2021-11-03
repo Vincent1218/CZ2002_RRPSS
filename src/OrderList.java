@@ -1,5 +1,3 @@
-package Project;
-
 import java.util.*;
 
 public class OrderList {
@@ -42,9 +40,12 @@ public class OrderList {
 		System.out.println("Processing...");
 		System.out.println("Payment made!");
 	}
-	public void createOrder(Menu mainmenu, int staffID)
+	
+	public void createOrder(Menu mainmenu, int staffID, MemberList memberList)
 	{
 		 int a =1;
+		 int member=0;
+		 int memberId=0;
 		 Scanner sc = new Scanner(System.in);
 		 Order orders = new Order(staffID);
 		 while(a==1)
@@ -57,11 +58,26 @@ public class OrderList {
 		 orderlistarray.get(orderlistarray.size()-1).updateorderId(orderlistarray.size());
 		 System.out.println("May I enquire on your membership status?");
 		 System.out.println("(1)Yes, I am a Member, (2)No, I am not a member");
-		 int member = sc.nextInt();
+		 int count = sc.nextInt();
+		 while(count<=3) {
+			 System.out.println("Please enter your Member ID: ");
+			 memberId = sc.nextInt();
+			 System.out.println("Please enter your Contact Number: ");
+			 String contact = sc.nextLine();
+			 member = memberList.checkMember(memberId, contact);
+			 if(member==0) {
+				 System.out.println("Invalid Member ID/Contact No. Try Again");
+				 count++;
+			 }
+			 else break;
+		 }
+		 if(count>3) System.out.println("Failed 3 times. Proceeding...");
+		 else memberList.getMember(memberId);
 		 orderlistarray.get(orderlistarray.size()-1).updateMembership(member);
 		 System.out.println("Your order Id is " + orderlistarray.size());
 		 System.out.println("");
 	}
+	
 	public void printOrderInvoice(int orderId)
 	{
 		// this would be print order but with sales person details and time etcetc
@@ -69,7 +85,7 @@ public class OrderList {
 		System.out.println(" ");
 		System.out.println("This order was done by " + orderlistarray.get(orderId - 1).displayStaffName() );
 		System.out.println("Staff number: " + orderlistarray.get(orderId - 1).displaystaffID() );
-    	System.out.println(orderlistarray.get(orderId - 1).getDateTime());
+    System.out.println("Date: " + orderlistarray.get(orderId - 1).getDate());
 		System.out.println(" ");
 	}
 }
