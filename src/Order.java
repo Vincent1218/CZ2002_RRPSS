@@ -10,47 +10,62 @@ public class Order {
 	private String staffName;
 	private double totalPrice;
 	private double finalPrice = 0;
-	private String dateTime;
+	private String date;
+	private String time;
 	private int isMember;
 	private boolean isPaid;
 	private ArrayList<MenuItems> orderArr;
 	private int numOfItems;
 	Staff staff = new Staff();
-  
-	public Order(int staffID)	
-	{	
-		this.orderArr = new ArrayList<MenuItems>();	
-		this.numOfItems=0;	
-		this.totalPrice=0;	
-		this.orderId =0;	
-		this.staffID= staffID;	
-		this.staffName= staff.getStaffName(staffID);	
-   		this.dateTime = "";
+
+	public Order(int staffID)
+	{
+		this.orderArr = new ArrayList<MenuItems>();
+		this.numOfItems=0;
+		this.totalPrice=0;
+		this.orderId =0;
+		this.staffID= staffID;
+		this.staffName= staff.getStaffName(staffID);
+		this.time = "";
+   		this.date = "";
    		this.isMember = 0;
 	}
 
   	public String getDate()
 	{
-		if (dateTime == null || dateTime.length() == 0)
+		return date;
+	}
+
+	public String getTime()
+	{
+		return time;
+	}
+
+	public String getDateTime() //get a string with both date and time
+	{
+		if (date == null || date.length() == 0)
 		{
 			Date curdate = new Date();
-			dateTime = DateFormat.getInstance().format(curdate);
-			return dateTime;
+			date= DateFormat.getDateInstance().format(curdate);
+			time = DateFormat.getTimeInstance(DateFormat.SHORT).format(curdate);
+			return date + " " + time;
 		}
 		else
 		{
-			return dateTime;
+			return date + " " + time;
 		}
 	}
   	public void updateMembership(int status)
   	{
   		this.isMember= status;
   	}
-	public void updateDate()
+	public void updateDate() //and time
 	{
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the date and time in DD/MM/YYYY, HH:MM AM/PM:");
-		dateTime = sc.nextLine();
+		System.out.println("Enter the date in DD MMM YYYY:");
+		date = sc.nextLine();
+		System.out.println("Enter the time in HH:MM AM/PM:");
+		time = sc.nextLine();
 	}
 	public void updateorderId(int newid)	
 	{	

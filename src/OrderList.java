@@ -69,7 +69,7 @@ public class OrderList {
 		System.out.println(" ");
 		System.out.println("This order was done by " + orderlistarray.get(orderId - 1).displayStaffName() );
 		System.out.println("Staff number: " + orderlistarray.get(orderId - 1).displaystaffID() );
-    System.out.println("Date: " + orderlistarray.get(orderId - 1).getDate());
+    	System.out.println(orderlistarray.get(orderId - 1).getDateTime());
 		System.out.println(" ");
 	}
 }
