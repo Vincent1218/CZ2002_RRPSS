@@ -41,7 +41,7 @@ public class OrderList {
 		System.out.println("Payment made!");
 	}
 	
-	public void createOrder(Menu mainmenu, int staffID, MemberList memberList)
+	public void createOrder(Menu mainmenu, int staffID, MemberList memberList,ReservationList resList, int resid)
 	{
 		 int a =1;
 		 int member=0;
@@ -59,6 +59,13 @@ public class OrderList {
 		 System.out.println("May I enquire on your membership status?");
 		 System.out.println("(1)Yes, I am a Member, (2)No, I am not a member");
 		 int count = sc.nextInt();
+		 if(count==2)
+		 {
+			 System.out.println("Your order Id is " + orderlistarray.size());
+			 resList.getReservation(resid).updateOrderID(orderlistarray.size());
+			 System.out.println("");
+			 return;
+		 }
 		 while(count<=3) {
 			 System.out.println("Please enter your Member ID: ");
 			 memberId = sc.nextInt();
@@ -75,6 +82,7 @@ public class OrderList {
 		 else memberList.getMember(memberId);
 		 orderlistarray.get(orderlistarray.size()-1).updateMembership(member);
 		 System.out.println("Your order Id is " + orderlistarray.size());
+		 resList.getReservation(resid-1).updateOrderID(orderlistarray.size());
 		 System.out.println("");
 	}
 	
