@@ -1,5 +1,3 @@
-package Project;
-
 public class TableList {
 	private static final int numOfTables = 15;
 	private Tables[] tableArray;
@@ -9,7 +7,7 @@ public class TableList {
 	{
 		this.tableArray= new Tables[numOfTables];
 		for (int i=0;i<numOfTables;i++)
-		{
+		{//
 			//int size = (i%2==0) ? 2 : 4;
 			int size = ((i+1)*2)%8;
 			if(size==0) size=8;

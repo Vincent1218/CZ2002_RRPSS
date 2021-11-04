@@ -1,4 +1,3 @@
-package Project;
 
 public class Member {
 	private String name;

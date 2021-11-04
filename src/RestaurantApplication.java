@@ -1,5 +1,3 @@
-package Project;
-
 import java.util.*;
 
 public class RestaurantApplication {
@@ -20,16 +18,16 @@ public class RestaurantApplication {
 			return;
 		}
 		System.out.println("");
-		System.out.println("Welcome " +staff.getStaffName(staffid) + " to the use of the Restaurant Application" );
+		System.out.println("Welcome " + staff.getStaffName(staffid) + " to the use of the Restaurant Application" );
 		System.out.println("");
 		do {
 		System.out.println("(1) Create/Update/Remove menu item");
 		System.out.println("(2) Create/Update/Remove promotion");
-		System.out.println("(3) Create order");
-		System.out.println("(4) View order");
+		System.out.println("(3) View Full Menu");
+		System.out.println("(4) Create order");
 		System.out.println("(5) Add/Remove order item/s to/from order");
 		System.out.println("(6) Create reservation booking");
-		System.out.println("(7) Check/Remove reservation booking");
+		System.out.println("(7) View/Remove reservation booking");
 		System.out.println("(8) Check table availability");
 		System.out.println("(9) Print order invoice");
 		System.out.println("(10) Print sale revenue report by period (eg day or month)");
@@ -69,33 +67,64 @@ public class RestaurantApplication {
 		 case 2: 
 		 {
 			//Create/Update/Remove promotion function
-		 }
-		 break;
-		 case 3:
-		 {
-			 orderlistarr.createOrder(mainmenu,staffid,memberList);
-		 }
-		 break;
-		 case 4: 
-		 {
-			 System.out.println("Would you like to (View all orders 1)/(Specific Order 2)");
+			 mainmenu.displayLessMenu();
+			 System.out.println("Would you like to Create(1)/Update(2)/Remove(3) Promo item");
 			 choice = sc.nextInt();
-			 if (choice ==1)
+			 sc.nextLine();
+			 switch (choice) 
 			 {
-				 orderlistarr.viewAllOrder();
+				 case 1:
+				 {
+					 mainmenu.addPromoItem();
+				 }
+				 break;
+				 case 2:
+				 {
+					 mainmenu.updatePromoItem();
+				 }
+				 break;
+				 case 3:
+				 {
+					 mainmenu.deletePromoItem();
+				 }
+				 break;
 			 }
-			 else if (choice==2)
+		 }
+		 break;
+		 case 3: 
+		 {
+			//View Full menu
+			 System.out.println("--------------- Full Menu -------------------------------");
+			 mainmenu.displayMenu();
+		 }
+		 break;
+		 case 4:
+		 {
+			 System.out.println("Have you made a prior Reservation? (1 Yes)(0 No)");
+			 choice = sc.nextInt();
+			 if (choice == 1)
 			 {
-				 System.out.println("What is the orderId?");
-				 int orderid = sc.nextInt();
-				 orderlistarr.viewOrder(orderid);
+				 System.out.println("What is your Reservation ID");
+				 int resid = sc.nextInt();
+				 orderlistarr.createOrder(mainmenu,staffid,memberList,resList,resid);
 			 }
-		 } 
+			 else
+			 {
+				 System.out.println("Would you like to make a Reservation first? (1 Yes)(0 No)");
+				 choice = sc.nextInt();
+				 if (choice == 1)
+				 {
+					 resList.makeRes(tables);
+				 }
+			 }
+		 }
 		 break;
 		 case 5:
 		 {
-			 System.out.println("What is the orderId of the order to be updated");
-			 int orderid = sc.nextInt();
+			 System.out.println("What is the Reservation Id of the order to be updated");
+			 int resid = sc.nextInt();
+			 int orderid = resList.getReservation(resid).getOrderID();
+			 orderlistarr.viewOrder(orderid);
 			 do
 			 {
 				 System.out.println("Would you like to (Add 1)/(Remove 2)/(Update Quantity 3)/(Done 4)");
@@ -137,7 +166,7 @@ public class RestaurantApplication {
 		 case 7: 
 		 {
 			 //Check/Remove reservation booking function
-			 resList.getReservation();
+			 resList.viewReservation(orderlistarr);
 			 System.out.println("Would you like to remove any reservations?");
 			 System.out.println("(1)Yes (2)No");
 			 int check = sc.nextInt();
@@ -177,49 +206,6 @@ public class RestaurantApplication {
 		 case 10: 
 		 {
 			//Print sale revenue report by period (eg day or month) function
-			 System.out.println("(1)Print by day (2)Print by month (3)Print by year (4)Quit");
-			 int option = sc.nextInt();
-			 sc.nextLine();
-			 while (option != 4)
-			 {
-				 switch(option)
-				 {
-					 case 1: {
-						 System.out.println("Enter the day (eg:3 Mar 2021 or 15 Oct 2019): ");
-						 String date = sc.nextLine();
-						 totalsales.printByDay(date);
-						 break;
-					 }
-					 case 2: {
-						 System.out.println("Enter the month and year(eg:Mar 2021): ");
-						 String period = sc.nextLine();
-						 totalsales.printByMonth(period);
-						 break;
-					 }
-					 case 3: {
-						 System.out.println("Enter the year(eg:2021): ");
-						 String year = sc.nextLine();
-						 totalsales.printByYear(year);
-						 break;
-					 }
-					 case 4: {
-						 break;
-					 }
-					 default: {
-						 System.out.println("Please choose an option from 1 to 4.");
-					 }
-				 }
-				 if (option == 4)
-				 {
-					 break;
-				 }
-				 else
-				 {
-					 System.out.println("(1)Print by day (2)Print by month (3)Print by year (4)Quit");
-					 option = sc.nextInt();
-					 sc.nextLine();
-				 }
-			 }
 		 }
 		 break;
 		 case 11: 

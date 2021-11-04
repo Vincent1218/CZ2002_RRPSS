@@ -1,5 +1,3 @@
-package Project;
-
 import java.util.*;
 
 public class ReservationList {
@@ -31,10 +29,10 @@ public class ReservationList {
 		}
 	}
 	
-	void getReservation() {
+	void viewReservation(OrderList orderlist) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Would you like to check all reservations or a specific reservation?");
-		System.out.println("(1)Check all (2)Check specific");
+		System.out.println("Would you like to view all reservations or a specific reservation?");
+		System.out.println("(1)View all (2)View specific");
 		int check = sc.nextInt();
 		if(check==1) {
 			if(resList.size()==0) System.out.println("There are no reservations.");
@@ -47,6 +45,7 @@ public class ReservationList {
 					System.out.println("Reservation Timing: " + resList.get(i).getResTime());
 					System.out.println("Table ID: " + resList.get(i).getResTableID());
 					System.out.println("");
+					orderlist.viewOrder(resList.get(i).getOrderID());
 				}
 		}
 		if(check==2) {
@@ -63,9 +62,13 @@ public class ReservationList {
 					System.out.println("Reservation Timing: " + resList.get(resId-1).getResTime());
 					System.out.println("Table ID: " + resList.get(resId-1).getResTableID());
 					System.out.println("");
+					orderlist.viewOrder(resList.get(resId-1).getOrderID()-1);
 				}
 			}
 		}
+	}
+	Reservation getReservation(int resid) {
+		return resList.get(resid-1);
 	}
 	
 	void removeReservation(int resId, TableList tables) {
