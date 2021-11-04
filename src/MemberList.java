@@ -1,5 +1,3 @@
-package Project;
-
 import java.util.*;
 
 public class MemberList {
@@ -34,7 +32,7 @@ public class MemberList {
 	
 	public int checkMember(int memberId, String contact) {
 		int index = memberId - 1001;
-		if(memberArray.get(index).getMemberId()==memberId && memberArray.get(index).getContact().equals(contact))
+		if((memberArray.get(index).getMemberId() == memberId) && (memberArray.get(index).getContact().equals(contact)))
 			return 1;
 		else return 0;
 	}

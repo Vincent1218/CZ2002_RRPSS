@@ -1,5 +1,3 @@
-package Project;
-
 import java.util.*;
 
 public class OrderList {
@@ -43,7 +41,7 @@ public class OrderList {
 		System.out.println("Payment made!");
 	}
 	
-	public void createOrder(Menu mainmenu, int staffID, MemberList memberList)
+	public void createOrder(Menu mainmenu, int staffID, MemberList memberList,ReservationList resList, int resid)
 	{
 		 int a =1;
 		 int member=0;
@@ -61,11 +59,18 @@ public class OrderList {
 		 System.out.println("May I enquire on your membership status?");
 		 System.out.println("(1)Yes, I am a Member, (2)No, I am not a member");
 		 int count = sc.nextInt();
+		 if(count==2)
+		 {
+			 System.out.println("Your order Id is " + orderlistarray.size());
+			 resList.getReservation(resid).updateOrderID(orderlistarray.size());
+			 System.out.println("");
+			 return;
+		 }
 		 while(count<=3) {
 			 System.out.println("Please enter your Member ID: ");
 			 memberId = sc.nextInt();
 			 System.out.println("Please enter your Contact Number: ");
-			 String contact = sc.nextLine();
+			 String contact = sc.next();
 			 member = memberList.checkMember(memberId, contact);
 			 if(member==0) {
 				 System.out.println("Invalid Member ID/Contact No. Try Again");
@@ -77,6 +82,7 @@ public class OrderList {
 		 else memberList.getMember(memberId);
 		 orderlistarray.get(orderlistarray.size()-1).updateMembership(member);
 		 System.out.println("Your order Id is " + orderlistarray.size());
+		 resList.getReservation(resid-1).updateOrderID(orderlistarray.size());
 		 System.out.println("");
 	}
 	
@@ -87,7 +93,7 @@ public class OrderList {
 		System.out.println(" ");
 		System.out.println("This order was done by " + orderlistarray.get(orderId - 1).displayStaffName() );
 		System.out.println("Staff number: " + orderlistarray.get(orderId - 1).displaystaffID() );
-		System.out.println(orderlistarray.get(orderId - 1).getDateTime());
+    System.out.println("Date: " + orderlistarray.get(orderId - 1).getDate());
 		System.out.println(" ");
 	}
 }

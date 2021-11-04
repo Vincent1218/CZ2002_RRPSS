@@ -1,5 +1,4 @@
 //import java.text.DateFormat;
-package Project;
 
 public class Reservation {
 	private int resID;
@@ -9,6 +8,7 @@ public class Reservation {
 	private String name;
 	private String contact;
 	private int tableID;
+	private int orderID;
 	
 	public Reservation(String name, String contact, int pax, String time, int tableId, int resId) {
 		//this.date = DateFormat.getInstance().format(java.time.LocalDate.now());
@@ -27,5 +27,7 @@ public class Reservation {
 	public int getResPax() {return this.pax;}
 	public int getResTableID() {return this.tableID;}
 	public int getResID() {return this.resID;}
+	public int getOrderID(){return this.orderID;}
+	public void updateOrderID(int orderid){this.orderID = orderid;}
 	
 }
