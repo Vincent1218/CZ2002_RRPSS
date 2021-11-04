@@ -1,4 +1,3 @@
-package Project;
 import java.util.*;
 
 public class Menu {
@@ -42,6 +41,7 @@ public class Menu {
 		}
 		System.out.println("");
 	}
+	
 	public void addMenuItem()
 	{
 		String name,description;
@@ -95,6 +95,7 @@ public class Menu {
 			break;
 		}
 	}
+	
 	public void updateMenuItem()
 	{
 		String id;

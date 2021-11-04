@@ -1,5 +1,3 @@
-package Project;
-
 import java.util.*;
 import java.text.DateFormat;
 
@@ -10,62 +8,47 @@ public class Order {
 	private String staffName;
 	private double totalPrice;
 	private double finalPrice = 0;
-	private String date;
-	private String time;
+	private String dateTime;
 	private int isMember;
 	private boolean isPaid;
 	private ArrayList<MenuItems> orderArr;
 	private int numOfItems;
 	Staff staff = new Staff();
-
-	public Order(int staffID)
-	{
-		this.orderArr = new ArrayList<MenuItems>();
-		this.numOfItems=0;
-		this.totalPrice=0;
-		this.orderId =0;
-		this.staffID= staffID;
-		this.staffName= staff.getStaffName(staffID);
-		this.time = "";
-   		this.date = "";
+  
+	public Order(int staffID)	
+	{	
+		this.orderArr = new ArrayList<MenuItems>();	
+		this.numOfItems=0;	
+		this.totalPrice=0;	
+		this.orderId =0;	
+		this.staffID= staffID;	
+		this.staffName= staff.getStaffName(staffID);	
+   		this.dateTime = "";
    		this.isMember = 0;
 	}
 
   	public String getDate()
 	{
-		return date;
-	}
-
-	public String getTime()
-	{
-		return time;
-	}
-
-	public String getDateTime() //get a string with both date and time
-	{
-		if (date == null || date.length() == 0)
+		if (dateTime == null || dateTime.length() == 0)
 		{
 			Date curdate = new Date();
-			date= DateFormat.getDateInstance().format(curdate);
-			time = DateFormat.getTimeInstance(DateFormat.SHORT).format(curdate);
-			return date + " " + time;
+			dateTime = DateFormat.getInstance().format(curdate);
+			return dateTime;
 		}
 		else
 		{
-			return date + " " + time;
+			return dateTime;
 		}
 	}
   	public void updateMembership(int status)
   	{
   		this.isMember= status;
   	}
-	public void updateDate() //and time
+	public void updateDate()
 	{
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the date in DD MMM YYYY:");
-		date = sc.nextLine();
-		System.out.println("Enter the time in HH:MM AM/PM:");
-		time = sc.nextLine();
+		System.out.println("Enter the date and time in DD/MM/YYYY, HH:MM AM/PM:");
+		dateTime = sc.nextLine();
 	}
 	public void updateorderId(int newid)	
 	{	
@@ -141,6 +124,7 @@ public class Order {
 			 System.out.println("Adding order Failed..");
 		 }
 	}
+	
 	public void updateOrderItemQuantity()
 	{
 		int check =0;
@@ -162,6 +146,7 @@ public class Order {
 			 System.out.println("Adding order Failed..");
 		 }
 	}
+	
 	public void deleteOrderItem()
 	{
 		int check =0;
@@ -191,6 +176,7 @@ public class Order {
 		this.numOfItems--;
 		
 	}
+	
 	public void printOrder()
 	{
 		//sort order based on itemid first
