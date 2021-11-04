@@ -1,3 +1,5 @@
+package Project;
+
 public class Tables {
 	private int tableid;
 	private int tablesize;

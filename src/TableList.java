@@ -1,3 +1,5 @@
+package Project;
+
 public class TableList {
 	private static final int numOfTables = 15;
 	private Tables[] tableArray;

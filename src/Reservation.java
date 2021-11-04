@@ -1,4 +1,5 @@
 //import java.text.DateFormat;
+package Project;
 
 public class Reservation {
 	private int resID;

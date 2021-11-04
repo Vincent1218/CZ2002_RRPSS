@@ -1,3 +1,5 @@
+package Project;
+
 import java.util.*;
 
 public class RestaurantApplication {
@@ -206,6 +208,49 @@ public class RestaurantApplication {
 		 case 10: 
 		 {
 			//Print sale revenue report by period (eg day or month) function
+			 System.out.println("(1)Print by day (2)Print by month (3)Print by year (4)Quit");
+			 int option = sc.nextInt();
+			 sc.nextLine();
+			 while (option != 4)
+			 {
+				 switch(option)
+				 {
+					 case 1: {
+						 System.out.println("Enter the day (eg:3 Mar 2021 or 15 Oct 2019): ");
+						 String date = sc.nextLine();
+						 totalsales.printByDay(date);
+						 break;
+					 }
+					 case 2: {
+						 System.out.println("Enter the month and year(eg:Mar 2021): ");
+						 String period = sc.nextLine();
+						 totalsales.printByMonth(period);
+						 break;
+					 }
+					 case 3: {
+						 System.out.println("Enter the year(eg:2021): ");
+						 String year = sc.nextLine();
+						 totalsales.printByYear(year);
+						 break;
+					 }
+					 case 4: {
+						 break;
+					 }
+					 default: {
+						 System.out.println("Please choose an option from 1 to 4.");
+					 }
+				 }
+				 if (option == 4)
+				 {
+					 break;
+				 }
+				 else
+				 {
+					 System.out.println("(1)Print by day (2)Print by month (3)Print by year (4)Quit");
+					 option = sc.nextInt();
+					 sc.nextLine();
+				 }
+			 }
 		 }
 		 break;
 		 case 11: 
