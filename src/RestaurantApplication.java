@@ -1,5 +1,3 @@
-package Project;
-
 import java.util.*;
 
 public class RestaurantApplication {
@@ -7,7 +5,10 @@ public class RestaurantApplication {
 		int choice;
 		Menu mainmenu = new Menu();
 		OrderList orderlistarr = new OrderList();
+		TableList tables = new TableList();
 		Staff staff=new Staff();
+		MemberList memberList = new MemberList();
+		ReservationList resList = new ReservationList();
 		SalesRecord totalsales = new SalesRecord(); //keep track of all sales
 		Scanner sc = new Scanner(System.in);
 		int staffid = staff.getStaffId();
@@ -31,7 +32,8 @@ public class RestaurantApplication {
 		System.out.println("(9) Print order invoice");
 		System.out.println("(10) Print sale revenue report by period (eg day or month)");
 		System.out.println("(11) Change Staff User");
-		System.out.println("(12) Exit");
+		System.out.println("(12) Register New Member");
+		System.out.println("(13) Exit");
 		System.out.println("");
 		System.out.print("Enter your Choice: ");
 		choice = sc.nextInt();
@@ -69,7 +71,7 @@ public class RestaurantApplication {
 		 break;
 		 case 3:
 		 {
-			 orderlistarr.createOrder(mainmenu,staffid);
+			 orderlistarr.createOrder(mainmenu,staffid,memberList);
 		 }
 		 break;
 		 case 4: 
@@ -126,24 +128,27 @@ public class RestaurantApplication {
 		 case 6:
 		 {
 			//Create reservation booking function
-			 System.out.println("Whose name will the reservation be under?");
-			 String name = sc.next();
-			 System.out.println("Number of Pax?");
-			 int numofpax = sc.nextInt();
-			 System.out.println("Time of Reservation?");
-			 double time = sc.nextDouble();
-			 System.out.println("May I get your Contact Number?");
-			 int contactnum = sc.nextInt();
-			 //Attach this uinfo to array somehow probably to an overarching array. sop one array anmd in that 1 array slot has the array of food and contact details.
+			 resList.makeRes(tables);
+			 //Attach this info to array somehow probably to an overarching array. so one array and in that 1 array slot has the array of food and contact details.
 		 }
 		 break;	 
 		 case 7: 
 		 {
 			 //Check/Remove reservation booking function
+			 resList.getReservation();
+			 System.out.println("Would you like to remove any reservations?");
+			 System.out.println("(1)Yes (2)No");
+			 int check = sc.nextInt();
+			 if(check==1) {
+				 System.out.println("Reservation ID of reservation to be removed?");
+				 int resId = sc.nextInt();
+				 resList.removeReservation(resId, tables);
+			 }
 		 }
 		 break;
 		 case 8: {
 			//Check table availability function
+			 tables.viewAllTableStatus();
 		 }
 		 break;
 		 case 9: {
@@ -170,50 +175,6 @@ public class RestaurantApplication {
 		 case 10: 
 		 {
 			//Print sale revenue report by period (eg day or month) function
-			 System.out.println("(1)Print by day (2)Print by month (3)Print by year (4)Quit");
-			 int option = sc.nextInt();
-			 sc.nextLine();
-			 while (option != 4)
-			 {
-				 switch(option)
-				 {
-					 case 1: {
-						 System.out.println("Enter the day (eg:3 Mar 2021 or 15 Oct 2019): ");
-						 String date = sc.nextLine();
-						 totalsales.printByDay(date);
-						 break;
-					 }
-					 case 2: {
-						 System.out.println("Enter the month and year(eg:Mar 2021): ");
-						 String period = sc.nextLine();
-						 totalsales.printByMonth(period);
-						 break;
-					 }
-					 case 3: {
-						 System.out.println("Enter the year(eg:2021): ");
-						 String year = sc.nextLine();
-						 totalsales.printByYear(year);
-						 break;
-					 }
-					 case 4: {
-						 break;
-					 }
-					 default: {
-						 System.out.println("Please choose an option from 1 to 4.");
-					 }
-				 }
-				 if (option == 4)
-				 {
-					 break;
-				 }
-				 else
-				 {
-					 System.out.println("(1)Print by day (2)Print by month (3)Print by year (4)Quit");
-					 option = sc.nextInt();
-					 sc.nextLine();
-				 }
-			 }
-
 		 }
 		 break;
 		 case 11: 
@@ -221,8 +182,16 @@ public class RestaurantApplication {
 			 staffid = staff.updateStaffId();
 		 }
 		 break;
-		 case 12: System.out.println("Program terminating �.");
+		 case 12:
+		 {
+			//register member
+			 int memberId = memberList.registerMember();
+			 if(memberId<=(memberList.getSize()+1000)) System.out.println("Contact number already registered. Member ID is " + memberId);
+			 else System.out.println("Registration successful. The Member ID is: " + memberId);
+		 }
+		 break;
+		 case 13: System.out.println("Program terminating ...");
 		}
-		} while (choice < 12);
+		} while (choice < 13);
 	}
 }
