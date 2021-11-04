@@ -43,13 +43,13 @@ public class OrderList {
 		System.out.println("Payment made!");
 	}
 	
-	public void createOrder(Menu mainmenu, int staffID, MemberList memberList,ReservationList resList, int resid)
+	public void createOrder(Menu mainmenu, Staff staff, MemberList memberList,ReservationList resList, int resid)
 	{
 		 int a =1;
 		 int member=0;
 		 int memberId=0;
 		 Scanner sc = new Scanner(System.in);
-		 Order orders = new Order(staffID);
+		 Order orders = new Order(staff);
 		 while(a==1)
 		 {
 			 orders.addOrderItem(mainmenu);

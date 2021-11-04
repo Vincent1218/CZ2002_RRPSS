@@ -6,8 +6,6 @@ import java.text.DateFormat;
 public class Order {
 	private int orderId;
 	//IDK how to do the staff portionvoid updateOrderId(int newid)	
-	private int staffID;
-	private String staffName;
 	private double totalPrice;
 	private double finalPrice = 0;
 	private String date;
@@ -16,16 +14,15 @@ public class Order {
 	private boolean isPaid;
 	private ArrayList<MenuItems> orderArr;
 	private int numOfItems;
-	Staff staff = new Staff();
+	private Staff staff = new Staff(0,"Temp");
 
-	public Order(int staffID)
+	public Order(Staff staff)
 	{
 		this.orderArr = new ArrayList<MenuItems>();
 		this.numOfItems=0;
 		this.totalPrice=0;
 		this.orderId =0;
-		this.staffID= staffID;
-		this.staffName= staff.getStaffName(staffID);
+		this.staff= staff;
 		this.time = "";
 		this.date = "";
    		this.isMember = 0;
@@ -66,18 +63,9 @@ public class Order {
 		System.out.println("Enter the time in HH:MM AM/PM:");
 		time = sc.nextLine();
 	}
-	public void updateorderId(int newid)	
-	{	
-		this.orderId=newid;	
-	}	
-	public int displaystaffID()	
-	{	
-		return this.staffID;	
-	}	
-	public String displayStaffName()	
-	{	
-		return this.staffName;	
-	}
+	public void updateorderId(int newid) { this.orderId=newid; }
+	public int displaystaffID() { return this.staff.getStaffID(); }
+	public String displayStaffName() { return this.staff.getStaffName();}
 	public void addOrderItem(Menu menu)
 	{
 		int check =0;
