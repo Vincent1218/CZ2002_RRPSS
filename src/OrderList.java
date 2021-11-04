@@ -87,8 +87,7 @@ public class OrderList {
 				 }
 			 }
 		 }
-		 //hi
-		 //s
+
 		 orderlistarray.get(orderlistarray.size()-1).updateMembership(member);
 		 System.out.println("Your order Id is " + orderlistarray.size());
 		 resList.getReservation(resid-1).updateOrderID(orderlistarray.size());
