@@ -47,7 +47,7 @@ public class ReservationList {
 					System.out.println("Reservation Timing: " + resList.get(i).getResTime());
 					System.out.println("Table ID: " + resList.get(i).getResTableID());
 					System.out.println("");
-					orderlist.viewOrder(resList.get(i).getOrderID());
+//					orderlist.viewOrder(resList.get(i).getOrderID());
 				}
 		}
 		if(check==2) {
@@ -64,7 +64,7 @@ public class ReservationList {
 					System.out.println("Reservation Timing: " + resList.get(resId-1).getResTime());
 					System.out.println("Table ID: " + resList.get(resId-1).getResTableID());
 					System.out.println("");
-					orderlist.viewOrder(resList.get(resId-1).getOrderID()-1);
+//					orderlist.viewOrder(resList.get(resId-1).getOrderID()-1);
 				}
 			}
 		}

@@ -196,6 +196,7 @@ public class RestaurantApplication {
 			}
 			break;
 			case 9: {
+				// Print order invoice
 				System.out.println(" ");
 				System.out.println("What is the orderId of the order invoice");
 				int num = sc.nextInt();
@@ -212,6 +213,8 @@ public class RestaurantApplication {
 				System.out.println("----------------------------------");
 				orderlistarr.printOrderInvoice(num);
 				orderlistarr.payOrder(num);
+				// Remove reservation and unassign Table
+				resList.removeReservation(orderlistarr.getOrder(num).getResID(), tables);
 				//after payment is made, add order to sales revenue
 				totalsales.addSalesRecord(orderlistarr.getOrder(num));
 			}

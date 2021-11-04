@@ -15,8 +15,10 @@ public class Order {
 	private ArrayList<MenuItems> orderArr;
 	private int numOfItems;
 	private Staff staff = new Staff(0,"Temp");
+	private Tables table = new Tables(0,0);
+	private int resID;
 
-	public Order(Staff staff)
+	public Order(Staff staff, int resID)
 	{
 		this.orderArr = new ArrayList<MenuItems>();
 		this.numOfItems=0;
@@ -25,17 +27,14 @@ public class Order {
 		this.staff= staff;
 		this.time = "";
 		this.date = "";
-   		this.isMember = 0;
+		this.isMember = 0;
+		this.resID = resID;
+
 	}
 
-  	public String getDate(){
-		return date;
-	}
-
-	public String getTime()
-	{
-		return time;
-	}
+	public int getResID() { return resID;}
+	public String getDate(){ return date; }
+	public String getTime() { return time; }
 
 	public String getDateTime() //get a string with both date and time
 	{

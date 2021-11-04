@@ -49,7 +49,7 @@ public class OrderList {
 		 int member=0;
 		 int memberId=0;
 		 Scanner sc = new Scanner(System.in);
-		 Order orders = new Order(staff);
+		 Order orders = new Order(staff, resid);
 		 while(a==1)
 		 {
 			 orders.addOrderItem(mainmenu);
@@ -60,28 +60,33 @@ public class OrderList {
 		 orderlistarray.get(orderlistarray.size()-1).updateorderId(orderlistarray.size());
 		 System.out.println("May I enquire on your membership status?");
 		 System.out.println("(1)Yes, I am a Member, (2)No, I am not a member");
-		 int count = sc.nextInt();
-		 if(count==2)
+		 int mem = sc.nextInt();
+		 int count = 0;
+		 if(mem==2)
 		 {
 			 System.out.println("Your order Id is " + orderlistarray.size());
 			 resList.getReservation(resid).updateOrderID(orderlistarray.size());
 			 System.out.println("");
 			 return;
 		 }
-		 while(count<=3) {
-			 System.out.println("Please enter your Member ID: ");
-			 memberId = sc.nextInt();
-			 System.out.println("Please enter your Contact Number: ");
-			 String contact = sc.next();
-			 member = memberList.checkMember(memberId, contact);
-			 if(member==0) {
-				 System.out.println("Invalid Member ID/Contact No. Try Again");
-				 count++;
+		 else if(mem==1) {
+			 while ( true ){
+				 System.out.println("Please enter your Member ID: ");
+				 memberId = sc.nextInt();
+				 System.out.println("Please enter your Contact Number: ");
+				 String contact = sc.next();
+				 member = memberList.checkMember(memberId, contact);
+				 if(member==0) {
+					 System.out.println("Invalid Member ID/Contact No. Try Again");
+					 count++;
+					 if(count>3) System.out.println("Failed 3 times. Proceeding...");
+					 else memberList.getMember(memberId);
+				 }
+				 else{
+					 break;
+				 }
 			 }
-			 else break;
 		 }
-		 if(count>3) System.out.println("Failed 3 times. Proceeding...");
-		 else memberList.getMember(memberId);
 		 orderlistarray.get(orderlistarray.size()-1).updateMembership(member);
 		 System.out.println("Your order Id is " + orderlistarray.size());
 		 resList.getReservation(resid-1).updateOrderID(orderlistarray.size());
