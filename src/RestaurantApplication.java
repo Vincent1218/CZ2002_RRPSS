@@ -31,6 +31,10 @@ public class RestaurantApplication {
 		int counter=0;
 		do
 		{
+			if(counter == 3){
+				System.out.println("Too many Attempts.Exiting Program..");
+				return;
+			}
 			System.out.println("---------Menu Changes--------");
 			System.out.println("(1) Create/Update/Remove menu item");
 			System.out.println("(2) Create/Update/Remove promotion");
@@ -55,10 +59,7 @@ public class RestaurantApplication {
 			System.out.print("Enter your Choice: ");
 			while(countermain<3)
 			{
-				try
-				{
-					choice = sc.nextInt();
-				}
+				try { choice = sc.nextInt(); }
 				catch(InputMismatchException ex)
 				{
 					System.out.println("Incorrect Entry.Please Try Again..");
@@ -176,8 +177,6 @@ public class RestaurantApplication {
 						continue;
 					}
 					counter = 0;
-					if(counter == 0) { break; }
-				}
 					if (choice == 1)
 					{
 						while(counter<3)
@@ -232,6 +231,8 @@ public class RestaurantApplication {
 							 System.out.println("");
 						}
 					}
+				}
+				if(counter == 0) { break; }
 			}
 			break;
 			case 5:
