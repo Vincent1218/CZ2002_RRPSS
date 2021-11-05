@@ -22,12 +22,12 @@ public class ReservationList {
 		int tableId = tables.checkAvailability(pax);
 		if(tableId==0) System.out.println("Sorry, we have no available tables at the moment. Please try again later.");
 		else {
-			System.out.println("Enter the Date in DD MMM YYYY:");
-			String date = sc.nextLine();
+			System.out.println("Enter the Date in DD/MM/YYYY:");
+			String date = sc.next();
 			System.out.println("Enter the Time in HH:MM AM/PM:");
-			String time = sc.nextLine();
+			String time = sc.next();
 			System.out.println("Please enter your Contact Number");
-			String contact = sc.nextLine();
+			String contact = sc.next();
 			int resId = resList.size() + 1;
 			Reservation newRes = new Reservation(name, contact, pax, date,time, tableId, resId);
 			resList.add(newRes);
@@ -62,7 +62,7 @@ public class ReservationList {
 			else {
 				System.out.println("Enter the Reservation ID: ");
 				int resId = sc.nextInt();
-				if(resId>resList.size()) System.out.println("Invalid Reservation ID");
+				if(resId>resList.size()||resId<0) System.out.println("Invalid Reservation ID");
 				else {
 					System.out.println("Reservation ID: " + resList.get(resId-1).getResID());
 					System.out.println("Name: " + resList.get(resId-1).getResName());
@@ -78,7 +78,7 @@ public class ReservationList {
 		}
 	}
 	public void viewInvoiceReservationReservation(int resId) {
-		if(resId>resList.size()) System.out.println("Invalid Reservation ID");
+		if(resId>resList.size()||resId<0)System.out.println("Invalid Reservation ID");
 		else {
 			System.out.println("Date: " + resList.get(resId-1).getResDate());
 			System.out.println("Reservation ID: " + resList.get(resId-1).getResID());
@@ -90,11 +90,12 @@ public class ReservationList {
 		
 	}
 	public Reservation getReservation(int resid) {
-		return resList.get(resid-1);
+			return resList.get(resid-1);
 	}
 	
 	public void removeReservation(int resId, TableList tables) {
 		if(resList.size()==0) System.out.println("There are no reservations.");
+		else if(resId>resList.size()||resId<0)System.out.println("Invalid Reservation ID");
 		else {
 			int tableId = resList.get(resId-1).getResTableID();
 			tables.getTable(tableId).unassign();

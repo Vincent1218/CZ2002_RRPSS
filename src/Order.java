@@ -132,6 +132,13 @@ public class Order {
 				}
 			}
 			break;
+			default:
+			 {
+				 System.out.println("");
+				 System.out.println("Incorrect Entry. Please try again...");
+				 System.out.println("");
+			 }
+			 break;
 		}
 		 if (check ==0)
 		 {
@@ -144,7 +151,7 @@ public class Order {
 		int check =0;
 		System.out.println("What is the Item ID of the Dish that needs its quantity to be updated?");
 		Scanner sc =new Scanner(System.in);
-		 String id = sc.next();
+		String id = sc.next();
 		for(int i=0;i<this.numOfItems;i++)
 		{
 			if(id.equals(this.orderArr.get(i).getItemID()))
@@ -157,6 +164,9 @@ public class Order {
 		}
 		if (check ==0)
 		 {
+			 System.out.println("");
+			 System.out.println("Incorrect Entry. Please try again...");
+			 System.out.println("");
 			 System.out.println("Adding order Failed..");
 		 }
 	}

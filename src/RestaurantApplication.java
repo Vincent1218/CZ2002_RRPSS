@@ -136,6 +136,12 @@ public class RestaurantApplication {
 					{
 						resList.makeRes(tables);
 					}
+					else
+					{
+						 System.out.println("");
+						 System.out.println("Incorrect Entry. Please try again...");
+						 System.out.println("");
+					}
 				}
 			}
 			break;
@@ -170,6 +176,13 @@ public class RestaurantApplication {
 							 System.out.println("Order" + orderid + "is updated");
 						 }
 						 break;
+						 default:
+						 {
+							 System.out.println("");
+							 System.out.println("Incorrect Entry. Please try again...");
+							 System.out.println("");
+						 }
+						 break;
 					 }
 				}
 				while (choice <4);
@@ -189,11 +202,18 @@ public class RestaurantApplication {
 					 break;
 					 case 2:
 					 {
-						 System.out.println("What is the Reservation Id of the order to be updated");
+						    System.out.println("What is the Reservation Id of the order to be updated");
 							int resid = sc.nextInt();
+							if(resid>resList.getSize()||resid<0)
+							 {
+								 System.out.println("Incorrect Entry. Please try again...");
+								 System.out.println("");
+								 break;
+							 }
 							int orderid = resList.getReservation(resid).getOrderID();
 							orderlistarr.viewOrder(orderid);
 					 }
+					 break;
 					 default:
 					 {
 						 System.out.println("");
@@ -216,11 +236,27 @@ public class RestaurantApplication {
 				System.out.println("Would you like to remove any reservations?");
 				System.out.println("(1)Yes (2)No");
 				int check = sc.nextInt();
-				if(check==1) {
-					System.out.println("Reservation ID of reservation to be removed?");
-					int resId = sc.nextInt();
-					resList.removeReservation(resId, tables);
-				}
+				switch (check)
+				 {
+					 case 1:
+					 {
+						 System.out.println("Reservation ID of reservation to be removed?");
+							int resId = sc.nextInt();
+							resList.removeReservation(resId, tables);
+					 }
+					 break;
+					 case 2:
+					 {
+						 System.out.println("");
+					 }
+					 break;
+					 default:
+					 {
+						 System.out.println("");
+						 System.out.println("Incorrect Entry. Please try again...");
+						 System.out.println("");
+					 }
+				 }
 			}
 			break;
 			case 9: {

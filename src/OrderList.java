@@ -28,10 +28,14 @@ public class OrderList {
 	}
 	public void viewOrder(int orderId)
 	{
-			System.out.println("Order Number  " + orderId);
-			System.out.println("----------------------------------");
-			System.out.println("");
-			orderlistarray.get(orderId-1).printOrder();
+		if(orderId<0 || orderId>orderlistarray.size())
+		{
+			return;
+		}
+		System.out.println("Order Number  " + orderId);
+		System.out.println("----------------------------------");
+		System.out.println("");
+		orderlistarray.get(orderId-1).printOrder();
 	}
 	public void payOrder(int orderId)
 	{
