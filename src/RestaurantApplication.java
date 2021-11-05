@@ -6,7 +6,8 @@ public class RestaurantApplication {
 	public static void main(String[] args) {
 		int choice=0;
 		int resid=0;
-		int countermain =0;
+		int counter=0;
+		int orderid=0;
 		Menu mainmenu = new Menu();
 		StaffList staffList = new StaffList();
 		// Prepopulating.....
@@ -28,7 +29,6 @@ public class RestaurantApplication {
 		System.out.println("");
 		System.out.println("Welcome " + staff.getStaffName() + " to the use of the Restaurant Application" );
 		System.out.println("");
-		int counter=0;
 		do
 		{
 			if(counter == 3){
@@ -58,21 +58,24 @@ public class RestaurantApplication {
 			System.out.println("(15) Exit");
 			System.out.println("");
 			System.out.print("Enter your Choice: ");
-			while(countermain<3)
+			while(counter<3)
 			{
 				try { choice = sc.nextInt(); }
 				catch(InputMismatchException ex)
 				{
-					System.out.println("Incorrect Entry.Please Try Again..");
-					System.out.println("");
+					if(counter<2)
+					{
+						System.out.println("Incorrect Entry.Please Try Again..");
+						System.out.println("");
+					}
 					sc.next();
-					++countermain;
+					++counter;
 					continue;
 				}
-				countermain = 0;
-				if(countermain == 0) { break; }
+				counter = 0;
+				if(counter == 0) { break; }
 			}
-			if(countermain==3)
+			if(counter==3)
 			{
 				System.out.println("Too many Attempts.Exiting Program..");
 				return;
@@ -87,8 +90,11 @@ public class RestaurantApplication {
 					try { choice = sc.nextInt(); }
 					catch(InputMismatchException ex)
 					{
-						System.out.println("Incorrect Entry.Please Try Again..");
-						System.out.println("");
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
 						sc.next();
 						++counter;
 						continue;
@@ -126,8 +132,11 @@ public class RestaurantApplication {
 					try { choice = sc.nextInt(); }
 					catch(InputMismatchException ex)
 					{
-						System.out.println("Incorrect Entry.Please Try Again..");
-						System.out.println("");
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
 						sc.next();
 						++counter;
 						continue;
@@ -171,86 +180,97 @@ public class RestaurantApplication {
 					try { choice = sc.nextInt(); }
 					catch(InputMismatchException ex)
 					{
-						System.out.println("Incorrect Entry.Please Try Again..");
-						System.out.println("");
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
 						sc.next();
 						++counter;
 						continue;
 					}
 					counter = 0;
-					if (choice == 1)
+					if(counter == 0) { break; }
+				}
+				if (choice == 1)
+				{
+					while(counter<3)
 					{
-						while(counter<3)
+						System.out.println("What is your Reservation ID");
+						try {resid = sc.nextInt(); }
+						catch(InputMismatchException ex)
 						{
-							System.out.println("What is your Reservation ID");
-							try {resid = sc.nextInt(); }
-							catch(InputMismatchException ex)
+							if(counter<2)
 							{
 								System.out.println("Incorrect Entry.Please Try Again..");
 								System.out.println("");
-								sc.next();
-								++counter;
-								continue;
 							}
-							counter = 0;
-							if(counter == 0) { break; }
+							sc.next();
+							++counter;
+							continue;
 						}
-						System.out.println("");
-						if(resid>resList.getSize()||resid<0)
-						 {
-							 System.out.println("Incorrect Entry. Please try again...");
-							 System.out.println("");
-							 break;
-						 }
-						orderlistarr.createOrder(mainmenu,staff,memberList,resList,resid);
-						break;
+						counter = 0;
+						if(counter == 0) { break; }
+					}
+					System.out.println("");
+					if(resid>resList.getSize()||resid<0)
+					 {
+						 System.out.println("Incorrect Entry. Please try again...");
+						 System.out.println("");
+						 break;
+					 }
+					orderlistarr.createOrder(mainmenu,staff,memberList,resList,resid);
+				}
+				else
+				{
+					while(counter<3)
+					{
+						System.out.println("Would you like to make a Reservation first? (1 Yes)(0 No)");
+						try { choice = sc.nextInt(); }
+						catch(InputMismatchException ex)
+						{
+							if(counter<2)
+							{
+								System.out.println("Incorrect Entry.Please Try Again..");
+								System.out.println("");
+							}
+							sc.next();
+							++counter;
+							continue;
+						}
+						counter = 0;
+						if(counter == 0) { break; }
+					}
+					if (choice == 1)
+					{
+						resList.makeRes(tables);
 					}
 					else
 					{
-						while(counter<3)
-						{
-							System.out.println("Would you like to make a Reservation first? (1 Yes)(0 No)");
-							try { choice = sc.nextInt(); }
-							catch(InputMismatchException ex)
-							{
-								System.out.println("Incorrect Entry.Please Try Again..");
-								System.out.println("");
-								sc.next();
-								++counter;
-								continue;
-							}
-							counter = 0;
-							if(counter == 0) { break; }
-						}
-						if (choice == 1)
-						{
-							resList.makeRes(tables);
-						}
-						else
-						{
-							 System.out.println("");
-							 System.out.println("Incorrect Entry. Please try again...");
-							 System.out.println("");
-						}
+						 System.out.println("");
+						 System.out.println("Incorrect Entry. Please try again...");
+						 System.out.println("");
 					}
 				}
-				if(counter == 0) { break; }
 			}
 			break;
 			case 5:
 			{
 				//delete bottom line once all the other classes have exception handling
-				int orderid=0;
 				while(counter<3)
 				{
 					System.out.println("What is the Order Id of the order to be updated");
 					try{orderid = sc.nextInt();}
 					catch(InputMismatchException ex)
 					{
-						System.out.println("Incorrect Entry.Please Try Again..");
-						System.out.println("");
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
 						sc.next();
 						++counter;
+						continue;
 					}
 					counter=0;
 					if(counter == 0) { break; }
@@ -264,8 +284,11 @@ public class RestaurantApplication {
 						try { choice = sc.nextInt(); }
 						catch(InputMismatchException ex)
 						{
-							System.out.println("Incorrect Entry.Please Try Again..");
-							System.out.println("");
+							if(counter<2)
+							{
+								System.out.println("Incorrect Entry.Please Try Again..");
+								System.out.println("");
+							}
 							sc.next();
 							++counter;
 							continue;
@@ -316,8 +339,11 @@ public class RestaurantApplication {
 					try { choice = sc.nextInt(); }
 					catch(InputMismatchException ex)
 					{
-						System.out.println("Incorrect Entry.Please Try Again..");
-						System.out.println("");
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
 						sc.next();
 						++counter;
 						continue;
@@ -340,8 +366,11 @@ public class RestaurantApplication {
 							 try {resid = sc.nextInt(); }
 								catch(InputMismatchException ex)
 								{
-									System.out.println("Incorrect Entry.Please Try Again..");
-									System.out.println("");
+									if(counter<2)
+									{
+										System.out.println("Incorrect Entry.Please Try Again..");
+										System.out.println("");
+									}
 									sc.next();
 									++counter;
 									continue;
@@ -355,7 +384,7 @@ public class RestaurantApplication {
 							 System.out.println("");
 							 break;
 						 }
-						int orderid = resList.getReservation(resid).getOrderID();
+						orderid = resList.getReservation(resid).getOrderID();
 						orderlistarr.viewOrder(orderid);
 					 }
 					 break;
@@ -386,8 +415,11 @@ public class RestaurantApplication {
 					try { choice = sc.nextInt(); }
 					catch(InputMismatchException ex)
 					{
-						System.out.println("Incorrect Entry.Please Try Again..");
-						System.out.println("");
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
 						sc.next();
 						++counter;
 						continue;
@@ -405,8 +437,11 @@ public class RestaurantApplication {
 							    try {resid = sc.nextInt(); }
 								catch(InputMismatchException ex)
 								{
-									System.out.println("Incorrect Entry.Please Try Again..");
-									System.out.println("");
+									if(counter<2)
+									{
+										System.out.println("Incorrect Entry.Please Try Again..");
+										System.out.println("");
+									}
 									sc.next();
 									++counter;
 									continue;
@@ -438,39 +473,85 @@ public class RestaurantApplication {
 			break;
 			case 10: {
 				// Print order invoice
-				System.out.println(" ");
-				System.out.println("What is the orderId of the order invoice");
-				int num = sc.nextInt();
-				System.out.println("Do you wish to use the current date and time or to input your own date and time?");
-				System.out.println("(1)Current date and time, (2)Input date and time");
-				int opt = sc.nextInt();
-				sc.nextLine();
-				if (opt == 2)
+				System.out.println("");
+				while (counter<3)
 				{
-					orderlistarr.getOrder(num).updateDate();
+					System.out.println("What is the orderId of the order invoice");
+					try{orderid = sc.nextInt();}
+					catch(InputMismatchException ex)
+					{
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
+						sc.next();
+						++counter;
+						continue;
+					}
+					counter=0;
+					if(counter == 0) { break; }
 				}
-				int TempResID= orderlistarr.getOrder(num).getResID();
+				while (counter<3)
+				{
+					System.out.println("Do you wish to use the current date and time or to input your own date and time?");
+					System.out.println("(1)Current date and time, (2)Input date and time");
+					try { choice = sc.nextInt(); }
+					catch(InputMismatchException ex)
+					{
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
+						sc.next();
+						++counter;
+						continue;
+					}
+					counter = 0;
+					if(counter == 0) { break; }
+				}
+				if (choice == 2)
+				{
+					orderlistarr.getOrder(orderid).updateDate();
+				}
+				int TempResID= orderlistarr.getOrder(orderid).getResID();
 				resList.viewInvoiceReservationReservation(TempResID);
 				System.out.println("");
-				System.out.println("Order Number  " + num);
+				System.out.println("Order Number  " + orderid);
 				System.out.println("----------------------------------");
-				orderlistarr.printOrderInvoice(num);
-				orderlistarr.payOrder(num);
+				orderlistarr.printOrderInvoice(orderid);
+				orderlistarr.payOrder(orderid);
 				// Remove reservation and unassign Table
-				resList.removeReservation(orderlistarr.getOrder(num).getResID(), tables);
+				resList.removeReservation(orderlistarr.getOrder(orderid).getResID(), tables);
 				//after payment is made, add order to sales revenue
-				totalsales.addSalesRecord(orderlistarr.getOrder(num));
+				totalsales.addSalesRecord(orderlistarr.getOrder(orderid));
 			}
 			break;
 			case 11:
 			{
 				//Print sale revenue report by period (eg day or month) function
-				System.out.println("(1)Print by day (2)Print by month (3)Print by year (4)Quit");
-				int option = sc.nextInt();
-				sc.nextLine();
-				while (option != 4)
+				while (counter<3)
 				{
-					switch(option)
+					System.out.println("(1)Print by day (2)Print by month (3)Print by year (4)Quit");
+					try { choice = sc.nextInt(); }
+					catch(InputMismatchException ex)
+					{
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
+						sc.next();
+						++counter;
+						continue;
+					}
+					counter = 0;
+					if(counter == 0) { break; }
+				}
+				while (choice != 4)
+				{
+					switch(choice)
 					{
 						case 1: {
 							System.out.println("Enter the day (eg:3 Mar 2021 or 15 Oct 2019): ");
@@ -497,14 +578,14 @@ public class RestaurantApplication {
 							System.out.println("Please choose an option from 1 to 4.");
 						}
 					}
-					if (option == 4)
+					if (choice == 4)
 					{
 						break;
 					}
 					else
 					{
 						System.out.println("(1)Print by day (2)Print by month (3)Print by year (4)Quit");
-						option = sc.nextInt();
+						choice = sc.nextInt();
 						sc.nextLine();
 					}
 				}
