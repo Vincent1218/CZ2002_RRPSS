@@ -9,8 +9,11 @@ public class ReservationList {
 	{
 		this.resList =new ArrayList<>();
 	}
-	
-	void makeRes(TableList tables) {
+	public int getSize()
+	{
+		return resList.size();
+	}
+	public void makeRes(TableList tables) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Whose name will the reservation be under?");
 		String name = sc.next();
@@ -19,13 +22,14 @@ public class ReservationList {
 		int tableId = tables.checkAvailability(pax);
 		if(tableId==0) System.out.println("Sorry, we have no available tables at the moment. Please try again later.");
 		else {
-			System.out.println("Time of Reservation?");
-			sc.nextLine();
+			System.out.println("Enter the Date in DD MMM YYYY:");
+			String date = sc.nextLine();
+			System.out.println("Enter the Time in HH:MM AM/PM:");
 			String time = sc.nextLine();
 			System.out.println("Please enter your Contact Number");
 			String contact = sc.nextLine();
 			int resId = resList.size() + 1;
-			Reservation newRes = new Reservation(name, contact, pax, time, tableId, resId);
+			Reservation newRes = new Reservation(name, contact, pax, date,time, tableId, resId);
 			resList.add(newRes);
 			System.out.println("");
 			System.out.println("Reservation successful. Your Reservation ID is " + resId + " and your Table ID is " + tableId);
@@ -33,7 +37,7 @@ public class ReservationList {
 		}
 	}
 	
-	void viewReservation() {
+	public void viewReservation() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Would you like to view all reservations or a specific reservation?");
 		System.out.println("(1)View all (2)View specific");
@@ -46,6 +50,7 @@ public class ReservationList {
 					System.out.println("Name: " + resList.get(i).getResName());
 					System.out.println("Contact Number: " + resList.get(i).getResContact());
 					System.out.println("No. of pax: " + resList.get(i).getResPax());
+					System.out.println("Date: " + resList.get(i).getResDate());
 					System.out.println("Reservation Timing: " + resList.get(i).getResTime());
 					System.out.println("Table ID: " + resList.get(i).getResTableID());
 					System.out.println("");
@@ -63,6 +68,7 @@ public class ReservationList {
 					System.out.println("Name: " + resList.get(resId-1).getResName());
 					System.out.println("Contact Number: " + resList.get(resId-1).getResContact());
 					System.out.println("No. of pax: " + resList.get(resId-1).getResPax());
+					System.out.println("Date: " + resList.get(resId-1).getResDate());
 					System.out.println("Reservation Timing: " + resList.get(resId-1).getResTime());
 					System.out.println("Table ID: " + resList.get(resId-1).getResTableID());
 					System.out.println("");
@@ -71,9 +77,10 @@ public class ReservationList {
 			}
 		}
 	}
-	void viewInvoiceReservationReservation(int resId) {
+	public void viewInvoiceReservationReservation(int resId) {
 		if(resId>resList.size()) System.out.println("Invalid Reservation ID");
 		else {
+			System.out.println("Date: " + resList.get(resId-1).getResDate());
 			System.out.println("Reservation ID: " + resList.get(resId-1).getResID());
 			System.out.println("Name: " + resList.get(resId-1).getResName());
 			System.out.println("Contact Number: " + resList.get(resId-1).getResContact());
@@ -82,11 +89,11 @@ public class ReservationList {
 		}
 		
 	}
-	Reservation getReservation(int resid) {
+	public Reservation getReservation(int resid) {
 		return resList.get(resid-1);
 	}
 	
-	void removeReservation(int resId, TableList tables) {
+	public void removeReservation(int resId, TableList tables) {
 		if(resList.size()==0) System.out.println("There are no reservations.");
 		else {
 			int tableId = resList.get(resId-1).getResTableID();

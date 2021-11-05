@@ -201,7 +201,7 @@ public class Order {
 			 this.totalPrice += this.orderArr.get(i).getQuantity()*this.orderArr.get(i).getPrice();
 		}
 		System.out.println("");
-	    System.out.println("Total Price is: " + this.totalPrice);
+	    System.out.println("Total Price is: $" + this.totalPrice);
 	    System.out.println("");
 	    
 		if(this.isMember ==1)
@@ -209,11 +209,11 @@ public class Order {
 			System.out.println("This order is eligible for the 10% membership discount");
 			System.out.println("");
 			double tempprice = 1.17*this.totalPrice;
-			System.out.println("Price after 17% GST is now: " + (tempprice));
+			System.out.println("Price after 17% GST is now: $" + (tempprice));
 			System.out.println("");
-			System.out.println("Price after 10% Membership discount is now: " + (0.9*tempprice));
+			System.out.println("Price after 10% Membership discount is now: $" + (0.9*tempprice));
 			System.out.println("");
-			System.out.println("Final Price is : " + (0.9*tempprice));
+			System.out.println("Final Price is : $" + (0.9*tempprice));
 			System.out.println("");
 			this.finalPrice = 0.9*tempprice;
 		}
@@ -222,7 +222,7 @@ public class Order {
 			System.out.println("This order is not eligible for the discount");
 			System.out.println("");
 			double tempprice = 1.17*this.totalPrice;
-			System.out.println("Price after 17% GST is now: " + (tempprice));
+			System.out.println("Price after 17% GST is now: $" + (tempprice));
 			System.out.println("");
 			this.finalPrice = tempprice;
 		}
@@ -247,11 +247,6 @@ public class Order {
 			return 0;
 		}
 		return this.finalPrice;
-	}
-
-	public void sortOrder()
-	{
-		//sort based on type of dish this one can use previous lab sorting mechanism
 	}
 	
 }

@@ -16,8 +16,7 @@ public class RestaurantApplication {
 		ReservationList resList = new ReservationList();
 		SalesRecord totalsales = new SalesRecord(); //keep track of all sales
 		Scanner sc = new Scanner(System.in);
-		Staff staff = staffList.getStaff();
-
+		Staff staff = staffList.getStaff();	
 		if (staff == null)
 		{
 		System.out.println("Unauthorised access. Program exiting...");
@@ -120,6 +119,13 @@ public class RestaurantApplication {
 				{
 					System.out.println("What is your Reservation ID");
 					int resid = sc.nextInt();
+					System.out.println("");
+					if(resid>resList.getSize()||resid<0)
+					 {
+						 System.out.println("Incorrect Entry. Please try again...");
+						 System.out.println("");
+						 break;
+					 }
 					orderlistarr.createOrder(mainmenu,staff,memberList,resList,resid);
 				}
 				else
@@ -135,9 +141,8 @@ public class RestaurantApplication {
 			break;
 			case 5:
 			{
-				System.out.println("What is the Reservation Id of the order to be updated");
-				int resid = sc.nextInt();
-				int orderid = resList.getReservation(resid).getOrderID();
+				System.out.println("What is the Order Id of the order to be updated");
+				int orderid = sc.nextInt();
 				orderlistarr.viewOrder(orderid);
 				do
 				{

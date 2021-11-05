@@ -27,10 +27,10 @@ public class PrePopulate {
         menu.getBev().add(new MenuItems("B2","White Coffee","White Coffee",3.0));
         menu.getBev().add(new MenuItems("B3","Vietnamese Filter Coffee","Vietnamese Filter Coffee",3.0));
         menu.getBev().add(new MenuItems("B4","Apple Tea","Apple Tea",3.5));
-        menu.getBev().add(new MenuItems("B5","Pina Colada","Rum, Malibu, pineapple",6.5));
-        menu.getBev().add(new MenuItems("B6","Sapa Punch","Orange, lemon, pineapple, banana, sugar",4.0));
-        menu.getBev().add(new MenuItems("B7","Chocolate Banana","Cocoa, banana, milk, sugar",4.5));
-        menu.getBev().add(new MenuItems("B8","Mango Lasse","Mango, yogurt, sugar",4.5));
+        menu.getBev().add(new MenuItems("B5","Fruit Punch","Fig, Orange, Pineapple",6.5));
+        menu.getBev().add(new MenuItems("B6","Sapa Punch","Orange, Lemon, Pineapple, Banana, Sugar",4.0));
+        menu.getBev().add(new MenuItems("B7","Chocolate Banana","Cocoa, Banana, Milk, Sugar",4.5));
+        menu.getBev().add(new MenuItems("B8","Mango Lasse","Mango, Yogurt, Sugar",4.5));
 
         // Populating Staff
         staffList.getStaffArray().add(new Staff(1,"Pikachu"));

@@ -11,9 +11,10 @@ public class Reservation {
 	private int tableID;
 	private int orderID;
 	
-	public Reservation(String name, String contact, int pax, String time, int tableId, int resId) {
+	public Reservation(String name, String contact, int pax, String date,String time, int tableId, int resId) {
 		//this.date = DateFormat.getInstance().format(java.time.LocalDate.now());
 		this.time = time;
+		this.date = date;
 		this.pax = pax;
 		this.name = name;
 		this.contact = contact;

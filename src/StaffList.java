@@ -24,15 +24,33 @@ public class StaffList {
 
     public Staff getStaff()
     {
-        System.out.println("What is your staffID Number? (1 - " + staffArray.size() +")");
-        Scanner sc =new Scanner(System.in);
-        int id = sc.nextInt();
-        if(id>0 && id<=staffArray.size()){
-            return staffArray.get(id-1);
-        }
-        else{
-            return null;
-        }
+    	int check =0;
+    	int counter =0;
+    	int id=0;
+    	do
+    	{
+    		System.out.println("What is your staffID Number? (1 - " + staffArray.size() +")");
+            Scanner sc =new Scanner(System.in);
+            id = sc.nextInt();
+            if(id>0 && id<=staffArray.size()){
+                check =1;
+                break;
+            }
+            else if(counter<2)
+            {
+            	System.out.println("Incorrect Entry.Please Try Again..");
+				System.out.println("");
+            }
+            counter++;
+    	}while(check!=1 && counter<3);
+    	if(check==1)
+    	{
+    		return staffArray.get(id-1);
+    	}
+    	else
+    	{
+    		return null;
+    	}
     }
 
     public Staff updateStaffId()
