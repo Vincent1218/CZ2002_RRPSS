@@ -82,21 +82,64 @@ public class Menu {
 		String name,description;
 		name = "";
 		description = "";
-		double price;
+		double price=0;
 		int counter =0;
+		int choice=0;
 		Scanner sc = new Scanner(System.in);
-		System.out.println("What type of item is the new menu item(Main 1)/(Beverage 2)/(Dessert 3)?");
-		int choice = sc.nextInt();
-		sc.nextLine();
+		while(counter<3)
+		{
+			System.out.println("What type of item is the new menu item(Main 1)/(Beverage 2)/(Dessert 3)?");
+			try { choice = sc.nextInt(); }
+			catch(InputMismatchException ex)
+			{
+				if(counter<2)
+				{
+					System.out.println("Incorrect Entry.Please Try Again..");
+					System.out.println("");
+				}
+				sc.next();
+				++counter;
+				continue;
+			}
+			counter = 0;
+			if(counter == 0) { break; }
+		}
+		if(counter == 3) 
+		{ 
+			counter=0;
+			System.out.println("Too many Attempts.Return to main program..");
+			return;
+		}
 		switch (choice)
 		{
 			case 1:
 			{
 				System.out.println("What is the name of the new Main Dish?");
 				name += sc.nextLine();
-				System.out.println("What is the price of this item?");
-				price = sc.nextDouble();
-				sc.nextLine();
+				while(counter<3)
+				{
+					System.out.println("What is the price of this item?");
+					try { price = sc.nextDouble();}
+					catch(InputMismatchException ex)
+					{
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
+						sc.next();
+						++counter;
+						continue;
+					}
+					counter = 0;
+					if(counter == 0) { break; }
+				}
+				if(counter == 3) 
+				{ 
+					counter=0;
+					System.out.println("Too many Attempts.Return to main program..");
+					return;
+				}
 				System.out.println("What is the description of the item?");
 				description += sc.nextLine();
 				MenuItems newitem =new MenuItems("M"+(maindish.size() + 1),name,description,price);
@@ -108,9 +151,30 @@ public class Menu {
 			{
 				System.out.println("What is the name of the new Beverage?");
 				name += sc.nextLine();
-				System.out.println("What is the price of this item?");
-				price = sc.nextDouble();
-				sc.nextLine();
+				while(counter<3)
+				{
+					System.out.println("What is the price of this item?");
+					try { price = sc.nextDouble();}
+					catch(InputMismatchException ex)
+					{
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
+						sc.next();
+						++counter;
+						continue;
+					}
+					counter = 0;
+					if(counter == 0) { break; }
+				}
+				if(counter == 3) 
+				{ 
+					counter=0;
+					System.out.println("Too many Attempts.Return to main program..");
+					return;
+				}
 				System.out.println("What is the description of the item?");
 				description += sc.nextLine();
 				MenuItems newitem =new MenuItems("B"+(beverages.size() + 1),name,description,price);
@@ -122,9 +186,30 @@ public class Menu {
 			{
 				System.out.println("What is the name of the new Dessert?");
 				name += sc.nextLine();
-				System.out.println("What is the price of this item?");
-				price = sc.nextDouble();
-				sc.nextLine();
+				while(counter<3)
+				{
+					System.out.println("What is the price of this item?");
+					try { price = sc.nextDouble();}
+					catch(InputMismatchException ex)
+					{
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
+						sc.next();
+						++counter;
+						continue;
+					}
+					counter = 0;
+					if(counter == 0) { break; }
+				}
+				if(counter == 3) 
+				{ 
+					counter=0;
+					System.out.println("Too many Attempts.Return to main program..");
+					return;
+				}
 				System.out.println("What is the description of the item?");
 				description += sc.nextLine();
 				MenuItems newitem =new MenuItems("D"+(desserts.size() + 1),name,description,price);
@@ -137,7 +222,10 @@ public class Menu {
 	
 	public void updateMenuItem()
 	{
+		int check =0;
+		int counter=0;
 		String id;
+		double newprice =0;
 		id = "";
 		System.out.println("What type of item is the menu item to be updated(Main 1)/(Beverage 2)/(Dessert 3)?");
 		Scanner sc = new Scanner(System.in);
@@ -150,10 +238,45 @@ public class Menu {
 			{
 				System.out.println("What is the Item ID of the Main Dish to be updated?");
 				id = sc.nextLine();
-				System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
-				choice = sc.nextInt();
-				sc.nextLine();
-				int check =0;
+				for(int i=0;i<maindish.size();i++)
+				{
+					if (id.equals(maindish.get(i).getItemID()))
+					{
+						check =1;
+					}
+				}
+				if(check == 0)
+				{
+					System.out.println("");
+					System.out.println("Incorrect Entry. Please try again...");
+					break;
+				}
+				if(check==1)check=0;
+				while(counter<3)
+				{
+					System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
+					
+					try { choice = sc.nextInt(); }
+					catch(InputMismatchException ex)
+					{
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
+						sc.next();
+						++counter;
+						continue;
+					}
+					counter = 0;
+					if(counter==0) {break;}
+				}
+				if(counter == 3) 
+				{ 
+					counter=0;
+					System.out.println("Too many Attempts.Return to main program..");
+					return;
+				}
 				for(int i=0;i<maindish.size();i++)
 				{
 					if (id.equals(maindish.get(i).getItemID()))
@@ -174,8 +297,30 @@ public class Menu {
 							}
 							break;
 							case 3: {
-								System.out.println("What is the new price of the Main Dish?");
-								double newprice = sc.nextDouble();
+								while(counter<3)
+								{
+									System.out.println("What is the new price of the Main Dish?");
+									try { newprice = sc.nextDouble();}
+									catch(InputMismatchException ex)
+									{
+										if(counter<2)
+										{
+											System.out.println("Incorrect Entry.Please Try Again..");
+											System.out.println("");
+										}
+										sc.next();
+										++counter;
+										continue;
+									}
+									counter = 0;
+									if(counter == 0) { break; }
+								}
+								if(counter == 3) 
+								{ 
+									counter=0;
+									System.out.println("Too many Attempts.Return to main program..");
+									return;
+								}
 								maindish.get(i).updatePrice(newprice);
 							}
 							break;
@@ -198,10 +343,45 @@ public class Menu {
 			{
 				System.out.println("What is the Item ID of the Beverage to be updated?");
 				id = sc.nextLine();
-				System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
-				choice = sc.nextInt();
-				sc.nextLine();
-				int check =0;
+				for(int i=0;i<beverages.size();i++)
+				{
+					if (id.equals(beverages.get(i).getItemID()))
+					{
+						check =1;
+					}
+				}
+				if(check == 0)
+				{
+					System.out.println("");
+					System.out.println("Incorrect Entry. Please try again...");
+					break;
+				}
+				if(check==1)check=0;
+				while(counter<3)
+				{
+					System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
+					
+					try { choice = sc.nextInt(); }
+					catch(InputMismatchException ex)
+					{
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
+						sc.next();
+						++counter;
+						continue;
+					}
+					counter = 0;
+					if(counter==0) {break;}
+				}
+				if(counter == 3) 
+				{ 
+					counter=0;
+					System.out.println("Too many Attempts.Return to main program..");
+					return;
+				}
 				for(int i=0;i<beverages.size();i++)
 				{
 					if (id.equals(beverages.get(i).getItemID()))
@@ -222,8 +402,30 @@ public class Menu {
 							}
 							break;
 							case 3: {
-								System.out.println("What is the new price of the Beverage?");
-								double newprice = sc.nextDouble();
+								while(counter<3)
+								{
+									System.out.println("What is the new price of the Beverage?");
+									try { newprice = sc.nextDouble();}
+									catch(InputMismatchException ex)
+									{
+										if(counter<2)
+										{
+											System.out.println("Incorrect Entry.Please Try Again..");
+											System.out.println("");
+										}
+										sc.next();
+										++counter;
+										continue;
+									}
+									counter = 0;
+									if(counter == 0) { break; }
+								}
+								if(counter == 3) 
+								{ 
+									counter=0;
+									System.out.println("Too many Attempts.Return to main program..");
+									return;
+								}
 								beverages.get(i).updatePrice(newprice);
 							}
 							break;
@@ -245,10 +447,45 @@ public class Menu {
 			{
 				System.out.println("What is the Item ID of the Dessert to be updated?");
 				id += sc.nextLine();
-				System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
-				choice = sc.nextInt();
-				sc.nextLine();
-				int check =0;
+				for(int i=0;i<desserts.size();i++)
+				{
+					if (id.equals(desserts.get(i).getItemID()))
+					{
+						check =1;
+					}
+				}
+				if(check == 0)
+				{
+					System.out.println("");
+					System.out.println("Incorrect Entry. Please try again...");
+					break;
+				}
+				if(check==1)check=0;
+				while(counter<3)
+				{
+					System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
+					
+					try { choice = sc.nextInt(); }
+					catch(InputMismatchException ex)
+					{
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
+						sc.next();
+						++counter;
+						continue;
+					}
+					counter = 0;
+					if(counter==0) {break;}
+				}
+				if(counter == 3) 
+				{ 
+					counter=0;
+					System.out.println("Too many Attempts.Return to main program..");
+					return;
+				}
 				for(int i=0;i<desserts.size();i++)
 				{
 					if (id.equals(desserts.get(i).getItemID()))
@@ -269,8 +506,30 @@ public class Menu {
 							}
 							break;
 							case 3: {
-								System.out.println("What is the new price of the Dessert?");
-								double newprice = sc.nextDouble();
+								while(counter<3)
+								{
+									System.out.println("What is the new price of the Dessert?");
+									try { newprice = sc.nextDouble();}
+									catch(InputMismatchException ex)
+									{
+										if(counter<2)
+										{
+											System.out.println("Incorrect Entry.Please Try Again..");
+											System.out.println("");
+										}
+										sc.next();
+										++counter;
+										continue;
+									}
+									counter = 0;
+									if(counter == 0) { break; }
+								}
+								if(counter == 3) 
+								{ 
+									counter=0;
+									System.out.println("Too many Attempts.Return to main program..");
+									return;
+								}
 								desserts.get(i).updatePrice(newprice);
 							}
 							break;
@@ -469,13 +728,50 @@ public class Menu {
 	}
 	public void updatePromoItem()
 	{
+		int choice =0 ;
+		int counter = 0;
+		int check=0;
+		double newprice = 0;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("What is the Item ID of the Promotion to be updated?");
 		String id = sc.nextLine();
-		System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
-		int choice = sc.nextInt();
-		sc.nextLine();
-		int check =0;
+		for(int i=0;i<promo.size();i++)
+		{
+			if (id.equals(promo.get(i).getItemID()))
+			{
+				check =1;
+			}
+		}
+		if(check == 0)
+		{
+			System.out.println("");
+			System.out.println("Incorrect Entry. Please try again...");
+			return;
+		}
+		if(check==1)check=0;
+		while(counter<3)
+		{
+			System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
+			try { choice = sc.nextInt(); }
+			catch(InputMismatchException ex)
+			{
+				if(counter<2)
+				{
+					System.out.println("Incorrect Entry.Please Try Again..");
+					System.out.println("");
+				}
+				sc.next();
+				++counter;
+				continue;
+			}
+			counter = 0;
+			if (counter==0) {break;}
+		}
+		if (counter==3)
+		{
+			counter=0;
+			return;
+		}
 		for(int i=0;i<promo.size();i++)
 		{
 			if (id.equals(promo.get(i).getItemID()))
@@ -496,8 +792,30 @@ public class Menu {
 					}
 					break;
 					case 3: {
-						System.out.println("What is the new price of the Promo Dish?");
-						double newprice = sc.nextDouble();
+						while(counter<3)
+						{
+							System.out.println("What is the new price of the Promo Dish?");
+							try { newprice = sc.nextDouble();}
+							catch(InputMismatchException ex)
+							{
+								if(counter<2)
+								{
+									System.out.println("Incorrect Entry.Please Try Again..");
+									System.out.println("");
+								}
+								sc.next();
+								++counter;
+								continue;
+							}
+							counter = 0;
+							if(counter == 0) { break; }
+						}
+						if(counter == 3) 
+						{ 
+							counter=0;
+							System.out.println("Too many Attempts.Return to main program..");
+							return;
+						}
 						promo.get(i).updatePrice(newprice);
 					}
 					break;
