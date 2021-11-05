@@ -60,7 +60,8 @@ public class RestaurantApplication {
 			System.out.print("Enter your Choice: ");
 			while(counter<3)
 			{
-				try { choice = sc.nextInt(); }
+				try { choice = sc.nextInt(); 
+				sc.nextLine();}
 				catch(InputMismatchException ex)
 				{
 					if(counter<2)
@@ -87,7 +88,8 @@ public class RestaurantApplication {
 				while(counter<3)
 				{
 					System.out.println("Would you like to Create(1)/Update(2)/Remove(3) menu item");
-					try { choice = sc.nextInt(); }
+					try { choice = sc.nextInt(); 
+					sc.nextLine();}
 					catch(InputMismatchException ex)
 					{
 						if(counter<2)
@@ -129,7 +131,8 @@ public class RestaurantApplication {
 				while(counter<3)
 				{
 					System.out.println("Would you like to Create(1)/Update(2)/Remove(3) Promo item");
-					try { choice = sc.nextInt(); }
+					try { choice = sc.nextInt();
+					sc.nextLine();}
 					catch(InputMismatchException ex)
 					{
 						if(counter<2)
@@ -177,7 +180,8 @@ public class RestaurantApplication {
 				while(counter<3)
 				{
 					System.out.println("Have you made a prior Reservation? (1 Yes)(0 No)");
-					try { choice = sc.nextInt(); }
+					try { choice = sc.nextInt();
+					sc.nextLine();}
 					catch(InputMismatchException ex)
 					{
 						if(counter<2)
@@ -202,7 +206,8 @@ public class RestaurantApplication {
 					while(counter<3)
 					{
 						System.out.println("What is your Reservation ID");
-						try {resid = sc.nextInt(); }
+						try {resid = sc.nextInt();
+						sc.nextLine();}
 						catch(InputMismatchException ex)
 						{
 							if(counter<2)
@@ -235,7 +240,8 @@ public class RestaurantApplication {
 					while(counter<3)
 					{
 						System.out.println("Would you like to make a Reservation first? (1 Yes)(0 No)");
-						try { choice = sc.nextInt(); }
+						try { choice = sc.nextInt();
+						sc.nextLine();}
 						catch(InputMismatchException ex)
 						{
 							if(counter<2)
@@ -273,7 +279,8 @@ public class RestaurantApplication {
 				while(counter<3)
 				{
 					System.out.println("What is the Order Id of the order to be updated");
-					try{orderid = sc.nextInt();}
+					try{orderid = sc.nextInt();
+					sc.nextLine();}
 					catch(InputMismatchException ex)
 					{
 						if(counter<2)
@@ -298,7 +305,8 @@ public class RestaurantApplication {
 					while(counter<3)
 					{
 						System.out.println("Would you like to (Add 1)/(Remove 2)/(Update Quantity 3)/(Done 4)");
-						try { choice = sc.nextInt(); }
+						try { choice = sc.nextInt();
+						sc.nextLine();}
 						catch(InputMismatchException ex)
 						{
 							if(counter<2)
@@ -353,7 +361,8 @@ public class RestaurantApplication {
 				{
 					System.out.println("What Order would you like to view");
 					System.out.println("(1)All (2)Specific");
-					try { choice = sc.nextInt(); }
+					try { choice = sc.nextInt();
+					sc.nextLine();}
 					catch(InputMismatchException ex)
 					{
 						if(counter<2)
@@ -384,7 +393,8 @@ public class RestaurantApplication {
 						 while(counter<3)
 						 {
 							 System.out.println("What is the Reservation Id of the order to be updated");
-							 try {resid = sc.nextInt(); }
+							 try {resid = sc.nextInt();
+							 sc.nextLine();}
 								catch(InputMismatchException ex)
 								{
 									if(counter<2)
@@ -437,7 +447,8 @@ public class RestaurantApplication {
 				{
 					System.out.println("Would you like to remove any reservations?");
 					System.out.println("(1)Yes (2)No");
-					try { choice = sc.nextInt(); }
+					try { choice = sc.nextInt(); 
+					sc.nextLine();}
 					catch(InputMismatchException ex)
 					{
 						if(counter<2)
@@ -464,7 +475,8 @@ public class RestaurantApplication {
 						 	while(counter<3)
 							{
 							    System.out.println("Reservation ID of reservation to be removed?");
-							    try {resid = sc.nextInt(); }
+							    try {resid = sc.nextInt(); 
+							    sc.nextLine();}
 								catch(InputMismatchException ex)
 								{
 									if(counter<2)
@@ -508,7 +520,8 @@ public class RestaurantApplication {
 				while (counter<3)
 				{
 					System.out.println("What is the orderId of the order invoice");
-					try{orderid = sc.nextInt();}
+					try{orderid = sc.nextInt();
+					sc.nextLine();}
 					catch(InputMismatchException ex)
 					{
 						if(counter<2)
@@ -528,7 +541,8 @@ public class RestaurantApplication {
 				{
 					System.out.println("Do you wish to use the current date and time or to input your own date and time?");
 					System.out.println("(1)Current date and time, (2)Input date and time");
-					try { choice = sc.nextInt(); }
+					try { choice = sc.nextInt(); 
+					sc.nextLine();}
 					catch(InputMismatchException ex)
 					{
 						if(counter<2)
@@ -567,7 +581,8 @@ public class RestaurantApplication {
 				while (counter<3)
 				{
 					System.out.println("(1)Print by day (2)Print by month (3)Print by year (4)Quit");
-					try { choice = sc.nextInt(); }
+					try { choice = sc.nextInt();
+					sc.nextLine();}
 					catch(InputMismatchException ex)
 					{
 						if(counter<2)
@@ -621,7 +636,8 @@ public class RestaurantApplication {
 						while(counter<3)
 						{
 							System.out.println("(1)Print by day (2)Print by month (3)Print by year (4)Quit");
-							try { choice = sc.nextInt(); }
+							try { choice = sc.nextInt(); 
+							sc.nextLine();}
 							catch(InputMismatchException ex)
 							{
 								if(counter<2)

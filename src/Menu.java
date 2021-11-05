@@ -89,7 +89,8 @@ public class Menu {
 		while(counter<3)
 		{
 			System.out.println("What type of item is the new menu item(Main 1)/(Beverage 2)/(Dessert 3)?");
-			try { choice = sc.nextInt(); }
+			try { choice = sc.nextInt();
+			sc.nextLine();}
 			catch(InputMismatchException ex)
 			{
 				if(counter<2)
@@ -119,7 +120,8 @@ public class Menu {
 				while(counter<3)
 				{
 					System.out.println("What is the price of this item?");
-					try { price = sc.nextDouble();}
+					try { price = sc.nextDouble();
+					sc.nextLine();}
 					catch(InputMismatchException ex)
 					{
 						if(counter<2)
@@ -154,7 +156,8 @@ public class Menu {
 				while(counter<3)
 				{
 					System.out.println("What is the price of this item?");
-					try { price = sc.nextDouble();}
+					try { price = sc.nextDouble();
+					sc.nextLine();}
 					catch(InputMismatchException ex)
 					{
 						if(counter<2)
@@ -189,7 +192,8 @@ public class Menu {
 				while(counter<3)
 				{
 					System.out.println("What is the price of this item?");
-					try { price = sc.nextDouble();}
+					try { price = sc.nextDouble();
+					sc.nextLine();}
 					catch(InputMismatchException ex)
 					{
 						if(counter<2)
@@ -256,7 +260,8 @@ public class Menu {
 				{
 					System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
 					
-					try { choice = sc.nextInt(); }
+					try { choice = sc.nextInt();
+					sc.nextLine();}
 					catch(InputMismatchException ex)
 					{
 						if(counter<2)
@@ -300,7 +305,8 @@ public class Menu {
 								while(counter<3)
 								{
 									System.out.println("What is the new price of the Main Dish?");
-									try { newprice = sc.nextDouble();}
+									try { newprice = sc.nextDouble();
+									sc.nextLine();}
 									catch(InputMismatchException ex)
 									{
 										if(counter<2)
@@ -361,7 +367,8 @@ public class Menu {
 				{
 					System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
 					
-					try { choice = sc.nextInt(); }
+					try { choice = sc.nextInt(); 
+					sc.nextLine();}
 					catch(InputMismatchException ex)
 					{
 						if(counter<2)
@@ -405,7 +412,8 @@ public class Menu {
 								while(counter<3)
 								{
 									System.out.println("What is the new price of the Beverage?");
-									try { newprice = sc.nextDouble();}
+									try { newprice = sc.nextDouble();
+									sc.nextLine();}
 									catch(InputMismatchException ex)
 									{
 										if(counter<2)
@@ -465,7 +473,8 @@ public class Menu {
 				{
 					System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
 					
-					try { choice = sc.nextInt(); }
+					try { choice = sc.nextInt(); 
+					sc.nextLine();}
 					catch(InputMismatchException ex)
 					{
 						if(counter<2)
@@ -509,7 +518,8 @@ public class Menu {
 								while(counter<3)
 								{
 									System.out.println("What is the new price of the Dessert?");
-									try { newprice = sc.nextDouble();}
+									try { newprice = sc.nextDouble();
+									sc.nextLine();}
 									catch(InputMismatchException ex)
 									{
 										if(counter<2)
@@ -752,7 +762,8 @@ public class Menu {
 		while(counter<3)
 		{
 			System.out.println("What of it would you like to update (Name 1)/(Description 2)/(Price 3)?");
-			try { choice = sc.nextInt(); }
+			try { choice = sc.nextInt(); 
+			sc.nextLine();}
 			catch(InputMismatchException ex)
 			{
 				if(counter<2)
@@ -795,7 +806,8 @@ public class Menu {
 						while(counter<3)
 						{
 							System.out.println("What is the new price of the Promo Dish?");
-							try { newprice = sc.nextDouble();}
+							try { newprice = sc.nextDouble();
+							sc.nextLine();}
 							catch(InputMismatchException ex)
 							{
 								if(counter<2)
