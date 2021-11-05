@@ -83,8 +83,9 @@ public class Menu {
 		name = "";
 		description = "";
 		double price;
-		System.out.println("What type of item is the new menu item(Main 1)/(Beverage 2)/(Dessert 3)?");
+		int counter =0;
 		Scanner sc = new Scanner(System.in);
+		System.out.println("What type of item is the new menu item(Main 1)/(Beverage 2)/(Dessert 3)?");
 		int choice = sc.nextInt();
 		sc.nextLine();
 		switch (choice)

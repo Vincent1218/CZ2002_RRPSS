@@ -60,7 +60,7 @@ public class RestaurantApplication {
 					success=true;
 				}
 				catch(InputMismatchException ex) {
-		        	System.out.println("Incorrect Entry.Please Try Again..this one");
+		        	System.out.println("Incorrect Entry.Please Try Again..");
 					System.out.println("");
 					sc.next();
 					++counter;
