@@ -203,6 +203,7 @@ public class RestaurantApplication {
 							 break;
 						 }
 						orderlistarr.createOrder(mainmenu,staff,memberList,resList,resid);
+						break;
 					}
 					else
 					{

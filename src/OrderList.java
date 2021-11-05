@@ -11,6 +11,10 @@ public class OrderList {
 		this.orderlistarray =new ArrayList<>();
 		//this.numoforders =0;
 	}
+	public ArrayList<Order> getOrderlistarray()
+	{
+		return orderlistarray;
+	}
 	public Order getOrder(int orderId)
 	{
 		return orderlistarray.get(orderId-1);
