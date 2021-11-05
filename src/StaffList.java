@@ -50,11 +50,29 @@ public class StaffList {
 
     public Staff updateStaffId()
     {
-        System.out.println("What is your staffID Number New User?");
-        Scanner sc =new Scanner(System.in);
-        int id = sc.nextInt();
-        if(id>0 && id<=staffArray.size()){
-            return staffArray.get(id-1);
+    	int staffid=0;
+    	int counter =0;
+    	Scanner sc =new Scanner(System.in);
+    	while(counter<3)
+    	{
+    		System.out.println("What is your staffID Number New User?");
+            try { staffid = sc.nextInt();}
+			catch(InputMismatchException ex)
+			{
+				if(counter<2)
+				{
+					System.out.println("Incorrect Entry.Please Try Again..");
+					System.out.println("");
+				}
+				sc.next();
+				++counter;
+				continue;
+			}
+			counter = 0;
+			if(counter == 0) { break; }
+    	}
+    	if(staffid>0 && staffid<=staffArray.size()){
+            return staffArray.get(staffid-1);
         }
         else{
             return null;
