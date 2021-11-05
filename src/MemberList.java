@@ -14,9 +14,9 @@ public class MemberList {
 		System.out.println("What is the customer's name?");
 		String name = sc.nextLine();
 		System.out.println("What is the customer's contact number?");
-		String contactNo = sc.nextLine();
+		int contactNo = sc.nextInt();
 		for(int i=0; i<memberArray.size(); i++) {
-			if(memberArray.get(i).getContact().equals(contactNo))
+			if(memberArray.get(i).getContact()==contactNo)
 				return memberArray.size();
 		}
 		int memberId = memberArray.size() + 1001; //memberID to start from 1001
@@ -32,9 +32,9 @@ public class MemberList {
 		memberArray.remove(memberId-1);
 	}
 	
-	public int checkMember(int memberId, String contact) {
+	public int checkMember(int memberId, int contact) {
 		int index = memberId - 1001;
-		if((memberArray.get(index).getMemberId() == memberId) && (memberArray.get(index).getContact().equals(contact)))
+		if((memberArray.get(index).getMemberId() == memberId) && (memberArray.get(index).getContact()==contact))
 			return 1;
 		else return 0;
 	}

@@ -7,11 +7,11 @@ public class Reservation {
 	private String time;
 	private int pax;
 	private String name;
-	private String contact;
+	private int contact;
 	private int tableID;
 	private int orderID;
 	
-	public Reservation(String name, String contact, int pax, String date,String time, int tableId, int resId) {
+	public Reservation(String name, int contact, int pax, String date,String time, int tableId, int resId) {
 		//this.date = DateFormat.getInstance().format(java.time.LocalDate.now());
 		this.time = time;
 		this.date = date;
@@ -23,7 +23,7 @@ public class Reservation {
 	}
 	
 	public String getResName() {return this.name;}
-	public String getResContact() {return this.contact;}
+	public int getResContact() {return this.contact;}
 	public String getResTime() {return this.time;}
 	public String getResDate() {return this.date;}
 	public int getResPax() {return this.pax;}

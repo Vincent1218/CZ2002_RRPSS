@@ -27,7 +27,7 @@ public class ReservationList {
 			System.out.println("Enter the Time in HH:MM AM/PM:");
 			String time = sc.next();
 			System.out.println("Please enter your Contact Number");
-			String contact = sc.next();
+			int contact = sc.nextInt();
 			int resId = resList.size() + 1;
 			Reservation newRes = new Reservation(name, contact, pax, date,time, tableId, resId);
 			resList.add(newRes);

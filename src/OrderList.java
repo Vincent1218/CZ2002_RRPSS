@@ -86,7 +86,7 @@ public class OrderList {
 				 System.out.println("Please enter your Member ID: ");
 				 memberId = sc.nextInt();
 				 System.out.println("Please enter your Contact Number: ");
-				 String contact = sc.next();
+				 int contact = sc.nextInt();
 				 member = memberList.checkMember(memberId, contact);
 				 if(member==0) {
 					 System.out.println("Invalid Member ID/Contact No. Try Again");

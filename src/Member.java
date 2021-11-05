@@ -3,15 +3,15 @@ package Project;
 public class Member {
 	private String name;
 	private int memberId;
-	private String contact;
+	private int contact;
 	
-	public Member(String name, String contact, int memberId) {
+	public Member(String name, int contact, int memberId) {
 		this.name = name;
 		this.contact = contact;
 		this.memberId = memberId;
 	}
 	
-	public String getContact() {
+	public int getContact() {
 		return this.contact;
 	}
 	

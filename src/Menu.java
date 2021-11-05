@@ -184,7 +184,11 @@ public class Menu {
 				}
 				if(check ==0)
 				{
+					System.out.println("");
+					System.out.println("Incorrect Entry. Please try again...");
+					System.out.println("");
 					System.out.println("Updating Failed...");
+					System.out.println("");
 				}
 
 			}
@@ -228,7 +232,11 @@ public class Menu {
 				}
 				if(check ==0)
 				{
+					System.out.println("");
+					System.out.println("Incorrect Entry. Please try again...");
+					System.out.println("");
 					System.out.println("Updating Failed...");
+					System.out.println("");
 				}
 			}
 			break;
@@ -271,7 +279,11 @@ public class Menu {
 				}
 				if(check ==0)
 				{
+					System.out.println("");
+					System.out.println("Incorrect Entry. Please try again...");
+					System.out.println("");
 					System.out.println("Updating Failed...");
+					System.out.println("");
 				}
 			}
 			break;
@@ -305,7 +317,11 @@ public class Menu {
 				}
 				if(check ==0)
 				{
+					System.out.println("");
+					System.out.println("Incorrect Entry. Please try again...");
+					System.out.println("");
 					System.out.println("Deleting Failed...");
+					System.out.println("");
 				}
 			}
 			break;
@@ -328,7 +344,11 @@ public class Menu {
 				}
 				if(check ==0)
 				{
+					System.out.println("");
+					System.out.println("Incorrect Entry. Please try again...");
+					System.out.println("");
 					System.out.println("Deleting Failed...");
+					System.out.println("");
 				}
 			}
 			break;
@@ -352,6 +372,8 @@ public class Menu {
 				if(check ==0)
 				{
 					System.out.println("");
+					System.out.println("Incorrect Entry. Please try again...");
+					System.out.println("");
 					System.out.println("Deleting Failed...");
 					System.out.println("");
 				}
@@ -371,6 +393,7 @@ public class Menu {
 		double mainprice=0;
 		double bevprice=0;
 		double desprice=0;
+		int check=0;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("What combination of Menu Items will be for the Promotion?");
 		System.out.println("");
@@ -383,8 +406,17 @@ public class Menu {
 				mainname= maindish.get(i).getName();
 				mainprice = maindish.get(i).getPrice();
 				maindes = maindish.get(i).getDescription();
+				check=1;
 			}
 		}
+		if(check==0)
+		{
+			 System.out.println("");
+			 System.out.println("Incorrect Entry. Please try again...");
+			 System.out.println("");
+			 return;
+		}
+		check=0;
 		System.out.println("What is the ID of Beverage in Promotion Bundle " + ( promo.size() +1 )+ " ?");
 		String bevid = sc.nextLine();
 		for(int i =0;i<beverages.size();i++)
@@ -394,8 +426,17 @@ public class Menu {
 				bevname= beverages.get(i).getName();
 				bevprice = beverages.get(i).getPrice();
 				bevdes = beverages.get(i).getDescription();
+				check=1;
 			}
 		}
+		if(check==0)
+		{
+			 System.out.println("");
+			 System.out.println("Incorrect Entry. Please try again...");
+			 System.out.println("");
+			 return;
+		}
+		check=0;
 		System.out.println("What is the ID of Desserts in Promotion Bundle " + ( promo.size() +1 )+ " ?");
 		String desid = sc.nextLine();
 		for(int i =0;i<desserts.size();i++)
@@ -405,8 +446,17 @@ public class Menu {
 				desname= desserts.get(i).getName();
 				desprice = desserts.get(i).getPrice();
 				desdes= desserts.get(i).getDescription();
+				check=1;
 			}
 		}
+		if(check==0)
+		{
+			 System.out.println("");
+			 System.out.println("Incorrect Entry. Please try again...");
+			 System.out.println("");
+			 return;
+		}
+		check=0;
 		String Promoname =  mainname + " & " +  bevname + " & " + desname ;
 		double promoprice = 0.9*(mainprice+bevprice+desprice);
 		String Promodes =  maindes + " & " +  bevdes + " & " + desdes ;
@@ -450,6 +500,13 @@ public class Menu {
 						promo.get(i).updatePrice(newprice);
 					}
 					break;
+					default:
+					 {
+						 System.out.println("");
+						 System.out.println("Incorrect Entry. Please try again...");
+						 System.out.println("");
+						 return;
+					 }
 				}
 				check =1;
 			}
