@@ -192,6 +192,11 @@ public class RestaurantApplication {
 					counter = 0;
 					if(counter == 0) { break; }
 				}
+				if(counter == 3) 
+				{ 
+					break; 
+				}
+				
 				if (choice == 1)
 				{
 					while(counter<3)
@@ -211,6 +216,10 @@ public class RestaurantApplication {
 						}
 						counter = 0;
 						if(counter == 0) { break; }
+					}
+					if(counter == 3) 
+					{ 
+						break; 
 					}
 					System.out.println("");
 					if(resid>resList.getSize()||resid<0)
@@ -241,6 +250,10 @@ public class RestaurantApplication {
 						counter = 0;
 						if(counter == 0) { break; }
 					}
+					if(counter == 3) 
+					{ 
+						break; 
+					}
 					if (choice == 1)
 					{
 						resList.makeRes(tables);
@@ -248,7 +261,7 @@ public class RestaurantApplication {
 					else
 					{
 						 System.out.println("");
-						 System.out.println("Incorrect Entry. Please try again...");
+						 System.out.println("Incorrect Entry. Please try again...2");
 						 System.out.println("");
 					}
 				}
@@ -275,6 +288,10 @@ public class RestaurantApplication {
 					counter=0;
 					if(counter == 0) { break; }
 				}
+				if(counter == 3) 
+				{ 
+					break; 
+				}
 				orderlistarr.viewOrder(orderid);
 				do
 				{
@@ -294,40 +311,40 @@ public class RestaurantApplication {
 							continue;
 						}
 						counter = 0;
-						if(counter == 0) { break; }
+						 switch (choice)
+						 {
+							 case 1:
+							 {
+								 orderlistarr.getOrder(orderid).addOrderItem(mainmenu);
+							 }
+							 break;
+							 case 2:
+							 {
+								 orderlistarr.getOrder(orderid).deleteOrderItem();
+							 }
+							 break;
+							 case 3:
+							 {
+								 orderlistarr.getOrder(orderid).updateOrderItemQuantity();
+							 }
+							 break;
+							 case 4:
+							 {
+								 System.out.println("Order" + orderid + "is updated");
+							 }
+							 break;
+							 default:
+							 {
+								 System.out.println("");
+								 System.out.println("Incorrect Entry. Please try again...");
+								 System.out.println("");
+								 ++counter;
+							 }
+							 break;
+						 }
+						 if(counter == 0) { break; }
 					}
-							 
-					 switch (choice)
-					 {
-						 case 1:
-						 {
-							 orderlistarr.getOrder(orderid).addOrderItem(mainmenu);
-						 }
-						 break;
-						 case 2:
-						 {
-							 orderlistarr.getOrder(orderid).deleteOrderItem();
-						 }
-						 break;
-						 case 3:
-						 {
-							 orderlistarr.getOrder(orderid).updateOrderItemQuantity();
-						 }
-						 break;
-						 case 4:
-						 {
-							 System.out.println("Order" + orderid + "is updated");
-						 }
-						 break;
-						 default:
-						 {
-							 System.out.println("");
-							 System.out.println("Incorrect Entry. Please try again...");
-							 System.out.println("");
-						 }
-						 break;
-					 }
-				}while (choice <4);
+				}while (choice <4&&counter<3);
 			}
 			break;
 			case 6:
@@ -350,6 +367,10 @@ public class RestaurantApplication {
 					}
 					counter = 0;
 					if(counter == 0) { break; }
+				}
+				if(counter==3)
+				{
+					break;
 				}
 				switch (choice)
 				 {
@@ -378,6 +399,10 @@ public class RestaurantApplication {
 								counter = 0;
 								if(counter == 0) { break; }
 						 }
+						 if(counter==3)
+							{
+								break;
+							}
 						if(resid>resList.getSize()||resid<0)
 						 {
 							 System.out.println("Incorrect Entry. Please try again...");
@@ -427,6 +452,11 @@ public class RestaurantApplication {
 					counter = 0;
 					if(counter == 0) { break; }
 				}
+				if(counter==3)
+				{
+					counter = 0;
+					break;
+				}
 				switch (choice)
 				 {
 					 case 1:
@@ -449,6 +479,7 @@ public class RestaurantApplication {
 								counter = 0;
 								if(counter == 0) { break; }
 							}
+						 	if(counter==3){break;}
 							resList.removeReservation(resid, tables);
 					 }
 					 break;
@@ -492,6 +523,7 @@ public class RestaurantApplication {
 					counter=0;
 					if(counter == 0) { break; }
 				}
+				if(counter==3){break;}
 				while (counter<3)
 				{
 					System.out.println("Do you wish to use the current date and time or to input your own date and time?");
@@ -511,6 +543,7 @@ public class RestaurantApplication {
 					counter = 0;
 					if(counter == 0) { break; }
 				}
+				if(counter==3){break;}
 				if (choice == 2)
 				{
 					orderlistarr.getOrder(orderid).updateDate();
@@ -549,6 +582,7 @@ public class RestaurantApplication {
 					counter = 0;
 					if(counter == 0) { break; }
 				}
+				if(counter==3){break;}
 				while (choice != 4)
 				{
 					switch(choice)
@@ -584,9 +618,25 @@ public class RestaurantApplication {
 					}
 					else
 					{
-						System.out.println("(1)Print by day (2)Print by month (3)Print by year (4)Quit");
-						choice = sc.nextInt();
-						sc.nextLine();
+						while(counter<3)
+						{
+							System.out.println("(1)Print by day (2)Print by month (3)Print by year (4)Quit");
+							try { choice = sc.nextInt(); }
+							catch(InputMismatchException ex)
+							{
+								if(counter<2)
+								{
+									System.out.println("Incorrect Entry.Please Try Again..");
+									System.out.println("");
+								}
+								sc.next();
+								++counter;
+								continue;
+							}
+							counter = 0;
+							if(counter == 0) { break; }
+						}
+						if(counter==3){break;}
 					}
 				}
 			}
