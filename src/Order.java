@@ -208,17 +208,23 @@ public class Order {
 		{
 			System.out.println("This order is eligible for the 10% membership discount");
 			System.out.println("");
-			System.out.println("Final Price is now: " + (0.9*this.totalPrice));
+			double tempprice = 1.17*this.totalPrice;
+			System.out.println("Price after 17% GST is now: " + (tempprice));
 			System.out.println("");
-			this.finalPrice = 0.9 * this.totalPrice;
+			System.out.println("Price after 10% Membership discount is now: " + (0.9*tempprice));
+			System.out.println("");
+			System.out.println("Final Price is : " + (0.9*tempprice));
+			System.out.println("");
+			this.finalPrice = 0.9*tempprice;
 		}
 		else
 		{
 			System.out.println("This order is not eligible for the discount");
 			System.out.println("");
-			System.out.println("Final Price is still: " + this.totalPrice);
+			double tempprice = 1.17*this.totalPrice;
+			System.out.println("Price after 17% GST is now: " + (tempprice));
 			System.out.println("");
-			this.finalPrice = totalPrice;
+			this.finalPrice = tempprice;
 		}
 
 	}

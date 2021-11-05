@@ -64,6 +64,14 @@ public class OrderList {
 		 int count = 0;
 		 if(mem==2)
 		 {
+			 // add the final order
+			 //and the name of the staff that did it.
+			 System.out.println("");
+			 System.out.println("---------------Your Final order is-------------------");
+			 System.out.println("");
+			 orderlistarray.get(orderlistarray.size()-1).printOrder();
+			 System.out.println("Your order was created by " + staff.getStaffName());
+			 System.out.println("");
 			 System.out.println("Your order Id is " + orderlistarray.size());
 			 resList.getReservation(resid).updateOrderID(orderlistarray.size());
 			 System.out.println("");
@@ -89,6 +97,14 @@ public class OrderList {
 		 }
 
 		 orderlistarray.get(orderlistarray.size()-1).updateMembership(member);
+		// add the final order
+		 //and the name of the staff that did it.
+		 System.out.println("---------------Your Final order is-------------------");
+		 System.out.println("");
+		 orderlistarray.get(orderlistarray.size()-1).printOrder();
+		 System.out.println("");
+		 System.out.println("Your order was created by " + staff.getStaffName());
+		 System.out.println("");
 		 System.out.println("Your order Id is " + orderlistarray.size());
 		 resList.getReservation(resid-1).updateOrderID(orderlistarray.size());
 		 System.out.println("");

@@ -24,7 +24,7 @@ public class StaffList {
 
     public Staff getStaff()
     {
-        System.out.println("What is your staffID Number?");
+        System.out.println("What is your staffID Number? (1 - " + staffArray.size() +")");
         Scanner sc =new Scanner(System.in);
         int id = sc.nextInt();
         if(id>0 && id<=staffArray.size()){

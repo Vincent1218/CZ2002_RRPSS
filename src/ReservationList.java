@@ -27,11 +27,13 @@ public class ReservationList {
 			int resId = resList.size() + 1;
 			Reservation newRes = new Reservation(name, contact, pax, time, tableId, resId);
 			resList.add(newRes);
+			System.out.println("");
 			System.out.println("Reservation successful. Your Reservation ID is " + resId + " and your Table ID is " + tableId);
+			System.out.println("");
 		}
 	}
 	
-	void viewReservation(OrderList orderlist) {
+	void viewReservation() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Would you like to view all reservations or a specific reservation?");
 		System.out.println("(1)View all (2)View specific");
@@ -47,7 +49,7 @@ public class ReservationList {
 					System.out.println("Reservation Timing: " + resList.get(i).getResTime());
 					System.out.println("Table ID: " + resList.get(i).getResTableID());
 					System.out.println("");
-//					orderlist.viewOrder(resList.get(i).getOrderID());
+
 				}
 		}
 		if(check==2) {
@@ -64,10 +66,21 @@ public class ReservationList {
 					System.out.println("Reservation Timing: " + resList.get(resId-1).getResTime());
 					System.out.println("Table ID: " + resList.get(resId-1).getResTableID());
 					System.out.println("");
-//					orderlist.viewOrder(resList.get(resId-1).getOrderID()-1);
+
 				}
 			}
 		}
+	}
+	void viewInvoiceReservationReservation(int resId) {
+		if(resId>resList.size()) System.out.println("Invalid Reservation ID");
+		else {
+			System.out.println("Reservation ID: " + resList.get(resId-1).getResID());
+			System.out.println("Name: " + resList.get(resId-1).getResName());
+			System.out.println("Contact Number: " + resList.get(resId-1).getResContact());
+			System.out.println("Table ID: " + resList.get(resId-1).getResTableID());
+			System.out.println("");
+		}
+		
 	}
 	Reservation getReservation(int resid) {
 		return resList.get(resid-1);

@@ -35,18 +35,19 @@ public class RestaurantApplication {
 			System.out.println("(3) View Full Menu");
 			System.out.println("(4) Create order");
 			System.out.println("(5) Add/Remove order item/s to/from order");
+			System.out.println("(6) View All/Specific Order");
 			System.out.println("---------Reservation--------");
-			System.out.println("(6) Create reservation booking");
-			System.out.println("(7) View/Remove reservation booking");
-			System.out.println("(8) Check table availability");
+			System.out.println("(7) Create reservation booking");
+			System.out.println("(8) View/Remove reservation booking");
+			System.out.println("(9) Check table availability");
 			System.out.println("---------Make Payment--------");
-			System.out.println("(9) Print order invoice");
+			System.out.println("(10) Print order invoice");
 			System.out.println("---------Restaurant Self Use--------");
-			System.out.println("(10) Print sale revenue report by period (eg day or month)");
-			System.out.println("(11) Change Staff User");
-			System.out.println("(12) Register New Member");
-			System.out.println("(13) Register New Staff");
-			System.out.println("(14) Exit");
+			System.out.println("(11) Print sale revenue report by period (eg day or month)");
+			System.out.println("(12) Change Staff User");
+			System.out.println("(13) Register New Member");
+			System.out.println("(14) Register New Staff");
+			System.out.println("(15) Exit");
 			System.out.println("");
 			System.out.print("Enter your Choice: ");
 			choice = sc.nextInt();
@@ -171,15 +172,42 @@ public class RestaurantApplication {
 			break;
 			case 6:
 			{
+				System.out.println("What Order would you like to view");
+				System.out.println("(1)All (2)Specific");
+				int check = sc.nextInt();
+				switch (choice)
+				 {
+					 case 1:
+					 {
+						 orderlistarr.viewAllOrder();
+					 }
+					 break;
+					 case 2:
+					 {
+						 System.out.println("What is the Reservation Id of the order to be updated");
+							int resid = sc.nextInt();
+							int orderid = resList.getReservation(resid).getOrderID();
+							orderlistarr.viewOrder(orderid);
+					 }
+					 default:
+					 {
+						 System.out.println("");
+						 System.out.println("Incorrect Entry. Please try again...");
+						 System.out.println("");
+					 }
+				 }
+			}
+			case 7:
+			{
 				//Create reservation booking function
 				resList.makeRes(tables);
 				//Attach this info to array somehow probably to an overarching array. so one array and in that 1 array slot has the array of food and contact details.
 			}
 			break;
-			case 7:
+			case 8:
 			{
 				//Check/Remove reservation booking function
-				resList.viewReservation(orderlistarr);
+				resList.viewReservation();
 				System.out.println("Would you like to remove any reservations?");
 				System.out.println("(1)Yes (2)No");
 				int check = sc.nextInt();
@@ -190,12 +218,12 @@ public class RestaurantApplication {
 				}
 			}
 			break;
-			case 8: {
+			case 9: {
 				//Check table availability function
 				tables.viewAllTableStatus();
 			}
 			break;
-			case 9: {
+			case 10: {
 				// Print order invoice
 				System.out.println(" ");
 				System.out.println("What is the orderId of the order invoice");
@@ -208,7 +236,9 @@ public class RestaurantApplication {
 				{
 					orderlistarr.getOrder(num).updateDate();
 				}
-				System.out.println(" ");
+				int TempResID= orderlistarr.getOrder(num).getResID();
+				resList.viewInvoiceReservationReservation(TempResID);
+				System.out.println("");
 				System.out.println("Order Number  " + num);
 				System.out.println("----------------------------------");
 				orderlistarr.printOrderInvoice(num);
@@ -219,7 +249,7 @@ public class RestaurantApplication {
 				totalsales.addSalesRecord(orderlistarr.getOrder(num));
 			}
 			break;
-			case 10:
+			case 11:
 			{
 				//Print sale revenue report by period (eg day or month) function
 				System.out.println("(1)Print by day (2)Print by month (3)Print by year (4)Quit");
@@ -267,12 +297,12 @@ public class RestaurantApplication {
 				}
 			}
 			break;
-			case 11:
+			case 12:
 			{
 				staff = staffList.updateStaffId();
 			}
 			break;
-			case 12:
+			case 13:
 			{
 				//register member
 				int memberId = memberList.registerMember();
@@ -280,13 +310,13 @@ public class RestaurantApplication {
 				else System.out.println("Registration successful. The Member ID is: " + memberId);
 			}
 			break;
-			case 13:
+			case 14:
 			{
 				staffList.addStaff();
 			}
 			break;
-			case 14: System.out.println("Program terminating ...");
+			case 15: System.out.println("Program terminating ...");
 			}
-		} while (choice < 13);
+		} while (choice < 15);
 	}
 }

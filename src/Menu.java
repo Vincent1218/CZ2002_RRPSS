@@ -351,7 +351,9 @@ public class Menu {
 				}
 				if(check ==0)
 				{
+					System.out.println("");
 					System.out.println("Deleting Failed...");
+					System.out.println("");
 				}
 			}
 			break;
@@ -410,7 +412,9 @@ public class Menu {
 		String Promodes =  maindes + " & " +  bevdes + " & " + desdes ;
 		MenuItems newitem =new MenuItems("P"+(promo.size() + 1),Promoname,Promodes,promoprice);
 		promo.add(newitem);
+		System.out.println("");
 		System.out.println("Promotion item added...");
+		System.out.println("");
 	}
 	public void updatePromoItem()
 	{
@@ -452,7 +456,9 @@ public class Menu {
 		}
 		if(check ==0)
 		{
+			System.out.println("");
 			System.out.println("Updating Failed...");
+			System.out.println("");
 		}
 	}
 	public void deletePromoItem()
@@ -475,7 +481,9 @@ public class Menu {
 		}
 		if(check ==0)
 		{
+			System.out.println("");
 			System.out.println("Deleting Failed...");
+			System.out.println("");
 		}
 	}
 }
