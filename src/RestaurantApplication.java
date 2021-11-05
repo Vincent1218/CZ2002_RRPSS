@@ -32,8 +32,9 @@ public class RestaurantApplication {
 		do
 		{
 			if(counter == 3){
-				System.out.println("Too many Attempts.Exiting Program..");
-				return;
+				System.out.println("Too many Attempts.Return to main program..");
+				counter = 0;
+//				return;
 			}
 			System.out.println("---------Menu Changes--------");
 			System.out.println("(1) Create/Update/Remove menu item");
