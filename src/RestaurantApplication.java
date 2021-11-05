@@ -5,6 +5,8 @@ import java.util.*;
 public class RestaurantApplication {
 	public static void main(String[] args) {
 		int choice=0;
+		int resid=0;
+		int countermain =0;
 		Menu mainmenu = new Menu();
 		StaffList staffList = new StaffList();
 		// Prepopulating.....
@@ -27,7 +29,6 @@ public class RestaurantApplication {
 		System.out.println("Welcome " + staff.getStaffName() + " to the use of the Restaurant Application" );
 		System.out.println("");
 		int counter=0;
-		boolean success = false;
 		do
 		{
 			System.out.println("---------Menu Changes--------");
@@ -51,28 +52,25 @@ public class RestaurantApplication {
 			System.out.println("(14) Register New Staff");
 			System.out.println("(15) Exit");
 			System.out.println("");
-			while(counter<3)
+			System.out.print("Enter your Choice: ");
+			while(countermain<3)
 			{
 				try
 				{
-					System.out.print("Enter your Choice: ");
 					choice = sc.nextInt();
-					success=true;
 				}
-				catch(InputMismatchException ex) {
-		        	System.out.println("Incorrect Entry.Please Try Again..");
+				catch(InputMismatchException ex)
+				{
+					System.out.println("Incorrect Entry.Please Try Again..");
 					System.out.println("");
 					sc.next();
-					++counter;
-		        }
-				if(success==true)
-				{
-					success=false;
-					counter =0;
-					break;
+					++countermain;
+					continue;
 				}
+				countermain = 0;
+				if(countermain == 0) { break; }
 			}
-			if(counter==3)
+			if(countermain==3)
 			{
 				System.out.println("Too many Attempts.Exiting Program..");
 				return;
@@ -122,44 +120,38 @@ public class RestaurantApplication {
 				mainmenu.displayLessMenu();
 				while(counter<3)
 				{
-					try
-					{
-						System.out.println("Would you like to Create(1)/Update(2)/Remove(3) Promo item");
-						choice = sc.nextInt();
-						success = true;
-						switch (choice)
-						{
-							case 1:
-							{
-								mainmenu.addPromoItem();
-							}
-							break;
-							case 2:
-							{
-								mainmenu.updatePromoItem();
-							}
-							break;
-							case 3:
-							{
-								mainmenu.deletePromoItem();
-							}
-							break;
-						}
-					}
+					System.out.println("Would you like to Create(1)/Update(2)/Remove(3) Promo item");
+					try { choice = sc.nextInt(); }
 					catch(InputMismatchException ex)
 					{
 						System.out.println("Incorrect Entry.Please Try Again..");
 						System.out.println("");
 						sc.next();
 						++counter;
+						continue;
 					}
-					if(success==true)
+					counter = 0;
+					switch (choice)
 					{
-						success=false;
-						counter = 0;
+						case 1:
+						{
+							mainmenu.addPromoItem();
+						}
+						break;
+						case 2:
+						{
+							mainmenu.updatePromoItem();
+						}
+						break;
+						case 3:
+						{
+							mainmenu.deletePromoItem();
+						}
 						break;
 					}
+					if(counter == 0) { break; }
 				}
+
 			}
 			break;
 			case 3:
@@ -171,36 +163,75 @@ public class RestaurantApplication {
 			break;
 			case 4:
 			{
-				System.out.println("Have you made a prior Reservation? (1 Yes)(0 No)");
-				choice = sc.nextInt();
-				if (choice == 1)
+				while(counter<3)
 				{
-					System.out.println("What is your Reservation ID");
-					int resid = sc.nextInt();
-					System.out.println("");
-					if(resid>resList.getSize()||resid<0)
-					 {
-						 System.out.println("Incorrect Entry. Please try again...");
-						 System.out.println("");
-						 break;
-					 }
-					orderlistarr.createOrder(mainmenu,staff,memberList,resList,resid);
+					System.out.println("Have you made a prior Reservation? (1 Yes)(0 No)");
+					try { choice = sc.nextInt(); }
+					catch(InputMismatchException ex)
+					{
+						System.out.println("Incorrect Entry.Please Try Again..");
+						System.out.println("");
+						sc.next();
+						++counter;
+						continue;
+					}
+					counter = 0;
+					if(counter == 0) { break; }
 				}
-				else
-				{
-					System.out.println("Would you like to make a Reservation first? (1 Yes)(0 No)");
-					choice = sc.nextInt();
 					if (choice == 1)
 					{
-						resList.makeRes(tables);
+						while(counter<3)
+						{
+							System.out.println("What is your Reservation ID");
+							try {resid = sc.nextInt(); }
+							catch(InputMismatchException ex)
+							{
+								System.out.println("Incorrect Entry.Please Try Again..");
+								System.out.println("");
+								sc.next();
+								++counter;
+								continue;
+							}
+							counter = 0;
+							if(counter == 0) { break; }
+						}
+						System.out.println("");
+						if(resid>resList.getSize()||resid<0)
+						 {
+							 System.out.println("Incorrect Entry. Please try again...");
+							 System.out.println("");
+							 break;
+						 }
+						orderlistarr.createOrder(mainmenu,staff,memberList,resList,resid);
 					}
 					else
 					{
-						 System.out.println("");
-						 System.out.println("Incorrect Entry. Please try again...");
-						 System.out.println("");
+						while(counter<3)
+						{
+							System.out.println("Would you like to make a Reservation first? (1 Yes)(0 No)");
+							try { choice = sc.nextInt(); }
+							catch(InputMismatchException ex)
+							{
+								System.out.println("Incorrect Entry.Please Try Again..");
+								System.out.println("");
+								sc.next();
+								++counter;
+								continue;
+							}
+							counter = 0;
+							if(counter == 0) { break; }
+						}
+						if (choice == 1)
+						{
+							resList.makeRes(tables);
+						}
+						else
+						{
+							 System.out.println("");
+							 System.out.println("Incorrect Entry. Please try again...");
+							 System.out.println("");
+						}
 					}
-				}
 			}
 			break;
 			case 5:
@@ -209,12 +240,8 @@ public class RestaurantApplication {
 				int orderid=0;
 				while(counter<3)
 				{
-					try
-					{
-						System.out.println("What is the Order Id of the order to be updated");
-						orderid = sc.nextInt();
-						success=true;
-					}
+					System.out.println("What is the Order Id of the order to be updated");
+					try{orderid = sc.nextInt();}
 					catch(InputMismatchException ex)
 					{
 						System.out.println("Incorrect Entry.Please Try Again..");
@@ -222,77 +249,79 @@ public class RestaurantApplication {
 						sc.next();
 						++counter;
 					}
-					if(success==true)
-					{
-						success=false;
-						counter=0;
-						break;
-					}
+					counter=0;
+					if(counter == 0) { break; }
 				}
 				orderlistarr.viewOrder(orderid);
 				do
 				{
 					while(counter<3)
 					{
-						try
-						{
-							 System.out.println("Would you like to (Add 1)/(Remove 2)/(Update Quantity 3)/(Done 4)");
-							 choice = sc.nextInt();
-							 switch (choice)
-							 {
-								 case 1:
-								 {
-									 orderlistarr.getOrder(orderid).addOrderItem(mainmenu);
-								 }
-								 break;
-								 case 2:
-								 {
-									 orderlistarr.getOrder(orderid).deleteOrderItem();
-								 }
-								 break;
-								 case 3:
-								 {
-									 orderlistarr.getOrder(orderid).updateOrderItemQuantity();
-								 }
-								 break;
-								 case 4:
-								 {
-									 System.out.println("Order" + orderid + "is updated");
-								 }
-								 break;
-								 default:
-								 {
-									 System.out.println("");
-									 System.out.println("Incorrect Entry. Please try again...");
-									 System.out.println("");
-								 }
-								 break;
-							 }
-						
-						}
+						System.out.println("Would you like to (Add 1)/(Remove 2)/(Update Quantity 3)/(Done 4)");
+						try { choice = sc.nextInt(); }
 						catch(InputMismatchException ex)
 						{
 							System.out.println("Incorrect Entry.Please Try Again..");
 							System.out.println("");
 							sc.next();
 							++counter;
+							continue;
 						}
-						if(success==true)
-						{
-							success=false;
-							counter=0;
-							break;
-						}
+						counter = 0;
+						if(counter == 0) { break; }
 					}
-				}
-				while (choice <4);
+							 
+					 switch (choice)
+					 {
+						 case 1:
+						 {
+							 orderlistarr.getOrder(orderid).addOrderItem(mainmenu);
+						 }
+						 break;
+						 case 2:
+						 {
+							 orderlistarr.getOrder(orderid).deleteOrderItem();
+						 }
+						 break;
+						 case 3:
+						 {
+							 orderlistarr.getOrder(orderid).updateOrderItemQuantity();
+						 }
+						 break;
+						 case 4:
+						 {
+							 System.out.println("Order" + orderid + "is updated");
+						 }
+						 break;
+						 default:
+						 {
+							 System.out.println("");
+							 System.out.println("Incorrect Entry. Please try again...");
+							 System.out.println("");
+						 }
+						 break;
+					 }
+				}while (choice <4);
 			}
 			break;
 			case 6:
 			{
-				System.out.println("What Order would you like to view");
-				System.out.println("(1)All (2)Specific");
-				int check = sc.nextInt();
+				while(counter<3)
+				{
+					System.out.println("What Order would you like to view");
+					System.out.println("(1)All (2)Specific");
+					try { choice = sc.nextInt(); }
+					catch(InputMismatchException ex)
+					{
+						System.out.println("Incorrect Entry.Please Try Again..");
+						System.out.println("");
+						sc.next();
+						++counter;
+						continue;
+					}
+					counter = 0;
+					if(counter == 0) { break; }
+				}
 				switch (choice)
 				 {
 					 case 1:
@@ -302,16 +331,29 @@ public class RestaurantApplication {
 					 break;
 					 case 2:
 					 {
-						    System.out.println("What is the Reservation Id of the order to be updated");
-							int resid = sc.nextInt();
-							if(resid>resList.getSize()||resid<0)
-							 {
-								 System.out.println("Incorrect Entry. Please try again...");
-								 System.out.println("");
-								 break;
-							 }
-							int orderid = resList.getReservation(resid).getOrderID();
-							orderlistarr.viewOrder(orderid);
+						 while(counter<3)
+						 {
+							 System.out.println("What is the Reservation Id of the order to be updated");
+							 try {resid = sc.nextInt(); }
+								catch(InputMismatchException ex)
+								{
+									System.out.println("Incorrect Entry.Please Try Again..");
+									System.out.println("");
+									sc.next();
+									++counter;
+									continue;
+								}
+								counter = 0;
+								if(counter == 0) { break; }
+						 }
+						if(resid>resList.getSize()||resid<0)
+						 {
+							 System.out.println("Incorrect Entry. Please try again...");
+							 System.out.println("");
+							 break;
+						 }
+						int orderid = resList.getReservation(resid).getOrderID();
+						orderlistarr.viewOrder(orderid);
 					 }
 					 break;
 					 default:
@@ -322,6 +364,7 @@ public class RestaurantApplication {
 					 }
 				 }
 			}
+			break;
 			case 7:
 			{
 				//Create reservation booking function
@@ -333,16 +376,42 @@ public class RestaurantApplication {
 			{
 				//Check/Remove reservation booking function
 				resList.viewReservation();
-				System.out.println("Would you like to remove any reservations?");
-				System.out.println("(1)Yes (2)No");
-				int check = sc.nextInt();
-				switch (check)
+				while(counter<3)
+				{
+					System.out.println("Would you like to remove any reservations?");
+					System.out.println("(1)Yes (2)No");
+					try { choice = sc.nextInt(); }
+					catch(InputMismatchException ex)
+					{
+						System.out.println("Incorrect Entry.Please Try Again..");
+						System.out.println("");
+						sc.next();
+						++counter;
+						continue;
+					}
+					counter = 0;
+					if(counter == 0) { break; }
+				}
+				switch (choice)
 				 {
 					 case 1:
 					 {
-						    System.out.println("Reservation ID of reservation to be removed?");
-							int resId = sc.nextInt();
-							resList.removeReservation(resId, tables);
+						 	while(counter<3)
+							{
+							    System.out.println("Reservation ID of reservation to be removed?");
+							    try {resid = sc.nextInt(); }
+								catch(InputMismatchException ex)
+								{
+									System.out.println("Incorrect Entry.Please Try Again..");
+									System.out.println("");
+									sc.next();
+									++counter;
+									continue;
+								}
+								counter = 0;
+								if(counter == 0) { break; }
+							}
+							resList.removeReservation(resid, tables);
 					 }
 					 break;
 					 case 2:
