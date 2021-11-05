@@ -83,43 +83,36 @@ public class RestaurantApplication {
 				///Create/Update/Remove menu item function
 				while(counter<3)
 				{
-					try
-					{
-						System.out.println("Would you like to Create(1)/Update(2)/Remove(3) menu item");
-						choice = sc.nextInt();
-						success = true;
-						switch (choice)
-						{
-							case 1:
-							{
-							 mainmenu.addMenuItem();
-							}
-							break;
-							case 2:
-							{
-							 mainmenu.updateMenuItem();
-							}
-							break;
-							case 3:
-							{
-							 mainmenu.deleteMenuItem();
-							}
-							break;
-						}
-					}
+					System.out.println("Would you like to Create(1)/Update(2)/Remove(3) menu item");
+					try { choice = sc.nextInt(); }
 					catch(InputMismatchException ex)
 					{
 						System.out.println("Incorrect Entry.Please Try Again..");
 						System.out.println("");
 						sc.next();
 						++counter;
+						continue;
 					}
-					if(success==true)
+					counter = 0;
+					switch (choice)
 					{
-						success=false;
-						counter =0;
+						case 1:
+						{
+						 mainmenu.addMenuItem();
+						}
+						break;
+						case 2:
+						{
+						 mainmenu.updateMenuItem();
+						}
+						break;
+						case 3:
+						{
+						 mainmenu.deleteMenuItem();
+						}
 						break;
 					}
+					if(counter == 0) { break; }
 				}
 			}
 			break;
