@@ -4,7 +4,7 @@ import java.util.*;
 
 public class RestaurantApplication {
 	public static void main(String[] args) {
-		int choice;
+		int choice=0;
 		Menu mainmenu = new Menu();
 		StaffList staffList = new StaffList();
 		// Prepopulating.....
@@ -17,14 +17,17 @@ public class RestaurantApplication {
 		SalesRecord totalsales = new SalesRecord(); //keep track of all sales
 		Scanner sc = new Scanner(System.in);
 		Staff staff = staffList.getStaff();	
-		if (staff == null)
+		if(staff==null)
 		{
-		System.out.println("Unauthorised access. Program exiting...");
-		return;
+			System.out.println("");
+			System.out.println("Unauthorised access. Exiting Program..");
+			return;
 		}
 		System.out.println("");
 		System.out.println("Welcome " + staff.getStaffName() + " to the use of the Restaurant Application" );
 		System.out.println("");
+		int counter=0;
+		boolean success = false;
 		do
 		{
 			System.out.println("---------Menu Changes--------");
@@ -48,61 +51,123 @@ public class RestaurantApplication {
 			System.out.println("(14) Register New Staff");
 			System.out.println("(15) Exit");
 			System.out.println("");
-			System.out.print("Enter your Choice: ");
-			choice = sc.nextInt();
+			while(counter<3)
+			{
+				try
+				{
+					System.out.print("Enter your Choice: ");
+					choice = sc.nextInt();
+					success=true;
+				}
+				catch(InputMismatchException ex) {
+		        	System.out.println("Incorrect Entry.Please Try Again..this one");
+					System.out.println("");
+					sc.next();
+					++counter;
+		        }
+				if(success==true)
+				{
+					success=false;
+					break;
+				}
+			}
+			if(counter==3)
+			{
+				System.out.println("Too many Attempts.Exiting Program..");
+				return;
+			}
+			counter =0;
 			switch (choice) {
 			case 1:
 			{
 				///Create/Update/Remove menu item function
-				System.out.println("Would you like to Create(1)/Update(2)/Remove(3) menu item");
-				choice = sc.nextInt();
-				sc.nextLine();
-				switch (choice)
+				while(counter<3)
 				{
-					case 1:
+					try
 					{
-					 mainmenu.addMenuItem();
+						System.out.println("Would you like to Create(1)/Update(2)/Remove(3) menu item");
+						choice = sc.nextInt();
+						success = true;
+						switch (choice)
+						{
+							case 1:
+							{
+							 mainmenu.addMenuItem();
+							}
+							break;
+							case 2:
+							{
+							 mainmenu.updateMenuItem();
+							}
+							break;
+							case 3:
+							{
+							 mainmenu.deleteMenuItem();
+							}
+							break;
+						}
 					}
-					break;
-					case 2:
+					catch(InputMismatchException ex)
 					{
-					 mainmenu.updateMenuItem();
+						System.out.println("Incorrect Entry.Please Try Again..");
+						System.out.println("");
+						sc.next();
+						++counter;
 					}
-					break;
-					case 3:
+					if(success==true)
 					{
-					 mainmenu.deleteMenuItem();
+						success=false;
+						break;
 					}
-					break;
 				}
 			}
+			counter =0;
 			break;
 			case 2:
 			{
 				//Create/Update/Remove promotion function
 				mainmenu.displayLessMenu();
-				System.out.println("Would you like to Create(1)/Update(2)/Remove(3) Promo item");
-				choice = sc.nextInt();
-				sc.nextLine();
-				switch (choice)
+				while(counter<3)
 				{
-					case 1:
+					try
 					{
-						mainmenu.addPromoItem();
+						System.out.println("Would you like to Create(1)/Update(2)/Remove(3) Promo item");
+						choice = sc.nextInt();
+						success = true;
+						switch (choice)
+						{
+							case 1:
+							{
+								mainmenu.addPromoItem();
+							}
+							break;
+							case 2:
+							{
+								mainmenu.updatePromoItem();
+							}
+							break;
+							case 3:
+							{
+								mainmenu.deletePromoItem();
+							}
+							break;
+						}
 					}
-					break;
-					case 2:
+					catch(InputMismatchException ex)
 					{
-						mainmenu.updatePromoItem();
+						System.out.println("Incorrect Entry.Please Try Again..");
+						System.out.println("");
+						sc.next();
+						++counter;
 					}
-					break;
-					case 3:
+					if(success==true)
 					{
-						mainmenu.deletePromoItem();
+						success=false;
+						break;
 					}
-					break;
 				}
 			}
+			counter = 0;
 			break;
 			case 3:
 			{
@@ -356,8 +421,12 @@ public class RestaurantApplication {
 				staffList.addStaff();
 			}
 			break;
-			case 15: System.out.println("Program terminating ...");
+			case 15: 
+			{
+				System.out.println("Program terminating ...");
+				return;
 			}
+		}
 		} while (choice < 15);
 	}
 }

@@ -483,19 +483,19 @@ public class Menu {
 				{
 					case 1:
 					{
-						System.out.println("What is the new name of the Main Dish?");
+						System.out.println("What is the new name of the Promo Dish?");
 						String newname = sc.nextLine();
 						promo.get(i).updateName(newname);
 					}
 					break;
 					case 2: {
-						System.out.println("What is the new description of the Main Dish?");
+						System.out.println("What is the new description of the Promo Dish?");
 						String newdes = sc.nextLine();
 						promo.get(i).updateDescription(newdes);
 					}
 					break;
 					case 3: {
-						System.out.println("What is the new price of the Main Dish?");
+						System.out.println("What is the new price of the Promo Dish?");
 						double newprice = sc.nextDouble();
 						promo.get(i).updatePrice(newprice);
 					}
