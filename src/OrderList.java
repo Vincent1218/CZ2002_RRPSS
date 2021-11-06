@@ -54,24 +54,97 @@ public class OrderList {
 	
 	public void createOrder(Menu mainmenu, Staff staff, MemberList memberList,ReservationList resList, int resid)
 	{	
-		 int a =1;
+		 int choice =1;
 		 int member=0;
 		 int memberId=0;
+		 int counter=0;
+		 int check=1;
+		 int countermain = 0;
+		 int contact =0;
 		 Scanner sc = new Scanner(System.in);
 		 Order orders = new Order(staff, resid);
-		 while(a==1)
+		 while(check==1)
 		 {
 			 orders.addOrderItem(mainmenu);
-			 System.out.println("Do you still intend to add Items (Yes 1)(No 0)?");
-			 a = sc.nextInt();
+			 while(counter<3)
+				{
+				 System.out.println("Do you still intend to add Items (Yes 1)(No 0)?");	
+					try 
+					{ 
+						choice = sc.nextInt();
+						sc.nextLine();
+						if (choice<0||choice>1)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+							++counter;
+							continue;
+						}
+					}
+					catch(InputMismatchException ex)
+					{
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
+						sc.next();
+						++counter;
+						continue;
+					}
+					counter = 0;
+					if(counter == 0) { break; }
+				}
+				if(counter == 3) 
+				{ 
+					counter=0;
+					System.out.println("Too many Attempts.Return to main program..");
+					return;
+				}
+				if(choice==0)
+				{
+					break;
+				}
 		 }
 		 orderlistarray.add(orders);
 		 orderlistarray.get(orderlistarray.size()-1).updateorderId(orderlistarray.size());
-		 System.out.println("May I enquire on your membership status?");
-		 System.out.println("(1)Yes, I am a Member, (2)No, I am not a member");
-		 int mem = sc.nextInt();
-		 int count = 0;
-		 if(mem==2)
+		 while(counter<3)
+			{
+			 System.out.println("May I enquire on your membership status?");
+			 System.out.println("(1)Yes, I am a Member, (2)No, I am not a member");
+				try 
+				{ 
+					choice = sc.nextInt();
+					sc.nextLine();
+					if (choice<0||choice>1)
+					{
+						System.out.println("Incorrect Entry.Please Try Again..");
+						System.out.println("");
+						++counter;
+						continue;
+					}
+				}
+				catch(InputMismatchException ex)
+				{
+					if(counter<2)
+					{
+						System.out.println("Incorrect Entry.Please Try Again..");
+						System.out.println("");
+					}
+					sc.next();
+					++counter;
+					continue;
+				}
+				counter = 0;
+				if(counter == 0) { break; }
+			}
+			if(counter == 3) 
+			{ 
+				counter=0;
+				System.out.println("Too many Attempts.Return to main program..");
+				return;
+			}
+		 if(choice==2)
 		 {
 			 // add the final order
 			 //and the name of the staff that did it.
@@ -86,22 +159,80 @@ public class OrderList {
 			 System.out.println("");
 			 return;
 		 }
-		 else if(mem==1) {
+		 else if(choice==1) {
 			 while ( true ){
-				 System.out.println("Please enter your Member ID: ");
-				 memberId = sc.nextInt();
-				 System.out.println("Please enter your Contact Number: ");
-				 int contact = sc.nextInt();
-				 member = memberList.checkMember(memberId, contact);
-				 if(member==0) {
-					 System.out.println("Invalid Member ID/Contact No. Try Again");
-					 count++;
-					 if(count>3) System.out.println("Failed 3 times. Proceeding...");
-					 else memberList.getMember(memberId);
-				 }
-				 else{
-					 break;
-				 }
+				 while(counter<3)
+					{
+					 System.out.println("Please enter your Member ID: ");
+						try 
+						{ 
+							memberId = sc.nextInt();
+							sc.nextLine();
+						}
+						catch(InputMismatchException ex)
+						{
+							if(counter<2)
+							{
+								System.out.println("Incorrect Entry.Please Try Again..");
+								System.out.println("");
+							}
+							sc.next();
+							++counter;
+							continue;
+						}
+						counter = 0;
+						if(counter == 0) { break; }
+					}
+					if(counter == 3) 
+					{ 
+						counter=0;
+						System.out.println("Too many Attempts.Return to main program..");
+						return;
+					}
+				 while(counter<3)
+					{
+					 System.out.println("Please enter your Contact Number: ");
+						try 
+						{ 
+							 contact = sc.nextInt();
+							sc.nextLine();
+						}
+						catch(InputMismatchException ex)
+						{
+							if(counter<2)
+							{
+								System.out.println("Incorrect Entry.Please Try Again..");
+								System.out.println("");
+							}
+							sc.next();
+							++counter;
+							continue;
+						}
+						counter = 0;
+						if(counter == 0) { break; }
+					}
+					if(counter == 3) 
+					{ 
+						counter=0;
+						System.out.println("Too many Attempts.Return to main program..");
+						return;
+					}
+					try {
+						member = memberList.checkMember(memberId, contact);
+						memberList.getMember(memberId);
+					}
+					catch(IndexOutOfBoundsException ex)
+					{
+						System.out.println("Invalid Member ID/Contact No. Try Again");
+						++countermain;
+						if(countermain == 3) 
+						{ 
+							countermain=0;
+							System.out.println("Too many Attempts. Your Order will not be entitled to Membership rights");
+							break;
+						}
+						continue;
+					}
 			 }
 		 }
 

@@ -87,7 +87,7 @@ public class RestaurantApplication {
 				///Create/Update/Remove menu item function
 				while(counter<3)
 				{
-					System.out.println("Would you like to Create(1)/Update(2)/Remove(3) menu item");
+					System.out.println("Would you like to Create(1)/Update(2)/Remove(3)/Exit(4) menu item");
 					try { choice = sc.nextInt(); 
 					sc.nextLine();}
 					catch(InputMismatchException ex)
@@ -119,6 +119,18 @@ public class RestaurantApplication {
 						 mainmenu.deleteMenuItem();
 						}
 						break;
+						case 4:
+						{
+							System.out.println("Returning to Main Program..");
+							System.out.println("");
+						}
+						break;
+						default:
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
+						break;
 					}
 					if(counter == 0) { break; }
 				}
@@ -130,7 +142,7 @@ public class RestaurantApplication {
 				mainmenu.displayLessMenu();
 				while(counter<3)
 				{
-					System.out.println("Would you like to Create(1)/Update(2)/Remove(3) Promo item");
+					System.out.println("Would you like to Create(1)/Update(2)/Remove(3)/Exit(4) Promo item");
 					try { choice = sc.nextInt();
 					sc.nextLine();}
 					catch(InputMismatchException ex)
@@ -162,6 +174,18 @@ public class RestaurantApplication {
 							mainmenu.deletePromoItem();
 						}
 						break;
+						case 4:
+						{
+							System.out.println("Returning to Main Program..");
+							System.out.println("");
+						}
+						break;
+						default:
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
+						break;
 					}
 					if(counter == 0) { break; }
 				}
@@ -179,7 +203,7 @@ public class RestaurantApplication {
 			{
 				while(counter<3)
 				{
-					System.out.println("Have you made a prior Reservation? (1 Yes)(0 No)");
+					System.out.println("Have you made a prior Reservation? (1 Yes)(0 No/Exit)");
 					try { choice = sc.nextInt();
 					sc.nextLine();}
 					catch(InputMismatchException ex)
@@ -304,7 +328,7 @@ public class RestaurantApplication {
 				{
 					while(counter<3)
 					{
-						System.out.println("Would you like to (Add 1)/(Remove 2)/(Update Quantity 3)/(Done 4)");
+						System.out.println("Would you like to (Add 1)/(Remove 2)/(Update Quantity 3)/(Done 4)/(Exit 5)");
 						try { choice = sc.nextInt();
 						sc.nextLine();}
 						catch(InputMismatchException ex)
@@ -341,6 +365,11 @@ public class RestaurantApplication {
 								 System.out.println("Order" + orderid + "is updated");
 							 }
 							 break;
+							 case 5:
+							 {
+								 System.out.println("Returning to Main Program...");
+							 }
+							 break;
 							 default:
 							 {
 								 System.out.println("");
@@ -360,7 +389,7 @@ public class RestaurantApplication {
 				while(counter<3)
 				{
 					System.out.println("What Order would you like to view");
-					System.out.println("(1)All (2)Specific");
+					System.out.println("(1)All (2)Specific (3)Exit");
 					try { choice = sc.nextInt();
 					sc.nextLine();}
 					catch(InputMismatchException ex)
@@ -421,6 +450,11 @@ public class RestaurantApplication {
 						 }
 						orderid = resList.getReservation(resid).getOrderID();
 						orderlistarr.viewOrder(orderid);
+					 }
+					 break;
+					 case 3:
+					 {
+						 System.out.println("Returning to Main Program...");
 					 }
 					 break;
 					 default:
@@ -497,7 +531,7 @@ public class RestaurantApplication {
 					 break;
 					 case 2:
 					 {
-						 System.out.println("");
+						 System.out.println("Returning to Main Program..");
 					 }
 					 break;
 					 default:
