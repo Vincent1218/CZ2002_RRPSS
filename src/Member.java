@@ -11,16 +11,8 @@ public class Member {
 		this.memberId = memberId;
 	}
 	
-	public int getContact() {
-		return this.contact;
-	}
-	
-	public String getName() {
-		return this.name;
-	}
-	
-	public int getMemberId() {
-		return this.memberId;
-	}
+	public int getContact() {return this.contact;}
+	public String getName() {return this.name;}
+	public int getMemberId() {return this.memberId;}
 	
 }

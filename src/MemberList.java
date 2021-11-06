@@ -5,17 +5,41 @@ import java.util.*;
 public class MemberList {
 	private ArrayList<Member> memberArray;
 	
-	public MemberList() {
-		this.memberArray =new ArrayList<>();
-	}
+	public MemberList() {this.memberArray =new ArrayList<>();}
 	
-	public int registerMember() {
+	public int registerMember()
+	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("What is the customer's name?");
 		String name = sc.nextLine();
-		System.out.println("What is the customer's contact number?");
-		int contactNo = sc.nextInt();
-		for(int i=0; i<memberArray.size(); i++) {
+		int counter=0;
+		int contactNo=0;
+		while(counter<3)
+		{
+			System.out.println("What is the customer's contact number?");
+			try {contactNo = sc.nextInt();
+			sc.nextLine();}
+			catch(InputMismatchException ex)
+			{
+				if(counter<2)
+				{
+					System.out.println("Incorrect Entry.Please Try Again..");
+					System.out.println("");
+				}
+				sc.next();
+				++counter;
+				continue;
+			}
+				counter = 0;
+				if(counter == 0) {break;}
+		}
+		if(counter==3) 
+		{
+			System.out.println("Incorrect Entry. Return to main program..");
+			return 0;
+		}
+		for(int i=0; i<memberArray.size(); i++)
+		{
 			if(memberArray.get(i).getContact()==contactNo)
 				return memberArray.size();
 		}

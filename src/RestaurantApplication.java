@@ -286,7 +286,7 @@ public class RestaurantApplication {
 					}
 					if (choice == 1)
 					{
-						resList.makeRes(tables);
+						resList.makeRes(tables, counter);
 					}
 					else
 					{
@@ -469,14 +469,24 @@ public class RestaurantApplication {
 			case 7:
 			{
 				//Create reservation booking function
-				resList.makeRes(tables);
+				resList.makeRes(tables, counter);
+				if(counter==3)
+				{
+					counter = 0;
+					break;
+				}
 				//Attach this info to array somehow probably to an overarching array. so one array and in that 1 array slot has the array of food and contact details.
 			}
 			break;
 			case 8:
 			{
 				//Check/Remove reservation booking function
-				resList.viewReservation();
+				if(resList.getSize()==0) 
+				{
+					System.out.println("There are no reservations.\n");
+					break;
+				}
+				resList.viewReservation(counter);
 				while(counter<3)
 				{
 					System.out.println("Would you like to remove any reservations?");
@@ -706,7 +716,8 @@ public class RestaurantApplication {
 			{
 				//register member
 				int memberId = memberList.registerMember();
-				if(memberId<=(memberList.getSize()+1000)) System.out.println("Contact number already registered. Member ID is " + memberId);
+				if(memberId==0) {break;}
+				else if(memberId<=(memberList.getSize()+1000)) System.out.println("Contact number already registered. Member ID is " + memberId);
 				else System.out.println("Registration successful. The Member ID is: " + memberId);
 			}
 			break;
