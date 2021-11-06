@@ -67,7 +67,9 @@ public class Order {
 	public String displayStaffName() { return this.staff.getStaffName();}
 	public void addOrderItem(Menu menu)
 	{
+		int quan = 0;
 		int check =0;
+		int counter=0;
 		menu.displayMenu();
 		 System.out.println("What dishes would you like (Please key in its Item ID)");
 		 Scanner sc = new Scanner(System.in);
@@ -80,8 +82,41 @@ public class Order {
 			{
 				if(choice.equals(this.orderArr.get(i).getItemID()))
 				{
-					System.out.println("Item exists, what is the quantity that you would like to add?");
-					int quan = sc.nextInt();
+					while(counter<3)
+					{
+						System.out.println("Item exists, what is the quantity that you would like to add?");
+						try 
+						{ 
+							quan = sc.nextInt(); 
+							sc.nextLine();
+							if (quan<=0)
+							{
+								System.out.println("Incorrect Entry.Please Try Again..");
+								System.out.println("");
+								++counter;
+								continue;
+							}
+						}
+						catch(InputMismatchException ex)
+						{
+							if(counter<2)
+							{
+								System.out.println("Incorrect Entry.Please Try Again..");
+								System.out.println("");
+							}
+							sc.next();
+							++counter;
+							continue;
+						}
+						counter = 0;
+						if(counter == 0) { break; }
+					}
+					if(counter == 3) 
+					{ 
+						counter=0;
+						System.out.println("Too many Attempts.Return to main program..");
+						return;
+					}
 					this.orderArr.get(i).updateQuantity(quan + this.orderArr.get(i).getQuantity());
 					return;
 				}
@@ -92,8 +127,42 @@ public class Order {
 				for (int i = 0; i < menu.getNumOfMain(); i++) {
 					if (choice.equals((menu.getMain().get(i).getItemID()))) {
 						orderArr.add((menu.getMain().get(i)).clone());
-						System.out.println("How many servings would you like?");
-						orderArr.get(this.numOfItems++).updateQuantity(sc.nextInt());
+						while(counter<3)
+						{
+							System.out.println("How many servings would you like?");	
+							try 
+							{ 
+								quan = sc.nextInt(); 
+								sc.nextLine();
+								if (quan<=0)
+								{
+									System.out.println("Incorrect Entry.Please Try Again..");
+									System.out.println("");
+									++counter;
+									continue;
+								}
+							}
+							catch(InputMismatchException ex)
+							{
+								if(counter<2)
+								{
+									System.out.println("Incorrect Entry.Please Try Again..");
+									System.out.println("");
+								}
+								sc.next();
+								++counter;
+								continue;
+							}
+							counter = 0;
+							if(counter == 0) { break; }
+						}
+						if(counter == 3) 
+						{ 
+							counter=0;
+							System.out.println("Too many Attempts.Return to main program..");
+							return;
+						}
+						orderArr.get(this.numOfItems++).updateQuantity(quan);
 						check = 1;
 					}
 				}
@@ -103,8 +172,42 @@ public class Order {
 				for (int i = 0; i < menu.getNumOfBev(); i++) {
 					if (choice.equals((menu.getBev().get(i).getItemID()))) {
 						orderArr.add((menu.getBev().get(i)).clone());
-						System.out.println("How many servings would you like?");
-						orderArr.get(this.numOfItems++).updateQuantity(sc.nextInt());
+						while(counter<3)
+						{
+							System.out.println("How many servings would you like?");	
+							try 
+							{ 
+								quan = sc.nextInt(); 
+								sc.nextLine();
+								if (quan<=0)
+								{
+									System.out.println("Incorrect Entry.Please Try Again..");
+									System.out.println("");
+									++counter;
+									continue;
+								}
+							}
+							catch(InputMismatchException ex)
+							{
+								if(counter<2)
+								{
+									System.out.println("Incorrect Entry.Please Try Again..");
+									System.out.println("");
+								}
+								sc.next();
+								++counter;
+								continue;
+							}
+							counter = 0;
+							if(counter == 0) { break; }
+						}
+						if(counter == 3) 
+						{ 
+							counter=0;
+							System.out.println("Too many Attempts.Return to main program..");
+							return;
+						}
+						orderArr.get(this.numOfItems++).updateQuantity(quan);
 						check = 1;
 					}
 				}
@@ -114,8 +217,42 @@ public class Order {
 				for (int i = 0; i < menu.getNumOfDes(); i++) {
 					if (choice.equals((menu.getDes().get(i).getItemID()))) {
 						orderArr.add((menu.getDes().get(i)).clone());
-						System.out.println("How many servings would you like?");
-						orderArr.get(this.numOfItems++).updateQuantity(sc.nextInt());
+						while(counter<3)
+						{
+							System.out.println("How many servings would you like?");	
+							try 
+							{ 
+								quan = sc.nextInt(); 
+								sc.nextLine();
+								if (quan<=0)
+								{
+									System.out.println("Incorrect Entry.Please Try Again..");
+									System.out.println("");
+									++counter;
+									continue;
+								}
+							}
+							catch(InputMismatchException ex)
+							{
+								if(counter<2)
+								{
+									System.out.println("Incorrect Entry.Please Try Again..");
+									System.out.println("");
+								}
+								sc.next();
+								++counter;
+								continue;
+							}
+							counter = 0;
+							if(counter == 0) { break; }
+						}
+						if(counter == 3) 
+						{ 
+							counter=0;
+							System.out.println("Too many Attempts.Return to main program..");
+							return;
+						}
+						orderArr.get(this.numOfItems++).updateQuantity(quan);
 						check = 1;
 					}
 				}
@@ -125,8 +262,42 @@ public class Order {
 				for (int i = 0; i < menu.getNumOfPro(); i++) {
 					if (choice.equals((menu.getPro().get(i).getItemID()))) {
 						orderArr.add((menu.getPro().get(i)).clone());
-						System.out.println("How many servings would you like?");
-						orderArr.get(this.numOfItems++).updateQuantity(sc.nextInt());
+						while(counter<3)
+						{
+							System.out.println("How many servings would you like?");	
+							try 
+							{ 
+								quan = sc.nextInt(); 
+								sc.nextLine();
+								if (quan<=0)
+								{
+									System.out.println("Incorrect Entry.Please Try Again..");
+									System.out.println("");
+									++counter;
+									continue;
+								}
+							}
+							catch(InputMismatchException ex)
+							{
+								if(counter<2)
+								{
+									System.out.println("Incorrect Entry.Please Try Again..");
+									System.out.println("");
+								}
+								sc.next();
+								++counter;
+								continue;
+							}
+							counter = 0;
+							if(counter == 0) { break; }
+						}
+						if(counter == 3) 
+						{ 
+							counter=0;
+							System.out.println("Too many Attempts.Return to main program..");
+							return;
+						}
+						orderArr.get(this.numOfItems++).updateQuantity(quan);
 						check = 1;
 					}
 				}
@@ -149,6 +320,8 @@ public class Order {
 	public void updateOrderItemQuantity()
 	{
 		int check =0;
+		int quan=0;
+		int counter =0;
 		System.out.println("What is the Item ID of the Dish that needs its quantity to be updated?");
 		Scanner sc =new Scanner(System.in);
 		String id = sc.next();
@@ -156,8 +329,41 @@ public class Order {
 		{
 			if(id.equals(this.orderArr.get(i).getItemID()))
  			{
-				System.out.println("What is the new quantity that you would like?");
-				int quan = sc.nextInt();
+				while(counter<3)
+				{
+					System.out.println("What is the new quantity that you would like?");
+					try
+					{ 
+						quan = sc.nextInt(); 
+						sc.nextLine();
+						if (quan<=0)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+							++counter;
+							continue;
+						}
+					}
+					catch(InputMismatchException ex)
+					{
+						if(counter<2)
+						{
+							System.out.println("Incorrect Entry.Please Try Again..");
+							System.out.println("");
+						}
+						sc.next();
+						++counter;
+						continue;
+					}
+					counter = 0;
+					if(counter == 0) { break; }
+				}
+				if(counter == 3) 
+				{ 
+					counter=0;
+					System.out.println("Too many Attempts.Return to main program..");
+					return;
+				}
 				this.orderArr.get(i).updateQuantity(quan);
 				check=1;
  			}
