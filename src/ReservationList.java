@@ -1,6 +1,8 @@
 package Project;
 
 import java.util.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class ReservationList {
 	private ArrayList<Reservation> resList;
@@ -45,7 +47,7 @@ public class ReservationList {
 			int contact = 0;
 			System.out.println("Enter the Date in DD/MM/YYYY:");
 			String date = sc.next();
-			System.out.println("Enter the Time in HH:MM AM/PM:");
+			System.out.println("Enter the Time in HH:MM (24H Format):");
 			String time = sc.next();
 			sc.nextLine();
 			while(counter<3)
@@ -73,7 +75,7 @@ public class ReservationList {
 				return;
 			}
 			int resId = resList.size() + 1;
-			Reservation newRes = new Reservation(name, contact, pax, date,time, tableId, resId);
+			Reservation newRes = new Reservation(name, contact, pax, date, time, tableId, resId);
 			resList.add(newRes);
 			System.out.println("");
 			System.out.println("Reservation successful. Your Reservation ID is " + resId + " and your Table ID is " + tableId);
@@ -183,7 +185,7 @@ public class ReservationList {
 		else if(resId>resList.size()||resId<0)System.out.println("Invalid Reservation ID");
 		else {
 			int tableId = resList.get(resId-1).getResTableID();
-			tables.getTable(tableId).unassign();
+			if (tableId != 0) tables.getTable(tableId).unassign();
 			resList.remove(resId-1);
 			System.out.println("Reservation removed.");
 			if(resList.size()==0) System.out.println("There are no more reservations.");
@@ -194,6 +196,7 @@ public class ReservationList {
 					System.out.println("Name: " + resList.get(i).getResName());
 					System.out.println("Contact Number: " + resList.get(i).getResContact());
 					System.out.println("No. of pax: " + resList.get(i).getResPax());
+					System.out.println("Date: " + resList.get(i).getResDate());
 					System.out.println("Reservation Timing: " + resList.get(i).getResTime());
 					System.out.println("Table ID: " + resList.get(i).getResTableID());
 					System.out.println("");
@@ -201,5 +204,31 @@ public class ReservationList {
 			}
 			
 		}
+	}
+
+	public void clearReservation(TableList tables) {
+		if(resList.size()==0) return;
+		else 
+			for(int i=0;i<resList.size();i++)
+			{
+				SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+				Date resTime = null;
+				String resDateTime = resList.get(i).getResDate() + " " + resList.get(i).getResTime();
+				try {
+					resTime = formatter.parse(resDateTime);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				} 
+				//System.out.println(resTime); 
+    			Date curTime = new Date();  
+				//System.out.println(curTime);
+				long diff = (curTime.getTime() - resTime.getTime())/(60*1000);
+				//System.out.println(diff);
+				if(diff>10)
+				{
+					tables.getTable(resList.get(i).getResTableID()).unassign();
+					resList.get(i).updateTableID(0);
+				}
+			}
 	}
 }

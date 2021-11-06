@@ -56,7 +56,7 @@ public class StaffList {
     	while(counter<3)
     	{
     		System.out.println("What is your staffID Number New User?");
-	    	try
+			try
 	    	{ 
 	    		staffid = sc.nextInt();
 	    		sc.nextLine();
@@ -73,9 +73,9 @@ public class StaffList {
 				continue;
 			}
     	}
-		counter=0;
+    	counter=0;
 		System.out.println("Too many Attempts.Return to main program..");
-		return null;
-    	
+        return null;
+
     }
 }

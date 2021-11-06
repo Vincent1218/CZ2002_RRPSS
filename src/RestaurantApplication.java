@@ -469,6 +469,7 @@ public class RestaurantApplication {
 			case 7:
 			{
 				//Create reservation booking function
+				resList.clearReservation(tables);
 				resList.makeRes(tables, counter);
 				if(counter==3)
 				{
