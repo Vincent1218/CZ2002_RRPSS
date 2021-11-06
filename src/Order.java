@@ -29,13 +29,15 @@ public class Order {
 		this.date = "";
 		this.isMember = 0;
 		this.resID = resID;
+		this.isPaid = false;
 
 	}
 
 	public int getResID() { return resID;}
 	public String getDate(){ return date; }
 	public String getTime() { return time; }
-
+	public boolean getPaid() {return isPaid;}
+	public void updatePaid(boolean status) {this.isPaid = status;}
 	public String getDateTime() //get a string with both date and time
 	{
 		if (date == null || date.length() == 0)
@@ -50,10 +52,7 @@ public class Order {
 			return date + " " + time;
 		}
 	}
-  	public void updateMembership(int status)
-  	{
-  		this.isMember= status;
-  	}
+  	public void updateMembership(int status) { this.isMember= status ; }
 	public void updateDate()
 	{
 		Scanner sc = new Scanner(System.in);

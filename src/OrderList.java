@@ -46,6 +46,7 @@ public class OrderList {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Total amount to be paid: " + orderlistarray.get(orderId - 1).getFinalPrice());
 		System.out.println("Enter any key once payment has been made.");
+		orderlistarray.get(orderId-1).updatePaid(true);
 		String fill = sc.next();
 		System.out.println("Processing...");
 		System.out.println("Payment made!");

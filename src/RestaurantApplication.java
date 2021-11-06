@@ -536,6 +536,12 @@ public class RestaurantApplication {
 					counter=0;
 					if(counter == 0) { break; }
 				}
+				if(orderlistarr.getOrder(orderid).getPaid()){
+					System.out.println("The order has been paid...");
+					System.out.println("Returning to main program...");
+					System.out.println("");
+					break;
+				}
 				if(counter==3){break;}
 				while (counter<3)
 				{
