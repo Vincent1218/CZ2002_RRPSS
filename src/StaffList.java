@@ -36,7 +36,7 @@ public class StaffList {
                 id = sc.nextInt();
                 return staffArray.get(id-1);
             }
-            catch(InputMismatchException|IndexOutOfBoundsException ex) {
+            catch(InputMismatchException|IndexOutOfBoundsException|NullPointerException ex) {
             	if(counter<2)
             	{
             		System.out.println("Incorrect Entry.Please Try Again..");
@@ -56,26 +56,26 @@ public class StaffList {
     	while(counter<3)
     	{
     		System.out.println("What is your staffID Number New User?");
-            try { staffid = sc.nextInt();}
-			catch(InputMismatchException ex)
+	    	try
+	    	{ 
+	    		staffid = sc.nextInt();
+	    		sc.nextLine();
+	    		return staffArray.get(staffid-1);
+			}
+	    	catch(InputMismatchException|IndexOutOfBoundsException|NullPointerException ex)
 			{
 				if(counter<2)
 				{
 					System.out.println("Incorrect Entry.Please Try Again..");
 					System.out.println("");
 				}
-				sc.next();
 				++counter;
 				continue;
 			}
-			counter = 0;
-			if(counter == 0) { break; }
     	}
-    	if(staffid>0 && staffid<=staffArray.size()){
-            return staffArray.get(staffid-1);
-        }
-        else{
-            return null;
-        }
+		counter=0;
+		System.out.println("Too many Attempts.Return to main program..");
+		return null;
+    	
     }
 }
