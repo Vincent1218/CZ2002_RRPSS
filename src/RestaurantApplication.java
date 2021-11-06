@@ -257,6 +257,13 @@ public class RestaurantApplication {
 						 System.out.println("");
 						 break;
 					 }
+					boolean isDuplicate = orderlistarr.checkDuplicate(resid);
+					if (!isDuplicate)
+					{
+						System.out.println("There is an existing order for this table.");
+						System.out.println("Use the update order function to update the order.");
+						break;
+					}
 					orderlistarr.createOrder(mainmenu,staff,memberList,resList,resid);
 				}
 				else

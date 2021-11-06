@@ -116,7 +116,7 @@ public class OrderList {
 				{ 
 					choice = sc.nextInt();
 					sc.nextLine();
-					if (choice<0||choice>1)
+					if (choice<1||choice>2)
 					{
 						System.out.println("Incorrect Entry.Please Try Again..");
 						System.out.println("");
@@ -248,6 +248,23 @@ public class OrderList {
 		 System.out.println("Your order Id is " + orderlistarray.size());
 		 resList.getReservation(resid-1).updateOrderID(orderlistarray.size());
 		 System.out.println("");
+	}
+
+	public boolean checkDuplicate(int resid) //prevents the creation of duplicate orders with the same resid (same table)
+	{
+		int count = 0;
+		for (int i = 0; i < orderlistarray.size(); i++)
+		{
+			if (orderlistarray.get(i).getResID() == resid)
+			{
+				count += 1;
+				if (count > 0)
+				{
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 	
 	public void printOrderInvoice(int orderId)
