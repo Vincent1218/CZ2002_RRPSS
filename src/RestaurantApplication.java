@@ -709,7 +709,16 @@ public class RestaurantApplication {
 			break;
 			case 12:
 			{
+				System.out.println("");
 				staff = staffList.updateStaffId();
+				if(staff==null)
+				{
+					System.out.println("");
+					System.out.println("Unauthorised access. Exiting Program..");
+					return;
+				}
+				System.out.println("Welcome " + staff.getStaffName() + " to the use of the Restaurant Application" );
+				System.out.println("");
 			}
 			break;
 			case 13:
