@@ -9,6 +9,7 @@ public class Reservation {
 	private int contact;
 	private int tableID;
 	private int orderID;
+	private boolean valid;
 	
 	public Reservation(String name, int contact, int pax, String date,String time, int tableId, int resId) {
 		this.time = time;
@@ -18,8 +19,10 @@ public class Reservation {
 		this.contact = contact;
 		this.resID = resId;
 		this.tableID = tableId;
+		this.valid = true;
 	}
-	
+	public boolean getValid(){return this.valid;}
+	public void setValid(boolean v) { this.valid = v;}
 	public String getResName() {return this.name;}
 	public int getResContact() {return this.contact;}
 	public String getResTime() {return this.time;}

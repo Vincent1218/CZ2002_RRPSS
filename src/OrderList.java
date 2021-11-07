@@ -233,6 +233,7 @@ public class OrderList {
 						}
 						continue;
 					}
+					break;
 			 }
 		 }
 
@@ -246,7 +247,7 @@ public class OrderList {
 		 System.out.println("Your order was created by " + staff.getStaffName());
 		 System.out.println("");
 		 System.out.println("Your order Id is " + orderlistarray.size());
-		 resList.getReservation(resid-1).updateOrderID(orderlistarray.size());
+		 resList.getReservation(resid).updateOrderID(orderlistarray.size());
 		 System.out.println("");
 	}
 
