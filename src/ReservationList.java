@@ -219,7 +219,7 @@ public class ReservationList {
 				} catch (ParseException e) {
 					e.printStackTrace();
 				} 
-				//System.out.println(resTime); 
+				//System.out.println(resTime);
     			Date curTime = new Date();  
 				//System.out.println(curTime);
 				long diff = (curTime.getTime() - resTime.getTime())/(60*1000);
