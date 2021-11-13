@@ -36,5 +36,6 @@ public class PrePopulate {
         staffList.getStaffArray().add(new Staff(1,"Pikachu"));
         staffList.getStaffArray().add(new Staff(2,"Bulbasaur"));
         staffList.getStaffArray().add(new Staff(3,"Charmander"));
+
     }
 }

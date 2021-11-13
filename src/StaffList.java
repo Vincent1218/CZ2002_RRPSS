@@ -17,9 +17,10 @@ public class StaffList {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter new staff's name?");
         String name = sc.nextLine();
-        int staffId = staffArray.size(); //memberID to start from 1001
+        int staffId = staffArray.size();
         Staff newStaff =new Staff(staffId, name);
         staffArray.add(newStaff);
+		System.out.println("Registration successful. The Staff ID is: " + staffId);
     }
 
     public Staff getStaff()

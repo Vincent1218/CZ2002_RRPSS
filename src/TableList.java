@@ -34,7 +34,7 @@ public class TableList {
 				if(tableArray[i].getStatus()==false)
 				{
 					tableArray[i].assign();
-					return tableArray[i].getTableId();
+					return tableArray[i].getTableID();
 				}
 				//if status is true then check time of res
 				//if curTime - resTime !> 10mins return 0
