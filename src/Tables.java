@@ -2,14 +2,14 @@ package Project;
 
 public class Tables {
 	private int tableId;
-	private int tablesize;
+	private int tableSize;
 	private boolean[] isReserved;
 
-	public Tables(int tableId, int tablesize)
+	public Tables(int tableId, int tableSize)
 	{
 		this.tableId=tableId;
 		this.isReserved=new boolean[24];
-		this.tablesize=tablesize;
+		this.tableSize=tableSize;
 	}
 	public int getTableId()
 	{
@@ -17,7 +17,7 @@ public class Tables {
 	}
 	public int getTableSize()
 	{
-		return this.tablesize;
+		return this.tableSize;
 	}
 	public boolean getStatus(int timeChoice)
 	{
