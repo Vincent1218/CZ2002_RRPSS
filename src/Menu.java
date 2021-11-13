@@ -3,23 +3,23 @@ package Project;
 import java.util.*;
 
 public class Menu {
-	private ArrayList<MenuItems> maindish;
+	private ArrayList<MenuItems> mainDish;
 	private ArrayList<MenuItems> beverages;
 	private ArrayList<MenuItems> desserts;
 	private ArrayList<MenuItems> promo;
 
 	public Menu()
 	{
-		this.maindish = new ArrayList<>();
+		this.mainDish = new ArrayList<>();
 		this.beverages = new ArrayList<>();
 		this.desserts = new ArrayList<>();
 		this.promo = new ArrayList<>();
 	}
-	public int getNumOfMain() { return maindish.size(); }
+	public int getNumOfMain() { return mainDish.size(); }
 	public int getNumOfDes() { return desserts.size(); }
 	public int getNumOfBev() { return beverages.size(); }
 	public int getNumOfPro() { return promo.size(); }
-	public ArrayList<MenuItems> getMain() { return this.maindish; }
+	public ArrayList<MenuItems> getMain() { return this.mainDish; }
 	public ArrayList<MenuItems> getDes() { return this.desserts; }
 	public ArrayList<MenuItems> getBev() { return this.beverages; }
 	public ArrayList<MenuItems> getPro() { return this.promo; }
@@ -29,9 +29,9 @@ public class Menu {
 		System.out.printf("%s %45s %60s %20s", "Item ID", "Menu Item","Description","Price");
 		System.out.println("");
 		System.out.println("Main Dishes---------------------------------------------------------------------------------------------------------------------------");
-		for(int i=0;i<maindish.size();i++)
+		for(int i=0;i<mainDish.size();i++)
 		{
-			System.out.printf("%s %50s %60s %20.2f\n", maindish.get(i).getItemID(), maindish.get(i).getName(), maindish.get(i).getDescription(), maindish.get(i).getPrice());
+			System.out.printf("%s %50s %60s %20.2f\n", mainDish.get(i).getItemID(), mainDish.get(i).getName(), mainDish.get(i).getDescription(), mainDish.get(i).getPrice());
 		}
 		System.out.println("");
 		System.out.println("Desserts------------------------------------------------------------------------------------------------------------------------------");
@@ -58,9 +58,9 @@ public class Menu {
 		System.out.printf("%s %45s %60s %20s", "Item ID", "Menu Item","Description","Price");
 		System.out.println("");
 		System.out.println("Main Dishes--------------------------------------------");
-		for(int i=0;i<maindish.size();i++)
+		for(int i=0;i<mainDish.size();i++)
 		{
-			System.out.printf("%s %50s %60s %20.2f\n", maindish.get(i).getItemID(), maindish.get(i).getName(), maindish.get(i).getDescription(), maindish.get(i).getPrice());
+			System.out.printf("%s %50s %60s %20.2f\n", mainDish.get(i).getItemID(), mainDish.get(i).getName(), mainDish.get(i).getDescription(), mainDish.get(i).getPrice());
 		}
 		System.out.println("");
 		System.out.println("Desserts----------------------------------------------");
@@ -144,8 +144,8 @@ public class Menu {
 				}
 				System.out.println("What is the description of the item?");
 				description += sc.nextLine();
-				MenuItems newitem =new MenuItems("M"+(maindish.size() + 1),name,description,price);
-				maindish.add(newitem);
+				MenuItems newitem =new MenuItems("M"+(mainDish.size() + 1),name,description,price);
+				mainDish.add(newitem);
 				System.out.println("Main Dish item added...");
 			}
 			break;
@@ -242,9 +242,9 @@ public class Menu {
 			{
 				System.out.println("What is the Item ID of the Main Dish to be updated?");
 				id = sc.nextLine();
-				for(int i=0;i<maindish.size();i++)
+				for(int i=0;i<mainDish.size();i++)
 				{
-					if (id.equals(maindish.get(i).getItemID()))
+					if (id.equals(mainDish.get(i).getItemID()))
 					{
 						check =1;
 					}
@@ -282,9 +282,9 @@ public class Menu {
 					System.out.println("Too many Attempts.Return to main program..");
 					return;
 				}
-				for(int i=0;i<maindish.size();i++)
+				for(int i=0;i<mainDish.size();i++)
 				{
-					if (id.equals(maindish.get(i).getItemID()))
+					if (id.equals(mainDish.get(i).getItemID()))
 					{
 						switch (choice)
 						{
@@ -292,13 +292,13 @@ public class Menu {
 							{
 								System.out.println("What is the new name of the Main Dish?");
 								String newname = sc.nextLine();
-								maindish.get(i).updateName(newname);
+								mainDish.get(i).updateName(newname);
 							}
 							break;
 							case 2: {
 								System.out.println("What is the new description of the Main Dish?");
 								String newdes = sc.nextLine();
-								maindish.get(i).updateDescription(newdes);
+								mainDish.get(i).updateDescription(newdes);
 							}
 							break;
 							case 3: {
@@ -327,7 +327,7 @@ public class Menu {
 									System.out.println("Too many Attempts.Return to main program..");
 									return;
 								}
-								maindish.get(i).updatePrice(newprice);
+								mainDish.get(i).updatePrice(newprice);
 							}
 							break;
 						}
@@ -573,15 +573,15 @@ public class Menu {
 				System.out.println("What is the itemID of the Main Dish to be deleted?");
 				id = sc.nextLine();
 				int check = 0;
-				for(int i=0;i<maindish.size();i++)
+				for(int i=0;i<mainDish.size();i++)
 				{
-					if (id.equals(maindish.get(i).getItemID()))
+					if (id.equals(mainDish.get(i).getItemID()))
 					{
 						check = 1;
-						maindish.remove(i);
-						for (int j = i; j < maindish.size(); j++)
+						mainDish.remove(i);
+						for (int j = i; j < mainDish.size(); j++)
 						{
-							maindish.get(j).updateItemID("M" + (j + 1));
+							mainDish.get(j).updateItemID("M" + (j + 1));
 						}
 					}
 				}
@@ -669,13 +669,13 @@ public class Menu {
 		System.out.println("");
 		System.out.println("What is the ID of Main Dish in Promotion Bundle " + ( promo.size() +1 )+ " ?");
 		String mainid = sc.nextLine();
-		for(int i =0;i<maindish.size();i++)
+		for(int i =0;i<mainDish.size();i++)
 		{
-			if (mainid.equals(maindish.get(i).getItemID()))
+			if (mainid.equals(mainDish.get(i).getItemID()))
 			{
-				mainname= maindish.get(i).getName();
-				mainprice = maindish.get(i).getPrice();
-				maindes = maindish.get(i).getDescription();
+				mainname= mainDish.get(i).getName();
+				mainprice = mainDish.get(i).getPrice();
+				maindes = mainDish.get(i).getDescription();
 				check=1;
 			}
 		}
