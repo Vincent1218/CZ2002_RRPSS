@@ -428,8 +428,8 @@ public class RestaurantApplication {
 					 {
 						 while(counter<3)
 						 {
-							 System.out.println("What is the Order Id of the order to be viewed");
-							 try {orderid = sc.nextInt();
+							 System.out.println("What is the Reservation Id of the order to be updated");
+							 try {resid = sc.nextInt();
 							 sc.nextLine();}
 								catch(InputMismatchException ex)
 								{
@@ -449,12 +449,13 @@ public class RestaurantApplication {
 							{
 								break;
 							}
-						if(orderid>orderlistarr.getSize()||orderid<0)
+						if(resid>resList.getSize()||resid<0)
 						 {
 							 System.out.println("Incorrect Entry. Please try again...");
 							 System.out.println("");
 							 break;
 						 }
+						orderid = resList.getReservation(resid).getOrderID();
 						orderlistarr.viewOrder(orderid);
 					 }
 					 break;
@@ -475,7 +476,7 @@ public class RestaurantApplication {
 			case 7:
 			{
 				//Create reservation booking function
-				resList.clearReservation(tables);
+				//resList.clearReservation(tables);
 				resList.makeRes(tables, counter);
 				if(counter==3)
 				{
@@ -493,8 +494,8 @@ public class RestaurantApplication {
 					System.out.println("There are no reservations.\n");
 					break;
 				}
-				resList.viewReservation();
-				while(counter<3)
+				resList.viewReservation(counter);
+				/*while(counter<3)
 				{
 					System.out.println("Would you like to remove any reservations?");
 					System.out.println("(1)Yes (2)No");
@@ -557,7 +558,7 @@ public class RestaurantApplication {
 						 System.out.println("Incorrect Entry. Please try again...");
 						 System.out.println("");
 					 }
-				 }
+				 }*/
 			}
 			break;
 			case 9: {
@@ -627,7 +628,7 @@ public class RestaurantApplication {
 				orderlistarr.printOrderInvoice(orderid);
 				orderlistarr.payOrder(orderid);
 				// Remove reservation and unassign Table
-				resList.removeReservation(orderlistarr.getOrder(orderid).getResID(), tables);
+				//resList.removeReservation(orderlistarr.getOrder(orderid).getResID(), tables);
 				//after payment is made, add order to sales revenue
 				totalsales.addSalesRecord(orderlistarr.getOrder(orderid));
 			}
@@ -733,7 +734,7 @@ public class RestaurantApplication {
 				//register member
 				int memberId = memberList.registerMember();
 				if(memberId==0) {break;}
-				else if(memberId<(memberList.getSize()+1000)) System.out.println("Contact number already registered. Member ID is " + memberId);
+				else if(memberId<=(memberList.getSize()+1000)) System.out.println("Contact number already registered. Member ID is " + memberId);
 				else System.out.println("Registration successful. The Member ID is: " + memberId);
 			}
 			break;

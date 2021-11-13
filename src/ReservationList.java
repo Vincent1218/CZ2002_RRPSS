@@ -88,10 +88,9 @@ public class ReservationList {
 		}
 	}
 
-	public void viewReservation() {
+	public void viewReservation(int counter) {
 		Scanner sc = new Scanner(System.in);
 		int check = 0;
-		int counter = 0;
 		while (counter < 3) {
 			System.out.println("Would you like to view all reservations or a specific reservation?");
 			System.out.println("(1)View all (2)View specific");
@@ -135,6 +134,7 @@ public class ReservationList {
 							System.out.println("Table ID: " + resList.get(i).getResTableID());
 							System.out.println("");
 						}
+
 					}
 			}
 			break;
@@ -229,8 +229,8 @@ public class ReservationList {
 				String resDateTime = resList.get(i).getResDate() + " " + resList.get(i).getResTime();
 				try {
 					resTime = formatter.parse(resDateTime);
-				} catch (ParseException|NullPointerException e) {
-//					e.printStackTrace();
+				} catch (ParseException e) {
+					e.printStackTrace();
 				}
 				//System.out.println(resTime);
 				Date curTime = new Date();

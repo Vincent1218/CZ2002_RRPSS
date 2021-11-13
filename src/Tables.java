@@ -1,21 +1,21 @@
 package Project;
 
 public class Tables {
-	private int tableID;
+	private int tableid;
 	private int tablesize;
 	private boolean isReserved;
 	
-	public Tables(int tableID, int tablesize)
+	public Tables(int tableid, int tablesize)
 	{
-		this.tableID=tableID;
+		this.tableid=tableid;
 		this.isReserved=false;
 		this.tablesize=tablesize;
 		//idk what to do with table size because we are 
 	    //suppose to have different table sizes
 	}
-	public int getTableID()
+	public int getTableId()
 	{
-		return this.tableID;
+		return this.tableid;
 	}
 	public int getTableSize()
 	{	
