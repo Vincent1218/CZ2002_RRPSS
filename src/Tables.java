@@ -3,15 +3,13 @@ package Project;
 public class Tables {
 	private int tableid;
 	private int tablesize;
-	private boolean isReserved;
+	private boolean[] isReserved;
 	
 	public Tables(int tableid, int tablesize)
 	{
 		this.tableid=tableid;
-		this.isReserved=false;
+		this.isReserved=new boolean[24];
 		this.tablesize=tablesize;
-		//idk what to do with table size because we are 
-	    //suppose to have different table sizes
 	}
 	public int getTableId()
 	{
@@ -21,13 +19,13 @@ public class Tables {
 	{	
 		return this.tablesize;
 	}
-	public boolean getStatus()
+	public boolean getStatus(int timeChoice)
 	{
-		return this.isReserved;
+		return isReserved[timeChoice];
 	}
-	public String showStatus()
+	public String showStatus(int timeChoice)
 	{
-		if (this.isReserved == true)
+		if (this.isReserved[timeChoice] == true)
 		{
 			return "Occupied";
 		}
@@ -36,12 +34,14 @@ public class Tables {
 			return "Unoccupied";
 		}
 	}
-	public void assign() {
-		this.isReserved=true;
+	public void assign(int timeChoice) {
+		this.isReserved[timeChoice]=true;
+		this.isReserved[timeChoice+1]=true;
 		return;
 	}
-	public void unassign() {
-		this.isReserved=false;
+	public void unassign(int timeChoice) {
+		this.isReserved[timeChoice]=false;
+		this.isReserved[timeChoice+1]=false;
 		return;
 	}
 
