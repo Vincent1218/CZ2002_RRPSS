@@ -58,7 +58,7 @@ public class MemberList {
 	
 	public int checkMember(int memberId, int contact) {
 		int index = memberId - 1001;
-		if((memberArray.get(index).getMemberId() == memberId) && (memberArray.get(index).getContact()==contact))
+		if((memberArray.get(index).getMemberId() == memberId) && (memberArray.get(index).getContact()==contact)) //to check if inputs match records
 			return 1;
 		else return 0;
 	}
