@@ -11,7 +11,6 @@ public class StaffList {
     }
 
     public ArrayList<Staff> getStaffArray() { return staffArray; }
-    public int getStaffSize() {return staffArray.size();}
 
     public void addStaff(){
         Scanner sc = new Scanner(System.in);
