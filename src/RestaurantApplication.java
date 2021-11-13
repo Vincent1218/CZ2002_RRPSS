@@ -488,6 +488,7 @@ public class RestaurantApplication {
 				case 8:
 				{
 					//Check/Remove reservation booking function
+					resList.clearReservation(tables);
 					if(resList.getSize()==0)
 					{
 						System.out.println("There are no reservations.\n");
