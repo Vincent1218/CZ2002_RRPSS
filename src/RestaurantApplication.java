@@ -309,7 +309,7 @@ public class RestaurantApplication {
 				//delete bottom line once all the other classes have exception handling
 				while(counter<3)
 				{
-					System.out.println("What is the Order Id of the order to be updated");
+					System.out.println("What is the orderId of the order to be updated");
 					try{orderid = sc.nextInt();
 					sc.nextLine();}
 					catch(InputMismatchException ex)
@@ -428,8 +428,8 @@ public class RestaurantApplication {
 					 {
 						 while(counter<3)
 						 {
-							 System.out.println("What is the Reservation Id of the order to be updated");
-							 try {resid = sc.nextInt();
+							 System.out.println("What is the orderId of the order to viewed");
+							 try {orderid = sc.nextInt();
 							 sc.nextLine();}
 								catch(InputMismatchException ex)
 								{
@@ -449,14 +449,13 @@ public class RestaurantApplication {
 							{
 								break;
 							}
-						if(resid>resList.getSize()||resid<0)
+						if(orderid>orderlistarr.getSize()||orderid<0)
 						 {
 							 System.out.println("Incorrect Entry. Please try again...");
 							 System.out.println("");
 							 break;
 						 }
-						orderid = resList.getReservation(resid).getOrderID();
-						orderlistarr.viewOrder(orderid);
+						 orderlistarr.viewOrder(orderid);
 					 }
 					 break;
 					 case 3:
