@@ -23,7 +23,7 @@ public class ReservationList {
 		System.out.println("Whose name will the reservation be under?");
 		String name = sc.next();
 		while (counter < 3) {
-			System.out.println("Number of Pax?");
+			System.out.println("Number of Pax(1-8)?");
 			try {
 				pax = sc.nextInt();
 				sc.nextLine();
