@@ -5,7 +5,6 @@ import java.text.DateFormat;
 
 public class Order {
 	private int orderId;
-	//IDK how to do the staff portionvoid updateOrderId(int newid)	
 	private double totalPrice;
 	private double finalPrice = 0;
 	private String date;
@@ -448,16 +447,16 @@ public class Order {
 
 	}
 
-	public double getTotalPrice()
-	{
-		this.totalPrice = 0;
-		for (int i = 0; i < orderArr.size(); i++)
-		{
-			this.totalPrice += this.orderArr.get(i).getQuantity()*this.orderArr.get(i).getPrice();
-		}
-		this.totalPrice = Math.round(this.totalPrice * 100.0)/100.0;
-		return this.totalPrice;
-	}
+//	public double getTotalPrice()
+//	{
+//		this.totalPrice = 0;
+//		for (int i = 0; i < orderArr.size(); i++)
+//		{
+//			this.totalPrice += this.orderArr.get(i).getQuantity()*this.orderArr.get(i).getPrice();
+//		}
+//		this.totalPrice = Math.round(this.totalPrice * 100.0)/100.0;
+//		return this.totalPrice;
+//	}
 
 	public double getFinalPrice()
 	{

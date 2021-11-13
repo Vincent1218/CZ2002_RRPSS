@@ -4,12 +4,10 @@ import java.util.*;
 
 public class OrderList {
 	private ArrayList<Order> orderlistarray;
-	//private int numoforders;
-	
+
 	public OrderList()
 	{
 		this.orderlistarray =new ArrayList<>();
-		//this.numoforders =0;
 	}
 	public ArrayList<Order> getOrderlistarray()
 	{
