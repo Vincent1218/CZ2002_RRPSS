@@ -12,12 +12,12 @@ public class MemberList {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("What is the customer's name?");
 		String name = sc.nextLine();
-		int counter=0;
+		int counter=0; //counter to count number of failed inputs
 		int contactNo=0;
-		while(counter<3)
+		while(counter<3) //number of failed inputs to max out at 3
 		{
 			System.out.println("What is the customer's contact number?");
-			try {contactNo = sc.nextInt();
+			try {contactNo = sc.nextInt(); //exception handling
 			sc.nextLine();}
 			catch(InputMismatchException ex)
 			{
@@ -35,13 +35,13 @@ public class MemberList {
 		}
 		if(counter==3) 
 		{
-			System.out.println("Incorrect Entry. Return to main program..");
+			System.out.println("Incorrect Entry. Return to main program.."); 
 			return 0;
 		}
 		for(int i=0; i<memberArray.size(); i++)
 		{
-			if(memberArray.get(i).getContact()==contactNo)
-				return memberArray.size();
+			if(memberArray.get(i).getContact()==contactNo) //check if contact number is already registered
+				return i+1001; //if contact number already registered, return memberID contact number is registered under
 		}
 		int memberId = memberArray.size() + 1001; //memberID to start from 1001
 		Member newMember =new Member(name,contactNo,memberId);
