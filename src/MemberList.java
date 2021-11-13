@@ -7,7 +7,7 @@ public class MemberList {
 	
 	public MemberList() {this.memberArray =new ArrayList<>();}
 	
-	public int registerMember()
+	public void registerMember()
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("What is the customer's name?");
@@ -36,18 +36,20 @@ public class MemberList {
 		if(counter==3) 
 		{
 			System.out.println("Incorrect Entry. Return to main program.."); 
-			return 0;
+			return;
 		}
-		for(int i=0; i<memberArray.size(); i++)
-		{
-			if(memberArray.get(i).getContact()==contactNo) //check if contact number is already registered
-				return i+1001; //if contact number already registered, return memberID contact number is registered under
+		
+		for(int i=0; i<memberArray.size(); i++){
+			if(memberArray.get(i).getContact()==contactNo){
+					System.out.println("Contact number already registered. Member ID is " + memberArray.get(i).getMemberId());
+					return;
+			}
 		}
+		
 		int memberId = memberArray.size() + 1001; //memberID to start from 1001
 		Member newMember =new Member(name,contactNo,memberId);
 		memberArray.add(newMember);
-		
-		return memberId;
+		System.out.println("Registration successful. The Member ID is: " + memberId);
 	}
 	
 	public int getSize() {return memberArray.size();}

@@ -136,7 +136,7 @@ public class ReservationList {
 							System.out.println("Table ID: " + resList.get(i).getResTableID());
 							System.out.println("");
 						}
-
+						else System.out.println("Reservation ID: " + resList.get(i).getResID() + " timed out.");
 					}
 			}
 			break;
@@ -232,24 +232,23 @@ public class ReservationList {
 				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 				Date resDateTime = null;
 				Date curDateTime = new Date();
-				String resTime = java.time.LocalDate.now() + " " + resList.get(i).getResTime();
-//				System.out.println(resTime);
-//				System.out.println(resDateTime);
-//				System.out.println(curDateTime);
-				try {
+				if(resList.get(i).getValid())
+				{
+					String resTime = java.time.LocalDate.now() + " " + resList.get(i).getResTime();
+					try {
 					resDateTime = formatter.parse(resTime);
-				} catch (ParseException e) {
+					} catch (ParseException e) {
 					e.printStackTrace();
-				}
-				long diff = (curDateTime.getTime() - resDateTime.getTime()) / (60 * 1000);
-//				System.out.println(diff);
-				for(j=0;j<23;j++)
-					if(resList.get(i).getResTime()==timeArray[j])
-						timeChoice = j;
-				if (diff > 10) {
-					tables.getTable(resList.get(i).getResTableID()).unassign(timeChoice);
-					resList.get(i).updateTableID(0);
-					resList.get(i).setValid(false);
+					}
+					long diff = (curDateTime.getTime() - resDateTime.getTime()) / (60 * 1000);
+					for(j=0;j<23;j++)
+						if(resList.get(i).getResTime()==timeArray[j])
+							timeChoice = j;
+					if (diff > 10) {
+						tables.getTable(resList.get(i).getResTableID()).unassign(timeChoice);
+						resList.get(i).updateTableID(0);
+						resList.get(i).setValid(false);
+					}
 				}
 			}
 	}

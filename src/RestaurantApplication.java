@@ -732,10 +732,7 @@ public class RestaurantApplication {
 				case 13:
 				{
 					//register member
-					int memberId = memberList.registerMember();
-					if(memberId==0) {break;}
-					else if(memberId<=(memberList.getSize()+1000)) System.out.println("Contact number already registered. Member ID is " + memberId);
-					else System.out.println("Registration successful. The Member ID is: " + memberId);
+					memberList.registerMember();
 				}
 				break;
 				case 14:

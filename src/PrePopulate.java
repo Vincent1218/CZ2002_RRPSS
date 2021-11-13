@@ -3,7 +3,7 @@ package Project;
 public class PrePopulate {
     public static void prepopulate(Menu menu, StaffList staffList) {
         // Polulating Main Dish
-        menu.getMain().add(new MenuItems("M1","Japanese Steak","Grilled beef sirloin ",21.9));
+        menu.getMain().add(new MenuItems("M1","Japanese Steak","Grilled beef sirloin",21.9));
         menu.getMain().add(new MenuItems("M2","Chicken Teriyaki","Sizzling grilled chicken breast with teriyaki sauce",14.9));
         menu.getMain().add(new MenuItems("M3","Salmon Teriyaki","Grilled salmon with teriyaki sauce",16.9));
         menu.getMain().add(new MenuItems("M4","Unagi Donburi","Eel with teriyaki sauce on rice",17.9));
