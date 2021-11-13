@@ -3,53 +3,53 @@ package Project;
 import java.util.*;
 
 public class OrderList {
-	private ArrayList<Order> orderlistarray;
+	private ArrayList<Order> orderListArray;
 
 	public OrderList()
 	{
-		this.orderlistarray =new ArrayList<>();
+		this.orderListArray =new ArrayList<>();
 	}
 	public ArrayList<Order> getOrderlistarray()
 	{
-		return orderlistarray;
+		return orderListArray;
 	}
 	public Order getOrder(int orderId)
 	{
-		return orderlistarray.get(orderId-1);
+		return orderListArray.get(orderId-1);
 	}
 	public void viewAllOrder()
 	{
-		for(int i=0 ; i<orderlistarray.size(); i++)
+		for(int i=0 ; i<orderListArray.size(); i++)
 		{
 			System.out.println("Order Number  " + (i+1));
 			System.out.println("----------------------------------");
 			System.out.println("");
-			orderlistarray.get(i).printOrder();
+			orderListArray.get(i).printOrder();
 			System.out.println("");
 		}
 	}
 	public void viewOrder(int orderId)
 	{
-		if(orderId<0 || orderId>orderlistarray.size())
+		if(orderId<0 || orderId>orderListArray.size())
 		{
 			return;
 		}
 		System.out.println("Order Number  " + orderId);
 		System.out.println("----------------------------------");
 		System.out.println("");
-		orderlistarray.get(orderId-1).printOrder();
+		orderListArray.get(orderId-1).printOrder();
 	}
 	public void payOrder(int orderId)
 	{
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Total amount to be paid: " + orderlistarray.get(orderId - 1).getFinalPrice());
+		System.out.println("Total amount to be paid: " + orderListArray.get(orderId - 1).getFinalPrice());
 		System.out.println("Enter any key once payment has been made.");
-		orderlistarray.get(orderId-1).updatePaid(true);
+		orderListArray.get(orderId-1).updatePaid(true);
 		String fill = sc.next();
 		System.out.println("Processing...");
 		System.out.println("Payment made!");
 	}
-	public int getSize(){ return orderlistarray.size();}
+	public int getSize(){ return orderListArray.size();}
 	public void createOrder(Menu mainmenu, Staff staff, MemberList memberList,ReservationList resList, int resid)
 	{
 		 int choice =1;
@@ -104,8 +104,8 @@ public class OrderList {
 					break;
 				}
 		 }
-		 orderlistarray.add(orders);
-		 orderlistarray.get(orderlistarray.size()-1).updateOrderId(orderlistarray.size());
+		 orderListArray.add(orders);
+		 orderListArray.get(orderListArray.size()-1).updateOrderId(orderListArray.size());
 		 while(counter<3)
 			{
 			 System.out.println("May I enquire on your membership status?");
@@ -149,11 +149,11 @@ public class OrderList {
 			 System.out.println("");
 			 System.out.println("---------------Your Final order is-------------------");
 			 System.out.println("");
-			 orderlistarray.get(orderlistarray.size()-1).printOrder();
+			 orderListArray.get(orderListArray.size()-1).printOrder();
 			 System.out.println("Your order was created by " + staff.getStaffName());
 			 System.out.println("");
-			 System.out.println("Your order Id is " + orderlistarray.size());
-			 resList.getReservation(resid).updateOrderID(orderlistarray.size());
+			 System.out.println("Your order Id is " + orderListArray.size());
+			 resList.getReservation(resid).updateOrderID(orderListArray.size());
 			 System.out.println("");
 			 return;
 		 }
@@ -200,27 +200,27 @@ public class OrderList {
 		 }
 
 		 if (countermain != 3){
-			 orderlistarray.get(orderlistarray.size()-1).updateMembership(1);
+			 orderListArray.get(orderListArray.size()-1).updateMembership(1);
 		 }
 		 // add the final order
 		 //and the name of the staff that did it.
 		 System.out.println("---------------Your Final order is-------------------");
 		 System.out.println("");
-		 orderlistarray.get(orderlistarray.size()-1).printOrder();
+		 orderListArray.get(orderListArray.size()-1).printOrder();
 		 System.out.println("");
 		 System.out.println("Your order was created by " + staff.getStaffName());
 		 System.out.println("");
-		 System.out.println("Your order Id is " + orderlistarray.size());
-		 resList.getReservation(resid).updateOrderID(orderlistarray.size());
+		 System.out.println("Your order Id is " + orderListArray.size());
+		 resList.getReservation(resid).updateOrderID(orderListArray.size());
 		 System.out.println("");
 	}
 
 	public boolean checkDuplicate(int resid) //prevents the creation of duplicate orders with the same resid (same table)
 	{
 		int count = 0;
-		for (int i = 0; i < orderlistarray.size(); i++)
+		for (int i = 0; i < orderListArray.size(); i++)
 		{
-			if (orderlistarray.get(i).getResID() == resid)
+			if (orderListArray.get(i).getResID() == resid)
 			{
 				count += 1;
 				if (count > 0)
@@ -235,11 +235,11 @@ public class OrderList {
 	public void printOrderInvoice(int orderId)
 	{
 		// this would be print order but with sales person details and time etcetc
-		orderlistarray.get(orderId-1).printOrder();
+		orderListArray.get(orderId-1).printOrder();
 		System.out.println(" ");
-		System.out.println("This order was done by " + orderlistarray.get(orderId - 1).displayStaffName() );
-		System.out.println("Staff number: " + orderlistarray.get(orderId - 1).displayStaffId() );
-		System.out.println(orderlistarray.get(orderId - 1).getDateTime());
+		System.out.println("This order was done by " + orderListArray.get(orderId - 1).displayStaffName() );
+		System.out.println("Staff number: " + orderListArray.get(orderId - 1).displayStaffId() );
+		System.out.println(orderListArray.get(orderId - 1).getDateTime());
 		System.out.println(" ");
 	}
 }
