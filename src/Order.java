@@ -61,7 +61,7 @@ public class Order {
 		System.out.println("Enter the time in HH:MM AM/PM:");
 		time = sc.nextLine();
 	}
-	public void updateorderId(int newid) { this.orderId=newid; }
+	public void updateOrderId(int newid) { this.orderId=newid; }
 	public int displaystaffID() { return this.staff.getStaffID(); }
 	public String displayStaffName() { return this.staff.getStaffName();}
 	public void addOrderItem(Menu menu)

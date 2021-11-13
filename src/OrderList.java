@@ -107,7 +107,7 @@ public class OrderList {
 				}
 		 }
 		 orderlistarray.add(orders);
-		 orderlistarray.get(orderlistarray.size()-1).updateorderId(orderlistarray.size());
+		 orderlistarray.get(orderlistarray.size()-1).updateOrderId(orderlistarray.size());
 		 while(counter<3)
 			{
 			 System.out.println("May I enquire on your membership status?");
