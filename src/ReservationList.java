@@ -50,7 +50,7 @@ public class ReservationList {
 			System.out.printf("(%d) " + timeArray[i] + "\n", i+1);
 			
 		int timeChoice = sc.nextInt();
-		int tableId = tables.checkAvailability(pax, timeChoice-1);
+		int tableId = tables.checkAvailability(pax, timeChoice);
 		if (tableId == 0)
 			System.out.println("Sorry, we have no available tables at the moment. Please try again later.");
 		else {
