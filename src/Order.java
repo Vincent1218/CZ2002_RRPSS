@@ -62,7 +62,7 @@ public class Order {
 		time = sc.nextLine();
 	}
 	public void updateOrderId(int newid) { this.orderId=newid; }
-	public int displaystaffID() { return this.staff.getStaffID(); }
+	public int displayStaffId() { return this.staff.getStaffID(); }
 	public String displayStaffName() { return this.staff.getStaffName();}
 	public void addOrderItem(Menu menu)
 	{

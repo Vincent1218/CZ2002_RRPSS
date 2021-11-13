@@ -240,7 +240,7 @@ public class OrderList {
 		orderlistarray.get(orderId-1).printOrder();
 		System.out.println(" ");
 		System.out.println("This order was done by " + orderlistarray.get(orderId - 1).displayStaffName() );
-		System.out.println("Staff number: " + orderlistarray.get(orderId - 1).displaystaffID() );
+		System.out.println("Staff number: " + orderlistarray.get(orderId - 1).displayStaffId() );
 		System.out.println(orderlistarray.get(orderId - 1).getDateTime());
 		System.out.println(" ");
 	}
