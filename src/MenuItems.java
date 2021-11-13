@@ -15,7 +15,7 @@ public class MenuItems {
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		this.quantity =0;
+		this.quantity = 0;
 	}
 
 	public double getPrice() { return this.price; }
