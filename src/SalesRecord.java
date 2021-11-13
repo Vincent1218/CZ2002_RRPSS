@@ -44,7 +44,7 @@ public class SalesRecord extends OrderList{
     public void printByYear(String year)
     {
         System.out.println("Sales Revenue Report for " + year);
-        double yrevenue = 0;
+        double yRevenue = 0;
         for (int i = 0; i < super.getOrderListArray().size(); i++)
         {
             String ordyear = super.getOrderListArray().get(i).getDate();
@@ -52,10 +52,10 @@ public class SalesRecord extends OrderList{
             if (splitOrdYear[2].equals(year))
             {
                 super.getOrderListArray().get(i).printOrder();
-                yrevenue += super.getOrderListArray().get(i).getFinalPrice();
+                yRevenue += super.getOrderListArray().get(i).getFinalPrice();
             }
         }
-        System.out.println("Total revenue for " + year + ": " + yrevenue);
+        System.out.println("Total revenue for " + year + ": " + yRevenue);
     }
 
 
