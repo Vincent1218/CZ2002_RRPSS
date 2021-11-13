@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 public class ReservationList {
 	private ArrayList<Reservation> resList;
 	private int rescount = 0;
+	private String[] timeArray = {"10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00"};
 
 	public ReservationList() {
 		this.resList = new ArrayList<>();
@@ -44,16 +45,21 @@ public class ReservationList {
 			System.out.println("Incorrect Entry. Return to main program..");
 			return;
 		}
-		int tableId = tables.checkAvailability(pax);
+		System.out.println("Choose your reservation timing");
+		for(int i=0;i<23;i++)
+			System.out.printf("(%d) " + timeArray[i] + "\n", i+1);
+			
+		int timeChoice = sc.nextInt();
+		int tableId = tables.checkAvailability(pax, timeChoice-1);
 		if (tableId == 0)
 			System.out.println("Sorry, we have no available tables at the moment. Please try again later.");
 		else {
 			int contact = 0;
-			System.out.println("Enter the Date in DD/MM/YYYY:");
-			String date = sc.next();
-			System.out.println("Enter the Time in HH:MM (24H Format):");
-			String time = sc.next();
-			sc.nextLine();
+			//System.out.println("Enter the Date in DD/MM/YYYY:");
+			//String date = sc.next();
+			//System.out.println("Enter the Time in HH:MM (24H Format):");
+			//String time = sc.next();
+			//sc.nextLine();
 			while (counter < 3) {
 				System.out.println("Please enter your Contact Number: ");
 				try {
@@ -80,7 +86,7 @@ public class ReservationList {
 			//int resId = rescount + 1;
 			//rescount++;
 			int resId = resList.size() + 1;
-			Reservation newRes = new Reservation(name, contact, pax, date, time, tableId, resId);
+			Reservation newRes = new Reservation(name, contact, pax, timeArray[timeChoice-1], tableId, resId);
 			resList.add(newRes);
 			System.out.println("");
 			System.out.println("Reservation successful. Your Reservation ID is " + resId + " and your Table ID is " + tableId);
@@ -129,7 +135,6 @@ public class ReservationList {
 							System.out.println("Name: " + resList.get(i).getResName());
 							System.out.println("Contact Number: " + resList.get(i).getResContact());
 							System.out.println("No. of pax: " + resList.get(i).getResPax());
-							System.out.println("Date: " + resList.get(i).getResDate());
 							System.out.println("Reservation Timing: " + resList.get(i).getResTime());
 							System.out.println("Table ID: " + resList.get(i).getResTableID());
 							System.out.println("");
@@ -150,7 +155,6 @@ public class ReservationList {
 						System.out.println("Name: " + resList.get(resId - 1).getResName());
 						System.out.println("Contact Number: " + resList.get(resId - 1).getResContact());
 						System.out.println("No. of pax: " + resList.get(resId - 1).getResPax());
-						System.out.println("Date: " + resList.get(resId - 1).getResDate());
 						System.out.println("Reservation Timing: " + resList.get(resId - 1).getResTime());
 						System.out.println("Table ID: " + resList.get(resId - 1).getResTableID());
 						System.out.println("");
@@ -171,7 +175,6 @@ public class ReservationList {
 		if (resId > resList.size() || resId < 0 || !(resList.get(resId - 1).getValid()))
 			System.out.println("Invalid Reservation ID");
 		else {
-			System.out.println("Date: " + resList.get(resId - 1).getResDate());
 			System.out.println("Reservation ID: " + resList.get(resId - 1).getResID());
 			System.out.println("Name: " + resList.get(resId - 1).getResName());
 			System.out.println("Contact Number: " + resList.get(resId - 1).getResContact());
@@ -190,7 +193,7 @@ public class ReservationList {
 		}
 	}
 
-	public void removeReservation(int resId, TableList tables) {
+	/*public void removeReservation(int resId, TableList tables) {
 		if (resList.size() == 0) System.out.println("There are no reservations.");
 		else if (resId > resList.size() || resId < 0 || !(resList.get(resId - 1).getValid()))
 			System.out.println("Invalid Reservation ID");
@@ -209,7 +212,6 @@ public class ReservationList {
 						System.out.println("Name: " + resList.get(i).getResName());
 						System.out.println("Contact Number: " + resList.get(i).getResContact());
 						System.out.println("No. of pax: " + resList.get(i).getResPax());
-						System.out.println("Date: " + resList.get(i).getResDate());
 						System.out.println("Reservation Timing: " + resList.get(i).getResTime());
 						System.out.println("Table ID: " + resList.get(i).getResTableID());
 						System.out.println("");
@@ -243,7 +245,7 @@ public class ReservationList {
 					resList.get(i).setValid(false);
 				}
 			}
-	}
+	}*/
 
 	public boolean checkEmpty() {
 		boolean isEmpty = true;
