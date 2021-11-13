@@ -9,7 +9,7 @@ public class OrderList {
 	{
 		this.orderListArray =new ArrayList<>();
 	}
-	public ArrayList<Order> getOrderlistArray()
+	public ArrayList<Order> getOrderListArray()
 	{
 		return orderListArray;
 	}
