@@ -51,7 +51,7 @@ public class OrderList {
 		System.out.println("Processing...");
 		System.out.println("Payment made!");
 	}
-	
+	public int getSize(){ return orderlistarray.size();}
 	public void createOrder(Menu mainmenu, Staff staff, MemberList memberList,ReservationList resList, int resid)
 	{	
 		 int choice =1;
@@ -189,28 +189,28 @@ public class OrderList {
 						System.out.println("Too many Attempts.Return to main program..");
 						return;
 					}
-				 while(counter<3)
-					{
-					 System.out.println("Please enter your Contact Number: ");
-						try 
-						{ 
-							 contact = sc.nextInt();
-							sc.nextLine();
-						}
-						catch(InputMismatchException ex)
-						{
-							if(counter<2)
-							{
-								System.out.println("Incorrect Entry.Please Try Again..");
-								System.out.println("");
-							}
-							sc.next();
-							++counter;
-							continue;
-						}
-						counter = 0;
-						if(counter == 0) { break; }
-					}
+//				 while(counter<3)
+//					{
+//					 System.out.println("Please enter your Contact Number: ");
+//						try
+//						{
+//							 contact = sc.nextInt();
+//							sc.nextLine();
+//						}
+//						catch(InputMismatchException ex)
+//						{
+//							if(counter<2)
+//							{
+//								System.out.println("Incorrect Entry.Please Try Again..");
+//								System.out.println("");
+//							}
+//							sc.next();
+//							++counter;
+//							continue;
+//						}
+//						counter = 0;
+//						if(counter == 0) { break; }
+//					}
 					if(counter == 3) 
 					{ 
 						counter=0;
@@ -218,7 +218,7 @@ public class OrderList {
 						return;
 					}
 					try {
-						member = memberList.checkMember(memberId, contact);
+//						member = memberList.checkMember(memberId, contact);
 						memberList.getMember(memberId);
 					}
 					catch(IndexOutOfBoundsException ex)
@@ -237,7 +237,7 @@ public class OrderList {
 			 }
 		 }
 
-		 orderlistarray.get(orderlistarray.size()-1).updateMembership(member);
+		 orderlistarray.get(orderlistarray.size()-1).updateMembership(1);
 		// add the final order
 		 //and the name of the staff that did it.
 		 System.out.println("---------------Your Final order is-------------------");

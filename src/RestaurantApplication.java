@@ -428,8 +428,8 @@ public class RestaurantApplication {
 					 {
 						 while(counter<3)
 						 {
-							 System.out.println("What is the Reservation Id of the order to be updated");
-							 try {resid = sc.nextInt();
+							 System.out.println("What is the Order Id of the order to be viewed");
+							 try {orderid = sc.nextInt();
 							 sc.nextLine();}
 								catch(InputMismatchException ex)
 								{
@@ -449,13 +449,12 @@ public class RestaurantApplication {
 							{
 								break;
 							}
-						if(resid>resList.getSize()||resid<0)
+						if(orderid>orderlistarr.getSize()||orderid<0)
 						 {
 							 System.out.println("Incorrect Entry. Please try again...");
 							 System.out.println("");
 							 break;
 						 }
-						orderid = resList.getReservation(resid).getOrderID();
 						orderlistarr.viewOrder(orderid);
 					 }
 					 break;
@@ -494,7 +493,7 @@ public class RestaurantApplication {
 					System.out.println("There are no reservations.\n");
 					break;
 				}
-				resList.viewReservation(counter);
+				resList.viewReservation();
 				while(counter<3)
 				{
 					System.out.println("Would you like to remove any reservations?");
@@ -734,7 +733,7 @@ public class RestaurantApplication {
 				//register member
 				int memberId = memberList.registerMember();
 				if(memberId==0) {break;}
-				else if(memberId<=(memberList.getSize()+1000)) System.out.println("Contact number already registered. Member ID is " + memberId);
+				else if(memberId<(memberList.getSize()+1000)) System.out.println("Contact number already registered. Member ID is " + memberId);
 				else System.out.println("Registration successful. The Member ID is: " + memberId);
 			}
 			break;

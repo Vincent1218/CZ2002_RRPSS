@@ -20,7 +20,7 @@ public class StaffList {
         int staffId = staffArray.size();
         Staff newStaff =new Staff(staffId, name);
         staffArray.add(newStaff);
-		System.out.println("Registration successful. The Staff ID is: " + staffId);
+		System.out.println("Registration successful. The Staff ID is: " + (staffId+1));
     }
 
     public Staff getStaff()
