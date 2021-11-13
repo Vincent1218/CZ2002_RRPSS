@@ -2,7 +2,7 @@ package Project;
 
 import java.util.*;
 public class TableList {
-	private static final int numOfTables = 15;
+	private static final int numOfTables = 16;
 	private Tables[] tableArray;
 	public boolean checkTableAvailability;
 	private String[] timeArray = {"10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30",
@@ -11,11 +11,21 @@ public class TableList {
 	public TableList()
 	{
 		this.tableArray= new Tables[numOfTables];
+		// create table with size 2,4,6,8
 		for (int i=0;i<numOfTables;i++)
 		{
-			int size = ((i+1)*2)%8;
-			if(size==0) size=8;
-			this.tableArray[i]= new Tables(i+1, size);
+			if(i<4){
+				this.tableArray[i]= new Tables(i+1, 2);
+			}
+			else if(i<8){
+				this.tableArray[i]= new Tables(i+1, 4);
+			}
+			else if(i<12){
+				this.tableArray[i]= new Tables(i+1, 6);
+			}
+			else{
+				this.tableArray[i]= new Tables(i+1, 8);
+			}
 		}
 	}
 	
@@ -32,7 +42,12 @@ public class TableList {
 
 		for (int i=0;i<numOfTables;i++)
 		{
-			 System.out.println(i+1 + "\t\t" + this.tableArray[i].getTableSize() + "\t\t" + tableArray[i].showStatus(timeChoice-1));
+			if(i<9){
+				System.out.printf("%d %15d %20s \n", i+1, this.tableArray[i].getTableSize(), tableArray[i].showStatus(timeChoice-1));
+			}
+			else{
+				System.out.printf("%d %14d %20s \n", i+1, this.tableArray[i].getTableSize(), tableArray[i].showStatus(timeChoice-1));
+			}
 		}
 		System.out.println("");
 	}
