@@ -7,7 +7,7 @@ public class RestaurantApplication {
 		int choice=0;
 		int resid=0;
 		int counter=0;
-		int orderid=0;
+		int orderId=0;
 		Menu mainmenu = new Menu();
 		StaffList staffList = new StaffList();
 		// Prepopulating.....
@@ -310,7 +310,7 @@ public class RestaurantApplication {
 					while(counter<3)
 					{
 						System.out.println("What is the orderId of the order to be updated");
-						try{orderid = sc.nextInt();
+						try{orderId = sc.nextInt();
 							sc.nextLine();}
 						catch(InputMismatchException ex)
 						{
@@ -330,7 +330,7 @@ public class RestaurantApplication {
 					{
 						break;
 					}
-					orderlistarr.viewOrder(orderid);
+					orderlistarr.viewOrder(orderId);
 					do
 					{
 						while(counter<3)
@@ -354,22 +354,22 @@ public class RestaurantApplication {
 							{
 								case 1:
 								{
-									orderlistarr.getOrder(orderid).addOrderItem(mainmenu);
+									orderlistarr.getOrder(orderId).addOrderItem(mainmenu);
 								}
 								break;
 								case 2:
 								{
-									orderlistarr.getOrder(orderid).deleteOrderItem();
+									orderlistarr.getOrder(orderId).deleteOrderItem();
 								}
 								break;
 								case 3:
 								{
-									orderlistarr.getOrder(orderid).updateOrderItemQuantity();
+									orderlistarr.getOrder(orderId).updateOrderItemQuantity();
 								}
 								break;
 								case 4:
 								{
-									System.out.println("Order" + orderid + "is updated");
+									System.out.println("Order" + orderId + "is updated");
 								}
 								break;
 								case 5:
@@ -429,7 +429,7 @@ public class RestaurantApplication {
 							while(counter<3)
 							{
 								System.out.println("What is the orderId of the order to viewed");
-								try {orderid = sc.nextInt();
+								try {orderId = sc.nextInt();
 									sc.nextLine();}
 								catch(InputMismatchException ex)
 								{
@@ -449,13 +449,13 @@ public class RestaurantApplication {
 							{
 								break;
 							}
-							if(orderid>orderlistarr.getSize()||orderid<0)
+							if(orderId>orderlistarr.getSize()||orderId<0)
 							{
 								System.out.println("Incorrect Entry. Please try again...");
 								System.out.println("");
 								break;
 							}
-							orderlistarr.viewOrder(orderid);
+							orderlistarr.viewOrder(orderId);
 						}
 						break;
 						case 3:
@@ -571,7 +571,7 @@ public class RestaurantApplication {
 					while (counter<3)
 					{
 						System.out.println("What is the orderId of the order invoice");
-						try{orderid = sc.nextInt();
+						try{orderId = sc.nextInt();
 							sc.nextLine();}
 						catch(InputMismatchException ex)
 						{
@@ -587,7 +587,7 @@ public class RestaurantApplication {
 						counter=0;
 						if(counter == 0) { break; }
 					}
-					if(orderlistarr.getOrder(orderid).getPaid()){
+					if(orderlistarr.getOrder(orderId).getPaid()){
 						System.out.println("The order has been paid...");
 						System.out.println("Returning to main program...");
 						System.out.println("");
@@ -617,19 +617,19 @@ public class RestaurantApplication {
 					if(counter==3){break;}
 					if (choice == 2)
 					{
-						orderlistarr.getOrder(orderid).updateDate();
+						orderlistarr.getOrder(orderId).updateDate();
 					}
-					int TempResID= orderlistarr.getOrder(orderid).getResID();
+					int TempResID= orderlistarr.getOrder(orderId).getResID();
 					resList.viewInvoiceReservationReservation(TempResID);
 					System.out.println("");
-					System.out.println("Order Number  " + orderid);
+					System.out.println("Order Number  " + orderId);
 					System.out.println("----------------------------------");
-					orderlistarr.printOrderInvoice(orderid);
-					orderlistarr.payOrder(orderid);
+					orderlistarr.printOrderInvoice(orderId);
+					orderlistarr.payOrder(orderId);
 					// Remove reservation and unassign Table
-					//resList.removeReservation(orderlistarr.getOrder(orderid).getResID(), tables);
+					//resList.removeReservation(orderlistarr.getOrder(orderId).getResID(), tables);
 					//after payment is made, add order to sales revenue
-					totalsales.addSalesRecord(orderlistarr.getOrder(orderid));
+					totalsales.addSalesRecord(orderlistarr.getOrder(orderId));
 				}
 				break;
 				case 11:

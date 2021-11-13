@@ -28,7 +28,7 @@ public class Reservation {
 	public int getResTableID() {return this.tableID;}
 	public int getResID() {return this.resID;}
 	public int getOrderID() {return this.orderID;}
-	public void updateOrderID(int orderid) {this.orderID = orderid;}
+	public void updateOrderID(int orderId) {this.orderID = orderId;}
 	public void updateTableID(int tableid) {this.tableID = tableid;}
 
 }
