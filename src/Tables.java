@@ -8,7 +8,7 @@ public class Tables {
 	public Tables(int tableid, int tablesize)
 	{
 		this.tableid=tableid;
-		this.isReserved=new boolean[23];
+		this.isReserved=new boolean[24];
 		this.tablesize=tablesize;
 	}
 	public int getTableId()

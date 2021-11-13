@@ -52,19 +52,20 @@ public class MemberList {
 	
 	public int getSize() {return memberArray.size();}
 	
-	void removeMember(int memberId) {
-		memberArray.remove(memberId-1);
-	}
+//	void removeMember(int memberId) {
+//		memberArray.remove(memberId-1);
+//	}
+//
+//	public int checkMember(int memberId, int contact) {
+//		int index = memberId - 1001;
+//		if((memberArray.get(index).getMemberId() == memberId) && (memberArray.get(index).getContact()==contact)) //to check if inputs match records
+//			return 1;
+//		else return 0;yes
+//	}
 	
-	public int checkMember(int memberId, int contact) {
+	public void getMember(int memberId) {
 		int index = memberId - 1001;
-		if((memberArray.get(index).getMemberId() == memberId) && (memberArray.get(index).getContact()==contact)) //to check if inputs match records
-			return 1;
-		else return 0;
-	}
-	
-	void getMember(int memberId) {
-		int index = memberId - 1001;
+		memberArray.get(index);
 		System.out.println("Member found.");
 		System.out.println("Member ID: " + memberArray.get(index).getMemberId());
 		System.out.println("Name: " + memberArray.get(index).getName());
