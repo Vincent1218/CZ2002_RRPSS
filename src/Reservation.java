@@ -2,7 +2,6 @@ package Project;
 
 public class Reservation {
 	private int resID;
-	private String date;
 	private String time;
 	private int pax;
 	private String name;
@@ -11,9 +10,8 @@ public class Reservation {
 	private int orderID;
 	private boolean valid;
 	
-	public Reservation(String name, int contact, int pax, String date,String time, int tableId, int resId) {
+	public Reservation(String name, int contact, int pax, String time, int tableId, int resId) {
 		this.time = time;
-		this.date = date;
 		this.pax = pax;
 		this.name = name;
 		this.contact = contact;
@@ -26,7 +24,6 @@ public class Reservation {
 	public String getResName() {return this.name;}
 	public int getResContact() {return this.contact;}
 	public String getResTime() {return this.time;}
-	public String getResDate() {return this.date;}
 	public int getResPax() {return this.pax;}
 	public int getResTableID() {return this.tableID;}
 	public int getResID() {return this.resID;}
