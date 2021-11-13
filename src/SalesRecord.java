@@ -3,8 +3,6 @@ package Project;
 import java.util.*;
 
 public class SalesRecord extends OrderList{
-    //private ArrayList<Order> orderArray;
-
     //constructors
     public SalesRecord() { super(); }
 
@@ -13,16 +11,16 @@ public class SalesRecord extends OrderList{
     public void printByDay(String date)
     {
         System.out.println("Sales Revenue Report for " + date);
-        double drevenue = 0;
+        double dRevenue = 0;
         for (int i = 0; i < super.getOrderListArray().size(); i++)
         {
             if (super.getOrderListArray().get(i).getDate().equals(date))
             {
                 super.getOrderListArray().get(i).printOrder();
-                drevenue += super.getOrderListArray().get(i).getFinalPrice();
+                dRevenue += super.getOrderListArray().get(i).getFinalPrice();
             }
         }
-        System.out.println("Total revenue for " + date + ": " + drevenue);
+        System.out.println("Total revenue for " + date + ": " + dRevenue);
     }
 
     public void printByMonth(String period)
