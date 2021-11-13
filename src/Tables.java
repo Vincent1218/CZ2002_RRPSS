@@ -4,11 +4,11 @@ public class Tables {
 	private int tableid;
 	private int tablesize;
 	private boolean[] isReserved;
-	
+
 	public Tables(int tableid, int tablesize)
 	{
 		this.tableid=tableid;
-		this.isReserved=new boolean[24];
+		this.isReserved=new boolean[23];
 		this.tablesize=tablesize;
 	}
 	public int getTableId()
@@ -16,7 +16,7 @@ public class Tables {
 		return this.tableid;
 	}
 	public int getTableSize()
-	{	
+	{
 		return this.tablesize;
 	}
 	public boolean getStatus(int timeChoice)

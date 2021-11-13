@@ -9,7 +9,7 @@ public class Reservation {
 	private int tableID;
 	private int orderID;
 	private boolean valid;
-	
+
 	public Reservation(String name, int contact, int pax, String time, int tableId, int resId) {
 		this.time = time;
 		this.pax = pax;
@@ -30,5 +30,5 @@ public class Reservation {
 	public int getOrderID() {return this.orderID;}
 	public void updateOrderID(int orderid) {this.orderID = orderid;}
 	public void updateTableID(int tableid) {this.tableID = tableid;}
-	
+
 }

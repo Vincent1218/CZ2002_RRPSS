@@ -23,7 +23,7 @@ public class ReservationList {
 		System.out.println("Whose name will the reservation be under?");
 		String name = sc.next();
 		while (counter < 3) {
-			System.out.println("Number of Pax(1-8)?");
+			System.out.println("Number of Pax?");
 			try {
 				pax = sc.nextInt();
 				sc.nextLine();
@@ -48,9 +48,9 @@ public class ReservationList {
 		System.out.println("Choose your reservation timing");
 		for(int i=0;i<23;i++)
 			System.out.printf("(%d) " + timeArray[i] + "\n", i+1);
-			
+
 		int timeChoice = sc.nextInt();
-		int tableId = tables.checkAvailability(pax, timeChoice);
+		int tableId = tables.checkAvailability(pax, timeChoice-1);
 		if (tableId == 0)
 			System.out.println("Sorry, we have no available tables at the moment. Please try again later.");
 		else {
@@ -193,13 +193,18 @@ public class ReservationList {
 		}
 	}
 
-	/*public void removeReservation(int resId, TableList tables) {
+	public void removeReservation(int resId, TableList tables) {
+		Scanner sc = new Scanner(System.in);
 		if (resList.size() == 0) System.out.println("There are no reservations.");
 		else if (resId > resList.size() || resId < 0 || !(resList.get(resId - 1).getValid()))
 			System.out.println("Invalid Reservation ID");
 		else {
 			int tableId = resList.get(resId - 1).getResTableID();
-			if (tableId != 0) tables.getTable(tableId).unassign();
+			System.out.println("Choose the timeslot to remove");
+			for(int i=0;i<23;i++)
+				System.out.printf("(%d) " + timeArray[i] + "\n", i+1);
+			int timeChoice = sc.nextInt();
+			if (tableId != 0) tables.getTable(tableId).unassign(timeChoice-1);
 			//resList.remove(resId-1);
 			resList.get(resId - 1).setValid(false);
 			System.out.println("Reservation removed.");
@@ -226,26 +231,31 @@ public class ReservationList {
 		if (resList.size() == 0 || checkEmpty()) return;
 		else
 			for (int i = 0; i < resList.size(); i++) {
-				SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-				Date resTime = null;
-				String resDateTime = resList.get(i).getResDate() + " " + resList.get(i).getResTime();
+				int timeChoice=0, j;
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				Date resDateTime = null;
+				Date curDateTime = new Date();
+				String resTime = java.time.LocalDate.now() + " " + resList.get(i).getResTime();
+//				System.out.println(resTime);
+//				System.out.println(resDateTime);
+//				System.out.println(curDateTime);
 				try {
-					resTime = formatter.parse(resDateTime);
+					resDateTime = formatter.parse(resTime);
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				//System.out.println(resTime);
-				Date curTime = new Date();
-				//System.out.println(curTime);
-				long diff = (curTime.getTime() - resTime.getTime()) / (60 * 1000);
-				//System.out.println(diff);
+				long diff = (curDateTime.getTime() - resDateTime.getTime()) / (60 * 1000);
+//				System.out.println(diff);
+				for(j=0;j<23;j++)
+					if(resList.get(i).getResTime()==timeArray[j])
+						timeChoice = j;
 				if (diff > 10) {
-					tables.getTable(resList.get(i).getResTableID()).unassign();
+					tables.getTable(resList.get(i).getResTableID()).unassign(timeChoice);
 					resList.get(i).updateTableID(0);
 					resList.get(i).setValid(false);
 				}
 			}
-	}*/
+	}
 
 	public boolean checkEmpty() {
 		boolean isEmpty = true;
