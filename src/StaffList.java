@@ -2,16 +2,31 @@ package Project;
 
 import java.util.*;
 
-
+/**
+ * Represents a list of staff of the restaurant.
+ */
 public class StaffList {
+	/**
+	 * The list of record of staff.
+	 */
     private ArrayList<Staff> staffArray;
 
+	/**
+	 * Creates an empty staff list.
+	 */
     public StaffList() {
         this.staffArray =new ArrayList<>();
     }
 
+	/**
+	 * Gets staff list of the restaurant.
+	 * @return List of staff.
+	 */
     public ArrayList<Staff> getStaffArray() { return staffArray; }
 
+	/**
+	 * Ask for staff require information (Name)
+	 */
     public void addStaff(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter new staff's name?");
@@ -22,9 +37,12 @@ public class StaffList {
 		System.out.println("Registration successful. The Staff ID is: " + (staffId+1));
     }
 
+	/**
+	 * Gets specific staff by his/her ID
+	 * @return Staff by staff ID.
+	 */
     public Staff getStaff()
     {
-    	
     	int id=0;
     	int counter=0;
     	while(counter<3)
@@ -48,6 +66,11 @@ public class StaffList {
     	return null;
     }
 
+	/**
+	 * Change the staff(user) that is operating the device.
+	 * Mimic a logout action.
+	 * @return Staff chosen.
+	 */
     public Staff updateStaffId()
     {
     	int staffid=0;

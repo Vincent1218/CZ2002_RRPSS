@@ -9,7 +9,7 @@ import java.text.DateFormat;
 
 public class Order {
 	/**
-	 * The id of the order in order list, starts with 1.
+	 * The ID of the order in order list, starts with 1.
 	 */
 	private int orderId;
 

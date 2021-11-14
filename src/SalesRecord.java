@@ -2,12 +2,27 @@ package Project;
 
 import java.util.*;
 
+/**
+ * Represents a list of order that is paid by customer.
+ */
+
 public class SalesRecord extends OrderList{
     //constructors
+
+    /**
+     * Creates an empty list of sales record.
+     */
     public SalesRecord() { super(); }
 
+
+    /**
+     * Add paid order to sales record array.
+     */
     public void addSalesRecord(Order order) { super.getOrderListArray().add(order); }
 
+    /**
+     * Display sales revenue by Day.
+     */
     public void printByDay(String date)
     {
         System.out.println("Sales Revenue Report for " + date);
@@ -23,6 +38,9 @@ public class SalesRecord extends OrderList{
         System.out.println("Total revenue for " + date + ": " + dRevenue);
     }
 
+    /**
+     * Display sales revenue by Month.
+     */
     public void printByMonth(String period)
     {
         System.out.println("Sales Revenue Report for " + period);
@@ -41,6 +59,9 @@ public class SalesRecord extends OrderList{
         System.out.println("Total revenue for " + period + ": " + prevenue);
     }
 
+    /**
+     * Display sales revenue by Year.
+     */
     public void printByYear(String year)
     {
         System.out.println("Sales Revenue Report for " + year);
