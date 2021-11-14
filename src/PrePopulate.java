@@ -1,6 +1,17 @@
 package Project;
 
+/**
+ * Represents a class that prepoulates the database.
+ */
+
 public class PrePopulate {
+
+    /**
+     * Method that prepopulates the database.
+     * @param menu Menu of the restaurant to be populated.
+     * @param staffList List of staff to be populated.
+     */
+
     public static void prepopulate(Menu menu, StaffList staffList) {
         // Polulating Main Dish
         menu.getMain().add(new MenuItems("M1","Japanese Steak","Grilled beef sirloin",21.9));

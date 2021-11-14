@@ -204,7 +204,6 @@ public class OrderList {
 			 System.out.println("");
 			 System.out.println("Your order Id is " + orderListArray.size());
 			 resList.getReservation(resid).updateOrderID(orderListArray.size());
-			 resList.getReservation(resid).updateOrderID(orderListArray.size());
 			 System.out.println("");
 			 return;
 		 }
@@ -268,7 +267,8 @@ public class OrderList {
 
 	/**
 	 * Check for order duplication.
-	 * Prevents the creation of duplicate orders with the same resid (same table)
+	 * Prevents the creation of duplicate orders with the same resid (same table).
+	 * @param resid Reservation ID which represent one table.
 	 * @return A boolean to determine if order is duplicated.
 	 */
 	public boolean checkDuplicate(int resid)

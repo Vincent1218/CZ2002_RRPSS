@@ -302,7 +302,7 @@ public class RestaurantApplication {
 						}
 						if (choice == 1)
 						{
-							resList.makeRes(tables, counter);
+							resList.makeRes(tables);
 						}
 						else
 						{
@@ -485,7 +485,7 @@ public class RestaurantApplication {
 				{
 					//Create reservation booking function
 					resList.clearReservation(tables);
-					resList.makeRes(tables, counter);
+					resList.makeRes(tables);
 					if(counter==3)
 					{
 						counter = 0;
@@ -503,7 +503,7 @@ public class RestaurantApplication {
 						System.out.println("There are no reservations.\n");
 						break;
 					}
-					resList.viewReservation(counter);
+					resList.viewReservation();
 					while(counter<3)
 					{
 						System.out.println("Would you like to remove any reservations?");
@@ -630,7 +630,7 @@ public class RestaurantApplication {
 						orderlistarr.getOrder(orderId).updateDate();
 					}
 					int TempResID= orderlistarr.getOrder(orderId).getResID();
-					resList.viewInvoiceReservationReservation(TempResID);
+					resList.viewInvoiceReservation(TempResID);
 					System.out.println("");
 					System.out.println("Order Number  " + orderId);
 					System.out.println("----------------------------------");

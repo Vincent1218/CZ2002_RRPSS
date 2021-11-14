@@ -4,20 +4,43 @@ import java.util.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+/**
+ * Represents a list of reservation record.
+ */
 public class ReservationList {
+	/**
+	 * The list of record of reservations.
+	 */
 	private ArrayList<Reservation> resList;
+
+	/**
+	 * The list of time that restaurant operating, incremented by 30 minutes.
+	 */
 	private String[] timeArray = {"10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00"};
 
+	/**
+	 * Creates an empty list of reservation.
+	 */
 	public ReservationList() {
 		this.resList = new ArrayList<>();
 	}
 
+	/**
+	 * Gets total number of reservations made by customer.
+	 * @return Total number of reservations made.
+	 */
 	public int getSize() {
 		return resList.size();
 	}
 
-	public void makeRes(TableList tables, int counter) {
+	/**
+	 * Ask for reservation required information.(Name, Contact Number, Pax, Time)
+	 * Check for information validity before adding to the record.
+	 * @param tables Table list
+	 */
+	public void makeRes(TableList tables) {
 		Scanner sc = new Scanner(System.in);
+		int counter = 0;
 		int pax = 0;
 		System.out.println("Whose name will the reservation be under?");
 		String name = sc.next();
@@ -91,7 +114,11 @@ public class ReservationList {
 		}
 	}
 
-	public void viewReservation(int counter) {
+	/**
+	 * Display (All/specific) reservation in reservation list.
+	 */
+	public void viewReservation() {
+		int counter = 0;
 		Scanner sc = new Scanner(System.in);
 		int check = 0;
 		while (counter < 3) {
@@ -168,7 +195,11 @@ public class ReservationList {
 		}
 	}
 
-	public void viewInvoiceReservationReservation(int resId) {
+	/**
+	 * Display reservation information by specific reservation ID. (Reservation ID, Name, Contact Number, Table ID)
+	 * Used when printing invoice.
+	 */
+	public void viewInvoiceReservation(int resId) {
 		if (resId > resList.size() || resId < 0 || !(resList.get(resId - 1).getValid()))
 			System.out.println("Invalid Reservation ID");
 		else {
@@ -181,6 +212,11 @@ public class ReservationList {
 
 	}
 
+	/**
+	 * Gets reservation by reservation ID.
+	 * @param resid Reservation ID.
+	 * @return Reservation object.
+	 */
 	public Reservation getReservation(int resid) {
 		if (resList.get(resid - 1).getValid()) {
 			return resList.get(resid - 1);
@@ -190,6 +226,13 @@ public class ReservationList {
 		}
 	}
 
+	/**
+	 * Set valid status of reservation in reservation list to "False"
+	 * Reservation is not remove from the list, only the status is amended.
+	 * Customer will be able to use the same reservation ID to check for its validity.
+	 * @param resId Reservation ID that valid status need to be changed.
+	 * @param tables Table List
+	 */
 	public void removeReservation(int resId, TableList tables) {
 		Scanner sc = new Scanner(System.in);
 		if (resList.size() == 0) System.out.println("There are no reservations.");
@@ -224,6 +267,11 @@ public class ReservationList {
 		}
 	}
 
+	/**
+	 * Check if the reservation time has expired.
+	 * Set valid status of reservation to "False" if it has exceeded 10 minutes, and customer have not arrived.
+	 * @param tables Table List
+	 */
 	public void clearReservation(TableList tables) {
 		if (resList.size() == 0 || checkEmpty()) return;
 		else
@@ -232,7 +280,7 @@ public class ReservationList {
 				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 				Date resDateTime = null;
 				Date curDateTime = new Date();
-				if(resList.get(i).getValid())
+				if(resList.get(i).getValid() && (resList.get(i).getOrderID() == 0))
 				{
 					String resTime = java.time.LocalDate.now() + " " + resList.get(i).getResTime();
 					try {
@@ -253,6 +301,11 @@ public class ReservationList {
 			}
 	}
 
+
+	/**
+	 * Check if there is any reservation.
+	 * @return Boolean to determine if there is any reservation.
+	 */
 	public boolean checkEmpty() {
 		boolean isEmpty = true;
 		for (int j = 0; j < resList.size(); j++) //check if res list is empty
