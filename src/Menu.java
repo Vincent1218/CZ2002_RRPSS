@@ -2,12 +2,35 @@ package Project;
 
 import java.util.*;
 
+/**
+ * Represents a list of record of the menu items.
+ * Menu items classified in to Main Dish, Beverages, Desserts, Promotion Sets.
+ */
+
 public class Menu {
+	/**
+	 * The list of record of the main dish.
+	 */
 	private ArrayList<MenuItems> mainDish;
+
+	/**
+	 * The list of record of the beverages.
+	 */
 	private ArrayList<MenuItems> beverages;
+
+	/**
+	 * The list of record of the desserts.
+	 */
 	private ArrayList<MenuItems> desserts;
+
+	/**
+	 * The list of record of the promotion sets.
+	 */
 	private ArrayList<MenuItems> promo;
 
+	/**
+	 * Creates an empty list of Main Dish, Beverages, Desserts, Promotion Sets.
+	 */
 	public Menu()
 	{
 		this.mainDish = new ArrayList<>();
@@ -15,15 +38,59 @@ public class Menu {
 		this.desserts = new ArrayList<>();
 		this.promo = new ArrayList<>();
 	}
+
+	/**
+	 * Gets the number of main dish in the menu.
+	 * @return Number of main dish.
+	 */
 	public int getNumOfMain() { return mainDish.size(); }
+
+	/**
+	 * Gets the number of desserts in the menu.
+	 * @return Number of desserts.
+	 */
 	public int getNumOfDes() { return desserts.size(); }
+
+	/**
+	 * Gets the number of beverages in the menu.
+	 * @return Number of beverages.
+	 */
 	public int getNumOfBev() { return beverages.size(); }
+
+	/**
+	 * Gets the number of promotion set in the menu.
+	 * @return Number of promotion set.
+	 */
 	public int getNumOfPro() { return promo.size(); }
+
+	/**
+	 * Gets the list of main dish.
+	 * @return List of main dish.
+	 */
 	public ArrayList<MenuItems> getMain() { return this.mainDish; }
+
+	/**
+	 * Gets the list of desserts.
+	 * @return List of desserts.
+	 */
 	public ArrayList<MenuItems> getDes() { return this.desserts; }
+
+	/**
+	 * Gets the list of beverages.
+	 * @return List of beverages.
+	 */
 	public ArrayList<MenuItems> getBev() { return this.beverages; }
+
+	/**
+	 * Gets the list of promotion sets.
+	 * @return List of promotion sets.
+	 */
 	public ArrayList<MenuItems> getPro() { return this.promo; }
 
+	/**
+	 * Display the whole menu.
+	 * Including (Main Dish, Beverages, Desserts, Promotion Sets).
+	 */
 	public void displayMenu()
 	{
 		System.out.printf("%s %45s %60s %20s", "Item ID", "Menu Item","Description","Price");
@@ -53,6 +120,11 @@ public class Menu {
 		}
 		System.out.println("");
 	}
+
+	/**
+	 * Display part of the menu.
+	 * Including (Main Dish, Beverages, Desserts).
+	 */
 	public void displayLessMenu()
 	{
 		System.out.printf("%s %45s %60s %20s", "Item ID", "Menu Item","Description","Price");
@@ -76,7 +148,11 @@ public class Menu {
 		}
 		System.out.println("");
 	}
-	
+
+	/**
+	 * Ask for menu item require information (Name, Description, Price)
+	 * Check for information validity before adding to the record.
+	 */
 	public void addMenuItem()
 	{
 		String name,description;
@@ -223,7 +299,12 @@ public class Menu {
 			break;
 		}
 	}
-	
+
+	/**
+	 * Update menu item information.
+	 * Ask for ID of menu item to be updated.
+	 * Check for information validity before changing the record.
+	 */
 	public void updateMenuItem()
 	{
 		int check =0;
@@ -559,6 +640,12 @@ public class Menu {
 			break;
 		}
 	}
+
+	/**
+	 * Delete menu item from menu.
+	 * Ask for ID of menu item to be deleted.
+	 * Check for information validity before deleting the record.
+	 */
 	public void deleteMenuItem()
 	{
 		String id = "";
@@ -651,7 +738,11 @@ public class Menu {
 			break;
 		}
 	}
-	
+
+	/**
+	 * Ask for Combination of (Main Dish, Desserts, Beverages).
+	 * Check for information validity before adding to the record.
+	 */
 	public void addPromoItem()
 	{
 		String mainname = "";
@@ -736,6 +827,12 @@ public class Menu {
 		System.out.println("Promotion item added...");
 		System.out.println("");
 	}
+
+	/**
+	 * Update promotion set information.
+	 * Ask for ID of promotion set to be updated.
+	 * Check for information validity before changing the record.
+	 */
 	public void updatePromoItem()
 	{
 		int choice =0 ;
@@ -849,6 +946,12 @@ public class Menu {
 			System.out.println("");
 		}
 	}
+
+	/**
+	 * Delete promotion item from menu.
+	 * Ask for ID of promotion item to be deleted.
+	 * Check for information validity before deleting the record.
+	 */
 	public void deletePromoItem()
 	{
 		Scanner sc = new Scanner(System.in);

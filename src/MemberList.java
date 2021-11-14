@@ -2,11 +2,25 @@ package Project;
 
 import java.util.*;
 
+/**
+ * Represents a list of record of the restaurant member.
+ */
+
 public class MemberList {
+	/**
+	 * The list of record of the restaurant member.
+	 */
 	private ArrayList<Member> memberArray;
-	
+
+	/**
+	 * Creates an empty list of member array.
+	 */
 	public MemberList() {this.memberArray =new ArrayList<>();}
-	
+
+	/**
+	 * Ask for customer require information (Name, contact).
+	 * Check for information validity before adding to the record.
+	 */
 	public void registerMember()
 	{
 		Scanner sc = new Scanner(System.in);
@@ -51,20 +65,17 @@ public class MemberList {
 		memberArray.add(newMember);
 		System.out.println("Registration successful. The Member ID is: " + memberId);
 	}
-	
+
+	/**
+	 * Get the number of registered member in the restaurant.
+	 * @return Number of registered member.
+	 */
 	public int getSize() {return memberArray.size();}
-	
-//	void removeMember(int memberId) {
-//		memberArray.remove(memberId-1);
-//	}
-//
-//	public int checkMember(int memberId, int contact) {
-//		int index = memberId - 1001;
-//		if((memberArray.get(index).getMemberId() == memberId) && (memberArray.get(index).getContact()==contact)) //to check if inputs match records
-//			return 1;
-//		else return 0;yes
-//	}
-	
+
+	/**
+	 * Display the information of member by passing his/her memberID.
+	 * @param memberId memberId The memberId of the customer.
+	 */
 	public void getMember(int memberId) {
 		int index = memberId - 1001;
 		memberArray.get(index);

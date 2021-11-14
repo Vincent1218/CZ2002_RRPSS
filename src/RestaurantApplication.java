@@ -2,7 +2,16 @@ package Project;
 
 import java.util.*;
 
+
+/**
+ * Represents the Restaurant Reservation and Point of Sale System (RRPSS) main application class.
+ */
+
 public class RestaurantApplication {
+	/**
+	 * Main method (driver program).
+	 * @param args Unused.
+	 */
 	public static void main(String[] args) {
 		int choice=0;
 		int resid=0;

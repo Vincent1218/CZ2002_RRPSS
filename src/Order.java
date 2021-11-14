@@ -3,25 +3,82 @@ package Project;
 import java.util.*;
 import java.text.DateFormat;
 
+/**
+ * Represents an order in order list.
+ */
+
 public class Order {
+	/**
+	 * The id of the order in order list, starts with 1.
+	 */
 	private int orderId;
+
+	/**
+	 * The total price of items.
+	 */
 	private double totalPrice;
-	private double finalPrice = 0;
+
+	/**
+	 * The final price of order after discount, service tax, gst.
+	 */
+	private double finalPrice;
+
+	/**
+	 * The date of order paid.
+	 */
 	private String date;
+
+	/**
+	 * The time of order paid.
+	 */
 	private String time;
+
+	/**
+	 * The record to check if the order is made by a member.
+	 */
 	private int isMember;
+
+	/**
+	 * The record to check if order is paid.
+	 */
 	private boolean isPaid;
+
+	/**
+	 * The list of ordered menu items.
+	 */
 	private ArrayList<MenuItems> orderArr;
+
+	/**
+	 * The number of ordered items.
+	 */
 	private int numOfItems;
+
+	/**
+	 * The Staff that take the order.
+	 */
 	private Staff staff = new Staff(0,"Temp");
+
+	/**
+	 * The table that the customer eats at.
+	 */
 	private Tables table = new Tables(0,0);
+
+	/**
+	 * The reservation ID of the customer that makes the order.
+	 */
 	private int resID;
 
+	/**
+	 * Creates an Order with the given parameters.
+	 * @param staff The Staff that take the order.
+	 * @param resID The reservation ID of the customer that makes the order.
+	 */
 	public Order(Staff staff, int resID)
 	{
 		this.orderArr = new ArrayList<MenuItems>();
 		this.numOfItems=0;
 		this.totalPrice=0;
+		this.finalPrice=0;
 		this.orderId =0;
 		this.staff= staff;
 		this.time = "";
@@ -32,11 +89,34 @@ public class Order {
 
 	}
 
+	/**
+	 * Gets the reservation ID of the order.
+	 * @return Reservation ID of the order.
+	 */
 	public int getResID() { return resID;}
+
+	/**
+	 * Gets the date of order paid.
+	 * @return Date of order paid.
+	 */
 	public String getDate(){ return date; }
+
+	/**
+	 * Gets the time of order paid.
+	 * @return Time of order paid.
+	 */
 	public String getTime() { return time; }
+
+	/**
+	 * Gets the paid status of the order.
+	 * @return Paid status of the order.
+	 */
 	public boolean getPaid() {return isPaid;}
-	public void updatePaid(boolean status) {this.isPaid = status;}
+
+	/**
+	 * Gets the string with both date and time
+	 * @return String with both date and time
+	 */
 	public String getDateTime() //get a string with both date and time
 	{
 		if (date == null || date.length() == 0)
@@ -51,7 +131,22 @@ public class Order {
 			return date + " " + time;
 		}
 	}
+
+	/**
+	 * Sets the paid status of the order.
+	 * @param status The paid status of the order.
+	 */
+	public void updatePaid(boolean status) {this.isPaid = status;}
+
+	/**
+	 * Sets the membership status of the order.
+	 * @param status The membership status of the order.
+	 */
   	public void updateMembership(int status) { this.isMember= status ; }
+
+	/**
+	 * Update the date of the order.
+	 */
 	public void updateDate()
 	{
 		Scanner sc = new Scanner(System.in);
@@ -60,9 +155,30 @@ public class Order {
 		System.out.println("Enter the time in HH:MM AM/PM:");
 		time = sc.nextLine();
 	}
+
+	/**
+	 * Sets the order ID of the order.
+	 * @param newid The order id of the order.
+	 */
 	public void updateOrderId(int newid) { this.orderId=newid; }
+
+	/**
+	 * Get the staff ID that takes this order.
+	 * @return Staff ID that takes this order.
+	 */
 	public int displayStaffId() { return this.staff.getStaffID(); }
+
+	/**
+	 * Get the staff name that takes this order.
+	 * @return Staff name that takes this order.
+	 */
 	public String displayStaffName() { return this.staff.getStaffName();}
+
+	/**
+	 * Ask for menu items that customer wants to order.
+	 * Check for information validity before adding to the record.
+	 * @param menu The complete menu of the restaurant.
+	 */
 	public void addOrderItem(Menu menu)
 	{
 		int quan = 0;
@@ -314,7 +430,12 @@ public class Order {
 			 System.out.println("Adding order Failed..");
 		 }
 	}
-	
+
+	/**
+	 * Update item quantity of a menu item in the order.
+	 * Ask for ID of menu item to be updated.
+	 * Check for information validity before changing the record.
+	 */
 	public void updateOrderItemQuantity()
 	{
 		int check =0;
@@ -374,7 +495,12 @@ public class Order {
 			 System.out.println("Adding order Failed..");
 		 }
 	}
-	
+
+	/**
+	 * Delete menu item from order.
+	 * Ask for ID of menu item to be deleted.
+	 * Check for information validity before deleting the record.
+	 */
 	public void deleteOrderItem()
 	{
 		int check =0;
@@ -404,7 +530,10 @@ public class Order {
 		this.numOfItems--;
 		
 	}
-	
+
+	/**
+	 * Print invoice for the order.
+	 */
 	public void printOrder()
 	{
 		//sort order based on itemid first
@@ -447,17 +576,11 @@ public class Order {
 
 	}
 
-//	public double getTotalPrice()
-//	{
-//		this.totalPrice = 0;
-//		for (int i = 0; i < orderArr.size(); i++)
-//		{
-//			this.totalPrice += this.orderArr.get(i).getQuantity()*this.orderArr.get(i).getPrice();
-//		}
-//		this.totalPrice = Math.round(this.totalPrice * 100.0)/100.0;
-//		return this.totalPrice;
-//	}
 
+	/**
+	 * Gets the final price of the order.
+	 * @return Final price of the order.
+	 */
 	public double getFinalPrice()
 	{
 		if (this.finalPrice == 0)

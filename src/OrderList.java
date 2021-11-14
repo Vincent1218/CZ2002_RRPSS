@@ -2,21 +2,47 @@ package Project;
 
 import java.util.*;
 
+/**
+ * Represents a list of order made by customer.
+ */
+
 public class OrderList {
+
+	/**
+	 * The list of record of order.
+	 */
 	private ArrayList<Order> orderListArray;
 
+	/**
+	 * Creates an empty list of order.
+	 */
 	public OrderList()
 	{
 		this.orderListArray =new ArrayList<>();
 	}
+
+	/**
+	 * Gets the list of order.
+	 * @return List of order.
+	 */
 	public ArrayList<Order> getOrderListArray()
 	{
 		return orderListArray;
 	}
+
+	/**
+	 * Gets the particular order with order ID.
+	 * @param orderId The ID of the order.
+	 * @return A particular order from order list.
+	 */
 	public Order getOrder(int orderId)
 	{
 		return orderListArray.get(orderId-1);
 	}
+
+	/**
+	 * Display all order made.
+	 */
 	public void viewAllOrder()
 	{
 		for(int i=0 ; i<orderListArray.size(); i++)
@@ -28,6 +54,11 @@ public class OrderList {
 			System.out.println("");
 		}
 	}
+
+	/**
+	 * Display particular order with the order id.
+	 * @param orderId The ID of the order.
+	 */
 	public void viewOrder(int orderId)
 	{
 		if(orderId<0 || orderId>orderListArray.size())
@@ -39,6 +70,11 @@ public class OrderList {
 		System.out.println("");
 		orderListArray.get(orderId-1).printOrder();
 	}
+
+	/**
+	 * Make payment for particular order with the order id.
+	 * @param orderId The ID of the order.
+	 */
 	public void payOrder(int orderId)
 	{
 		Scanner sc = new Scanner(System.in);
@@ -49,7 +85,21 @@ public class OrderList {
 		System.out.println("Processing...");
 		System.out.println("Payment made!");
 	}
+
+	/**
+	 * Get the total number of order made.
+	 * @return Number of order made.
+	 */
 	public int getSize(){ return orderListArray.size();}
+
+	/**
+	 * Add order into order list.
+	 * @param mainmenu Menu of the restaurant.
+	 * @param staff Staff that make the order.
+	 * @param memberList List of registered member.
+	 * @param resList List of reservation made.
+	 * @param resid Reservation ID.
+	 */
 	public void createOrder(Menu mainmenu, Staff staff, MemberList memberList,ReservationList resList, int resid)
 	{
 		 int choice =1;
@@ -154,6 +204,7 @@ public class OrderList {
 			 System.out.println("");
 			 System.out.println("Your order Id is " + orderListArray.size());
 			 resList.getReservation(resid).updateOrderID(orderListArray.size());
+			 resList.getReservation(resid).updateOrderID(orderListArray.size());
 			 System.out.println("");
 			 return;
 		 }
@@ -215,7 +266,12 @@ public class OrderList {
 		 System.out.println("");
 	}
 
-	public boolean checkDuplicate(int resid) //prevents the creation of duplicate orders with the same resid (same table)
+	/**
+	 * Check for order duplication.
+	 * Prevents the creation of duplicate orders with the same resid (same table)
+	 * @return A boolean to determine if order is duplicated.
+	 */
+	public boolean checkDuplicate(int resid)
 	{
 		int count = 0;
 		for (int i = 0; i < orderListArray.size(); i++)
@@ -231,10 +287,14 @@ public class OrderList {
 		}
 		return true;
 	}
-	
+
+	/**
+	 * Print order Invoice given particular order ID.
+	 * @param orderId ID of order made.
+	 */
 	public void printOrderInvoice(int orderId)
 	{
-		// this would be print order but with sales person details and time etcetc
+		// this would be print order but with sales person details and time etc
 		orderListArray.get(orderId-1).printOrder();
 		System.out.println(" ");
 		System.out.println("This order was done by " + orderListArray.get(orderId - 1).displayStaffName() );
